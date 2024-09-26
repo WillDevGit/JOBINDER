@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /* Garante que o body ocupe toda a altura da janela */
+}
+
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("image/mecanico.png") no-repeat center center;
+    background-size: cover;
+    z-index: -2; 
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: -1; 
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 80px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    color: white; 
+    align-items: center;
+    margin-left: 40px;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+    gap: 40px;
+}
+
+.menu a {
+    color: white; 
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.menu a:hover {
+    border-bottom: 1px solid white;
+}
+
+.contrate-page {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    gap: 20px;
+}
+
+.contrate-page h1 {
+    color: white;
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.contrate-page p {
+    color: white;
+    font-size: 20px;
+}
+
+.contrate-page a {
+    display: inline-block;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    background-color: #23295B;
+    padding: 5px 25px;
+    border-radius: 10px;
+}
+
+.contrate-page a:hover {
+    background-color: #23295bc5;
+
+}
+
+
+/* Dispositivos um pouco maiores, mas ainda pequenos (Pequenos Tablets e Smartphones + largos, 600px para cima) */
+/* Smartphones (600px para baixo) */
+@media only screen and (max-width: 600px) {
+
+    .menu {display: none;}
+
+    .contrate-page p{
+        display: none;
+    }
+}

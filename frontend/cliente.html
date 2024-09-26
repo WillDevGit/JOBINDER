@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estiloCliente.css">
+    <title>JOBINDER</title>
+</head>
+<body>
+    <div class="chat">
+        <div id="headerChat">
+            <h3>Mensagens<h3>
+            <div id="searchChatBox">
+                <input typ="text" id="chatText" placeholder="Localizar mensagem"></input>
+                <a id="searchChatBtn" href="#">
+                    <img src="image/lupa (3).png"></img>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="match">
+        <nav>
+            <a id="logo" href="#"> JOBINDER </a>
+            <div class="search-box">
+                <input type="text" id="search-text" placeholder="Procurar Serviço"></input>
+                <a href="#" id="search-btn"> <!---Função -->
+                    <img src="image/lupa (3).png">
+                </a>
+            </div>
+            <div><img src="image/maps.png"></div>
+        </nav>
+
+
+        
+        <div id="board"></div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="../backend/index.js" ></script>
+    
+</body>
+</html>
