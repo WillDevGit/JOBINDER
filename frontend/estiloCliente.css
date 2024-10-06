@@ -17,7 +17,7 @@ body, html {
 #logo {
     text-decoration: none;
     color: white;
-    font-size: 25px;
+    font-size: 1.5rem;
     font-weight: 900;
 }
 
@@ -31,11 +31,13 @@ body, html {
 
 #headerChat {
     display: flex;
-
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    gap: 2rem;
 }
 
 #headerChat h3 {
-    padding-left: 20px;
     color: white;
 }
 
@@ -54,20 +56,19 @@ body, html {
 /* PARTE DA SELEÇÃO DOS PROFISSIONAIS */
 
 .match {
+    flex: 70%;
     display: flex;
     flex-direction: column;
-    flex: 70%;
 }
 
 /* Parte da barra de navegação */
 nav {
     display: flex;
     justify-content: space-evenly;
-    padding: 15px;
+    padding: 1rem;
+    gap: 1rem;
     align-items: center;
     width: 100%;
-    height: 65px;
-    padding-right: 70px;
 }
 
 .search-box {
@@ -75,17 +76,22 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    height: 35px;
-    width: 400px;
+    height: 2rem;
+    width: 20rem;
     border-radius: 40px;
-    padding: 10px;
+    padding: 1rem;
+}
+
+.search-box a {
+    display: flex;
+    align-items: center;
 }
 
 #search-text {
     border: none;
     background: none;
     outline: none;
-    flex: 80%;
+    width: 90%;
 }
 
 #board {
@@ -93,20 +99,23 @@ nav {
     height: 100%;
     position: relative;
     overflow: hidden;
-    
 }
 
 .card {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 530px;
-    height: 530px;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     background-color: white; 
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    width: 530px;
+    height: 530px;
+    
+    display: flex;
+    flex-direction: column;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .imagem {
@@ -124,7 +133,13 @@ nav {
     flex: 10%; 
     display: flex; 
     justify-content: center;
-    gap: 20px;
-    padding: 5px;
+    gap: 4rem;
+    padding: 0.5rem 0;
+}
+
+.botoes img {
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
 }
 
