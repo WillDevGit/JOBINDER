@@ -1,34 +1,34 @@
 var cardContent = [
   {
-    img: "url('../backend/database/poda3.jpg')",
+    img: "url('../../backend/database/poda3.jpg')",
     desc: "<h3>José - jardineiro</h3><p>Especialidade: Manutenção de jardins e poda de árvores </p> <p>Serviços: Poda de arvore, limpeza de terrenos, retirada de entulhos e cercas de arame </p>",
   },
   {
-    img: "url('../backend/database/poda1.jpg')",
+    img: "url('../../backend/database/poda1.jpg')",
     desc: "<h3>Anderson - Poda ornamental</h3> <p>Serviços: Poda de árvores, cuidado de gramados e plantio de flores </p> <p>Disponibilidade: Segunda à Sexta 13hs até 17hrs</p>",
   },
   {
-    img: "url('../backend/database/poda2.jpg')",
+    img: "url('../../backend/database/poda2.jpg')",
     desc: "<h3> Antonio - Especialista em poda de árvores</h3> <p>Especialidade: Poda de árvores e revitalização de jardins</p> <p>Serviços: Poda de árvores, limpeza de jardins e decoração com plantas ornamentais</p> <p>Horário: Terça a domingo, 8h às 17h</p>",
   },
   {
-    img: "url('../backend/database/mar1.jpg')",
+    img: "url('../../backend/database/mar1.jpg')",
     desc: "<h3>João Pereira - Marceneiro</h3> <p>Especialidade: Móveis planejados para cozinhas e escritórios</p> <p>Horário: Segunda a sexta, 8h às 18h</p> <p>Serviços: Medição no local e montagem inclusa</p>",
   },
   {
-    img: "url('../backend/database/mar2.jpg')",
+    img: "url('../../backend/database/mar2.jpg')",
     desc: "<h3>Raimundo - Marceneiro</h3> <p>Especialidade: Reparos, restaurações de móveis antigos e móveis planejados</p> <p>Horário: Finais de semana, 9h às 17h</p> <p>Serviços: Restauração de peças antigas e personalização</p>",
   },
   {
-    img: "url('../backend/database/mar3.jpg')",
+    img: "url('../../backend/database/mar3.jpg')",
     desc: "<h3>Kevin - Carpinteiro</h3> <p>Especialidade: Criação de móveis rústicos sob medida </p> <p>Serviços: Projetos personalizados e entrega rápida</p> <p>Horário: Segunda a sexta, 13h às 19h</p>",
   },
   {
-    img: "url('../backend/database/pin1.jpg')",
+    img: "url('../../backend/database/pin1.jpg')",
     desc: "<h3>Adriano - Pintor</h3> <p>Especialidade: Pintura de interiores e exteriores </p> <p>Experiência: 10 anos em pintura residencial e comercial</p> <p>Serviços: Pintura de paredes, aplicação de texturas e grafiato</p>",
   },
   {
-    img: "url('../backend/database/pin2.jpg')",
+    img: "url('../../backend/database/pin2.jpg')",
     desc: "<h3>Luciano - Pintor</h3> <p>Especialidade: Pintura decorativa e aplicação de papel de parede </p> <p>Horário: Segunda a sexta, 9h às 18h</p> <p>Serviços: Pintura de paredes, pintura artística e acabamentos finos</p>",
   },
   //{img: "url('../backend/database/s10.png')", desc: "<h3>Ames - Designer de Interfaces Web</h3> <p>Ferramentas: HTML5, CSS3, JavaScript, Visual Studio Code, Git, Node.js </p> <p>www.sofiaseo.com/otimizacao-noticias</p>"},
@@ -267,7 +267,7 @@ class Carousel {
     //botoes obs: implementar
     let botoes = document.createElement("div");
     botoes.innerHTML =
-      "<img src='../frontend/image/cancel.png'> <img src='../frontend/image/voltar.png'> <img src='../frontend/image/confirme.png'>";
+      "<img src='../images/cancel.png'> <img src='../images/voltar.png'> <img src='../images/confirme.png'>";
     botoes.classList.add("botoes");
 
     // Adiciona eventos de mouse aos botões

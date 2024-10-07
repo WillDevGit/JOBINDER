@@ -19,7 +19,7 @@ categorias.forEach((categoria) => {
 
     const background = document.createElement("div");
     background.classList.add("background-categoria");
-    background.style.backgroundImage = `url(./images/categorias/${categoria}.png)`;
+    background.style.backgroundImage = `url(../images/categorias/${categoria}.png)`;
 
     const spanCategoria = document.createElement("span");
     spanCategoria.textContent = categoria;
