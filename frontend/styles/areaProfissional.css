@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url(./configs/fonts.css);
+
+* {
+  box-sizing: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body,
+html {
+  background-color: var(--blue);
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3rem;
+  padding-bottom: 5rem;
+  height: 100vh;
+  width: 100%;
+}
+
+.logo {
+  margin-top: 2rem;
+}
+
+.logo a {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+#catalogo {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.categoria {
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+
+  width: 12rem;
+  height: 10rem;
+
+  position: relative;
+
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translate(0, -0.5rem);
+  }
+
+  &:hover .background-categoria {
+    transform: scale(1.05);
+  }
+
+  &:hover span {
+    opacity: 1;
+  }
+
+  &:active {
+    transform: translate(0, 0);
+  }
+}
+
+.categoria h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.background-categoria {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-size: cover;
+  background-position: center;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transition: all 0.2s;
+}
+
+.categoria-selecionada {
+  transition: all 0.2s;
+}
+
+.categoria-selecionada h2 {
+  color: #6ee7b7;
+}
+
+.categoria-selecionada .background-categoria {
+  position: relative;
+}
+
+.categoria-selecionada .background-categoria::after {
+  content: url(../images/check.png);
+  background-color: #002517cc;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  background-color: #6ee7b7;
+  color: #002517;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 5rem 0;
+
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #6ee7b7cc;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

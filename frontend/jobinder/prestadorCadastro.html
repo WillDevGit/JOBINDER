@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/estiloPrestador.css">
-    <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/cadastroPrestador.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Document</title>
-</head>
-<body>
-    
-    <div id="bloco-cadastro">
-        <h1> Cadastro</h1>
-        <div id="cadastro">
-            <label for="inputName">Digite seu nome:</label>
-            <input id="inputName" type="text"></input>
-
-            <label for="inputNumero">Digite seu numero:</label>
-            <input id="inputNumero" type="text"></input>
-
-            <label for="inputNumero">Crie uma senha:</label>
-            <input id="inputNumero" type="password"></input>
-
-            <label for="inputNumero">Confirmação da senha:</label>
-            <input id="inputNumero" type="password"></input>
-
-          
-        </div>
-        <a id="botao-finalizar" href="./areaProfissional.html">Finalizar</a>
-
+  </head>
+  <body>
+    <div class="logo">
+      <a href="./home.html">JOBINDER</a>
     </div>
-</body>
+
+    <div id="register-container">
+      <h1>Cadastro</h1>
+      <form id="register">
+        <label for="input-fullname">Digite seu nome e sobrenome:</label>
+        <input id="input-fullname" type="text" />
+
+        <label for="input-cellphone">Digite seu número do celular:</label>
+        <input id="input-cellphone" type="text" />
+
+        <label for="input-password">Crie uma senha:</label>
+        <input id="input-password" type="password" />
+
+        <label for="input-confirm-password">Confirmação da senha:</label>
+        <input id="input-confirm-password" type="password" />
+
+        <input type="submit" id="submit-register" />
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script defer type="module" src="../../backend/user.js"></script>
+    <script defer src="../scripts/prestadorCadastro.js"></script>
+  </body>
 </html>

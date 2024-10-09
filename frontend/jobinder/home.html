@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/estiloHome.css">
+    <link rel="stylesheet" href="../styles/home.css">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
     <title>Jobinder</title>
 </head>
@@ -15,7 +15,8 @@
         <div class="menu">
             <a href="#">SOBRE NÓS</a>
             <a href="./prestadorCadastro.html">TRABALHE-CONOSCO</a>
-            <a href="./cliente.html">ENTRAR</a>
+            <a href="./login.html" id="login">ENTRAR</a>
+            <a id="exit">SAIR</a>
         </div>
     </header>  
     <div class="contrate-page">
@@ -32,5 +33,7 @@
         </div>
     </div>
 
+    <script type="module" src="../../backend/user.js"></script>
+    <script type="module" src="../scripts/userLogged.js"></script>
 </body>
 </html>

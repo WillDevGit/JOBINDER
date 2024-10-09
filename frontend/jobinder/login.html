@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="logo">
+      <a href="./home.html">JOBINDER</a>
+    </div>
+
+    <div id="login-container">
+      <h1>Login</h1>
+      <form id="login">
+        <label for="input-cellphone">Digite seu número de celular:</label>
+        <input id="input-cellphone" type="text" />
+
+        <label for="input-password">Digite sua senha:</label>
+        <input id="input-password" type="password" />
+
+        <input type="submit" id="submit-login" value="Entrar" />
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script type="module" src="../scripts/login.js"></script>
+  </body>
+</html>
