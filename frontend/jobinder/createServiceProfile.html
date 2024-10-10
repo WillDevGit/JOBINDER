@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/createServiceProfile.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
+    <title>Criar Perfil de Serviços</title>
+  </head>
+  <body>
+    <div class="logo">
+      <a href="./home.html">JOBINDER</a>
+    </div>
+
+    <div id="service-profile-container">
+      <h1>Criar Perfil de Serviços</h1>
+      <form id="form-service-profile">
+        <label for="specialties">Especialidades:</label>
+        <div id="specialties">
+          
+        </div>
+
+        <label for="input-services">Serviços:</label>
+        <textarea
+          id="input-services"
+          rows="5"
+          placeholder="Descreva os serviços que você oferece"
+        ></textarea>
+
+        <label for="input-avaliability">Disponibilidade:</label>
+        <input
+          id="input-avaliability"
+          type="text"
+          placeholder="Ex: Segunda a Sexta, 8h - 18h"
+        />
+
+        <label for="input-service-img">Imagem de um Serviço Realizado:</label>
+        <input id="input-service-img" type="file" accept="image/*" />
+        
+        <input type="submit" id="submit-profile" value="Criar Perfil" />
+      </form>
+    </div>
+
+    <script type="module" src="../scripts/createServiceProfile.js"></script>
+  </body>
+</html>

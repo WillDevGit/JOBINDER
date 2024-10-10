@@ -1,10 +1,15 @@
-import { addCategory, getUserBeingCreated } from "../../backend/user.js";
+import { getUser, userLogged, updateUser } from "../../backend/user.js";
 
-const catalogo = document.getElementById("catalogo");
+// Get the elements from the DOM
+const list = document.getElementById("list");
 const categoriasElements = document.getElementsByClassName("categoria");
 const confirmCategory = document.getElementById("confirm-category");
 
-const categorias = [
+const userLoggedData = userLogged();
+const user = getUser(userLoggedData.cellphone);
+
+// Categories list
+const categories = [
   "Advocacia",
   "Cabelo",
   "Construção",
@@ -16,9 +21,11 @@ const categorias = [
   "Saúde",
 ];
 
+// Select the category
 let categoriaSelecionada = null;
 
-categorias.forEach((categoria) => {
+// Create the categories
+categories.forEach((categoria) => {
   const a = document.createElement("a");
   a.classList.add("categoria");
 
@@ -27,11 +34,11 @@ categorias.forEach((categoria) => {
 
   const background = document.createElement("div");
   background.classList.add("background-categoria");
-  background.style.backgroundImage = `url(../images/categorias/${categoria}.png)`;
+  background.style.backgroundImage = `url(../images/categories/${categoria}.png)`;
 
   a.appendChild(title);
   a.appendChild(background);
-  catalogo.appendChild(a);
+  list.appendChild(a);
 
   a.addEventListener("click", () => {
     removeSelected();
@@ -40,20 +47,28 @@ categorias.forEach((categoria) => {
   });
 });
 
+// Remove the selected category
 const removeSelected = () => {
   Array.from(categoriasElements).forEach((categoria) => {
     categoria.classList.remove("categoria-selecionada");
   });
 };
 
+// Confirm the category
 confirmCategory.addEventListener("click", () => {
   if (categoriaSelecionada === null) {
     alert("Selecione uma categoria.");
     return;
   }
 
-  const cellphone = getUserBeingCreated();
-  addCategory(cellphone, categoriaSelecionada);
+  // Save the service profile data in the user object
+  if (!user.serviceProfile) {
+    user.serviceProfile = {};
+  }
 
-  window.location.href = "./login.html";
+  user.serviceProfile.specialties = categoriaSelecionada;
+  updateUser(user);
+
+  // Redirect to the Create Service Profile page
+  window.location.href = "./createServiceProfile.html";
 });

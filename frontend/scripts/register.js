@@ -1,35 +1,35 @@
+// Get the form and the inputs
 const form = document.getElementById("register");
 const inputFullName = document.getElementById("input-fullname");
 const inputCellphone = document.getElementById("input-cellphone");
 const inputPassword = document.getElementById("input-password");
 const inputConfirmPassword = document.getElementById("input-confirm-password");
 
+// Get the users from localStorage
 const users = localStorage.getItem("users")
   ? JSON.parse(localStorage.getItem("users"))
   : {};
 
+// Create the user
 const createUser = (user) => {
   const cellphone = Object.keys(user)[0];
-  console.log(cellphone, "cellphonee");
   users[cellphone] = user[cellphone];
   localStorage.setItem("users", JSON.stringify(users));
 };
 
+// Get the user data
 const getUserData = (cellphone) => {
   const user = users[cellphone];
   if (user) {
-    const { fullName, cellphone, category } = user;
-    return { fullName, cellphone, category };
+    const { fullName, cellphone } = user;
+    return { fullName, cellphone };
   } else return null;
 };
-
-const userBeingCreated = (cellphone) => {
-    localStorage.setItem("userBeingCreated", cellphone);
-}
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  // Get the form values
   const fullName = inputFullName.value;
   const cellphone = inputCellphone.value;
   const password = inputPassword.value;
@@ -60,6 +60,7 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+  // Verify if the user exists
   const cellphoneExists = getUserData(cellphone);
 
   if (cellphoneExists) {
@@ -70,17 +71,17 @@ form.addEventListener("submit", (event) => {
   // Hash the password
   const hashedPassword = CryptoJS.SHA256(password).toString();
 
-  const prestador = {
+  // Create the user object
+  const user = {
     [cellphone]: {
       fullName,
       cellphone,
       password: hashedPassword,
-      category: null,
     },
   };
 
-  userBeingCreated(cellphone);
-  createUser(prestador);
+  // Create the user
+  createUser(user);
 
-  window.location.href = "areaProfissional.html";
+  window.location.href = "./login.html";
 });

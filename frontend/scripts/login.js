@@ -1,9 +1,11 @@
 import { getUser, getUserData, setUserLogged } from "../../backend/user.js";
 
+// Get the form elements
 const login = document.getElementById("login");
 const inputCellphone = document.getElementById("input-cellphone");
 const inputPassword = document.getElementById("input-password");
 
+// Add the submit event to the form
 login.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -20,6 +22,7 @@ login.addEventListener("submit", (event) => {
     return;
   }
 
+  // Verify if the user exists
   const userExists = getUser(cellphone);
 
   // Hash the entered password
@@ -31,7 +34,9 @@ login.addEventListener("submit", (event) => {
     return;
   }
 
+  // Set the user logged in localStorage
   setUserLogged(getUserData(cellphone));
 
+  // Redirect to the home page
   window.location.href = "./home.html";
 });
