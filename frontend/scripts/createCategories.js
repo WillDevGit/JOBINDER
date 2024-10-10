@@ -5,8 +5,8 @@ const list = document.getElementById("list");
 const categoriasElements = document.getElementsByClassName("categoria");
 const confirmCategory = document.getElementById("confirm-category");
 
-const userLoggedData = userLogged();
-const user = getUser(userLoggedData.cellphone);
+const userLoggedCell = userLogged();
+const user = getUser(userLoggedCell);
 
 // Categories list
 const categories = [

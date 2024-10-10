@@ -1,30 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url(./configs/fonts.css);
+@import url(./configs/reset.css);
+@import url(./configs/colors.css);
 
-* {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-body,
-html {
+body {
   background-color: var(--blue);
-  display: flex;
-  margin: 0;
+  gap: 2rem;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
-  height: 100%;
-  width: 100%;
 }
 
 .logo {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .logo a {
   cursor: pointer;
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: 700;
   font-size: 2.5rem;
@@ -32,14 +22,19 @@ html {
 
 #service-profile-container {
   background-color: #fff;
+  
+  gap: 2rem;
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #service-profile-container h1 {
   color: var(--blue);
-  margin-bottom: 1.5rem;
   text-align: center;
 }
 
@@ -55,7 +50,7 @@ html {
   font-size: 1.3rem;
 }
 
-#form-service-profile #specialties, 
+#form-service-profile #specialties,
 #form-service-profile input[type="text"],
 #form-service-profile textarea {
   width: 20rem;

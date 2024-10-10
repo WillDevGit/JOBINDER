@@ -46,8 +46,8 @@ const userLogged = () => {
 };
 
 // Set the user logged
-const setUserLogged = (userData) => {
-  localStorage.setItem("userLogged", JSON.stringify(userData));
+const setUserLogged = (cellphone) => {
+  localStorage.setItem("userLogged", JSON.stringify(cellphone));
 };
 
 export {

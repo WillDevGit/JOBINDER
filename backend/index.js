@@ -1,9 +1,16 @@
 import { getUserData, getUsersData, userLogged } from "./user.js";
 
 // Get the user logged
-const userLoggedData = userLogged();
-// Get the user data
-const userData = getUserData(userLoggedData.cellphone);
+const userLoggedCell = userLogged();
+
+// User can be not logged
+let userData = null;
+
+// Get the user data if the user is logged
+if (userLoggedCell) {
+  userData = getUserData(userLoggedCell);
+}
+
 // Get the users data
 const usersData = getUsersData();
 
@@ -12,7 +19,8 @@ let cardContent = [];
 // Create the cards content with the users data
 usersData.forEach((user) => {
   if (!user.serviceProfile) return;
-  if (user.cellphone !== userData.cellphone) {
+
+  if (!userData || user.cellphone !== userData.cellphone) {
     cardContent.push({
       img: user.serviceProfile.serviceImg,
       desc: `<h3>${user.fullName}</h3> 

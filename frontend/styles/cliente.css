@@ -1,29 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url(./configs/colors.css);
+@import url(./configs/reset.css);
 
-* {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-body,
-html {
+body {
+  background-color: var(--grey);
   display: flex;
-  margin: 0;
-  background-color: #e7edef;
-  height: 100%;
-  width: 100%;
 }
 
 #logo {
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-size: 1.5rem;
   font-weight: 900;
 }
 
 .chat {
-  display: flex;
-  flex-direction: column;
   background-image: linear-gradient(
     to right top,
     #365462,
@@ -32,25 +22,30 @@ html {
     #4d7181,
     #557b8b
   );
+
   height: 100%;
+  
+  display: flex;
+  flex-direction: column;
   flex: 30%;
 }
 
 #headerChat {
+  padding: 1rem;
+  gap: 2rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1rem;
-  gap: 2rem;
 }
 
 #headerChat h3 {
-  color: white;
+  color: #fff;
 }
 
 #searchChatBox {
   display: flex;
-  background-color: white;
+  background-color: #fff;
   padding: 5px;
   border-radius: 10px;
 }
@@ -67,23 +62,26 @@ html {
 }
 
 nav {
-  display: flex;
-  justify-content: space-evenly;
+  width: 100%;
   padding: 1rem;
   gap: 1rem;
+
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  width: 100%;
 }
 
 .search-box {
+  background-color: #fff;
+  
+  width: 20rem;
+  height: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  height: 2rem;
-  width: 20rem;
-  border-radius: 40px;
-  padding: 1rem;
 }
 
 .search-box a {
@@ -92,10 +90,9 @@ nav {
 }
 
 #search-text {
-  border: none;
-  background: none;
-  outline: none;
   width: 90%;
+  border: none;
+  outline: none;
 }
 
 #board {
@@ -106,7 +103,7 @@ nav {
 }
 
 .card {
-  background-color: white;
+  background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   width: 530px;
@@ -123,22 +120,23 @@ nav {
 }
 
 .imagem {
-  flex: 60%;
-  background-color: white;
+  background-color: #fff;
   background-size: cover;
+  flex: 60%;
 }
 
 .descricao {
-  flex: 30%;
   padding-left: 15px;
+  flex: 30%;
 }
 
 .botoes {
-  flex: 10%;
-  display: flex;
-  justify-content: center;
   gap: 4rem;
   padding: 0.5rem 0;
+  
+  display: flex;
+  justify-content: center;
+  flex: 10%;
 }
 
 .botoes img {

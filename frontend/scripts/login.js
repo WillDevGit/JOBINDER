@@ -35,7 +35,7 @@ login.addEventListener("submit", (event) => {
   }
 
   // Set the user logged in localStorage
-  setUserLogged(getUserData(cellphone));
+  setUserLogged(cellphone);
 
   // Redirect to the home page
   window.location.href = "./home.html";
