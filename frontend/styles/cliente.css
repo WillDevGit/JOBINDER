@@ -125,9 +125,14 @@ nav {
   flex: 60%;
 }
 
+.nomeCard {
+  padding-left: 15px;
+  flex: 5%
+}
+
 .descricao {
   padding-left: 15px;
-  flex: 30%;
+  flex: 25%;
 }
 
 .botoes {
@@ -143,4 +148,30 @@ nav {
   cursor: pointer;
   width: 3rem;
   height: 3rem;
+}
+
+
+#chat-space {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+.chatBox {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  background-color: #557b8b;
+  height: 80px;
+  width: 400px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.icon-perfil{
+  margin: 5px; 
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+  border-radius: 50px; 
 }
