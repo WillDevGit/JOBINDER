@@ -1,5 +1,7 @@
 import { getUser, updateUser, userLogged } from "../../backend/user.js";
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   // Get the form elements
   const formServiceProfile = document.getElementById("form-service-profile");
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+
     // Parse the image to Base64
     const reader = new FileReader();
     reader.onload = function (event) {
@@ -54,12 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
       user.serviceProfile.services = services;
       user.serviceProfile.avaliability = avaliability;
       user.serviceProfile.serviceImg = serviceImgBase64;
-
+      user.serviceProfile.hasServiceProfile = true; 
+    
       // Update the user in the localStorage
       updateUser(user);
 
+    
+      
       // Redirect to the Home page
       window.location.href = "./home.html";
+
+
     };
 
     // Read the image as Data URL

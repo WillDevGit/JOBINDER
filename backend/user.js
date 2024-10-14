@@ -50,6 +50,7 @@ const setUserLogged = (cellphone) => {
   localStorage.setItem("userLogged", JSON.stringify(cellphone));
 };
 
+
 export {
   createUser,
   getUsersData,
