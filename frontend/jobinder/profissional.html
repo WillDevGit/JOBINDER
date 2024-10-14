@@ -10,29 +10,39 @@
 </head>
 <body>
 
-    <div class="perfil-space">
-        <div class="editar">
-            <p>Editar nome: </p>   
-            <div class="editarBox">
-                 
-                <input type="text" id="chatText" placeholder="Escreva um novo nome"></input>
-                
+    
+    <div class="editar-space">
+            <div class="opcoes-edicao" id="opcoes">
+                <button id="editNome">EDITAR NOME</button>
+                <button id="editDesc">EDITAR DESCRICAO</button>
+                <button id="editImg">EDITAR IMAGENS</button>
             </div>
-            <br>
-            <button id="mudarBotao">Mudar Nome</button>
-            <br><br>
-            <p>Editar descricao: </p>
-            <div class="editarBox">
-                
-                <input type="text" id="chatText" placeholder="Escreva uma nova descrição"></input>
-              
-            </div>
-            <br>
-            <button id="mudarBotao">Mudar Descrição</button>
-            <br><br> <br><br>
-            <button id="mudarBotao">Escolher nova imagem</button>
-        </div>
 
+            <div style="display: none;" id="interfaceNome" class="editar-container">
+                <div class="editarBox">
+
+                    <input type="text" placeholder="Escreva um novo nome"></input>
+
+                </div>
+                <button id="mudarBotao">Mudar Nome</button>
+            </div>
+
+            <div style="display: none;" id="interfaceDesc" class="editar-container">
+                <p>Editar descricao: </p>
+                <div class="editarBox">
+                    
+                    <input type="text" placeholder="Escreva uma nova descrição"></input>
+                
+                </div>
+
+                <button id="mudarBotao">Mudar Descrição</button>
+           </div>
+            
+            <button style="display: none;" id="mudarBotao">Escolher nova imagem</button>
+
+    </div>
+
+    <div class="perfil-space">
         <div class="perfil">
             <div id="imagem"></div>
             <div id="nomeCard"></div>
