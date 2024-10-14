@@ -34,5 +34,5 @@ if (dadosUsuarios.serviceProfile) {
   // Se o perfil foi criado, esconde o link de criar e mostra o de entrar
   createServiceProfile.style.display = "none";
   enterProfilePro.style.display = "block";
-  enterProfilePro.href = "#"; // Atualiza o href se necessário
+  enterProfilePro.href = "./profissional.html"; 
 }

@@ -1,0 +1,112 @@
+@import url(./configs/colors.css);
+@import url(./configs/reset.css);
+
+body {
+    background-color: var(--grey);
+    display: flex;
+}
+
+
+.perfil-space {
+   
+    flex: 70%; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.perfil { 
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    width: 500px;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.editar {
+    display: flex;
+    flex-direction: column;
+}
+
+#imagem {
+    background-color: #fff;
+    background-size: cover;
+    flex: 60%;
+}
+  
+#nomeCard {
+    padding-left: 15px;
+    flex: 5%; 
+    font-size: 25px;
+}
+  
+#descricao {
+    padding-left: 15px;
+    flex: 25%;
+  }
+
+.chat {
+    flex: 30%; 
+    background-image: linear-gradient(
+      to right top,
+      #365462,
+      #3e5d6c,
+      #456776,
+      #4d7181,
+      #557b8b
+    );
+  
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  #headerChat {
+    padding: 1rem;
+    gap: 2rem;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #headerChat h3 {
+    color: #fff;
+  }
+  
+  #searchChatBox {
+    display: flex;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  #searchChatBox input {
+    outline: none;
+    border: none;
+  }
+
+.editarBox {
+    display: flex;
+    background-color: #fff;
+    margin-top: 5px;
+    padding: 20px 50px 20px 25px;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+.editarBox input{
+    
+    outline: none;
+    border: none;
+}
+
+#mudarBotao {
+    height: 50px;
+    width: 100px;
+}

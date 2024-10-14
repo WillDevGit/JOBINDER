@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../styles/perfilPro.css">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
+    <title>Perfil Profissional</title>
+</head>
+<body>
+
+    <div class="perfil-space">
+        <div class="editar">
+            <p>Editar nome: </p>   
+            <div class="editarBox">
+                 
+                <input type="text" id="chatText" placeholder="Escreva um novo nome"></input>
+                
+            </div>
+            <br>
+            <button id="mudarBotao">Mudar Nome</button>
+            <br><br>
+            <p>Editar descricao: </p>
+            <div class="editarBox">
+                
+                <input type="text" id="chatText" placeholder="Escreva uma nova descrição"></input>
+              
+            </div>
+            <br>
+            <button id="mudarBotao">Mudar Descrição</button>
+            <br><br> <br><br>
+            <button id="mudarBotao">Escolher nova imagem</button>
+        </div>
+
+        <div class="perfil">
+            <div id="imagem"></div>
+            <div id="nomeCard"></div>
+            <div id="descricao"></div>
+        </div>
+
+    </div>
+
+    <div class="chat">
+        <div id="headerChat">
+            <h3>Mensagens<h3>
+            <div id="searchChatBox">
+                <input type="text" id="chatText" placeholder="Localizar mensagem"></input>
+                <a id="searchChatBtn" href="#">
+                    <img src="../images/lupa.png"></img>
+                </a>
+            </div>
+        </div>
+        <div id="chat-space">
+
+        </div>
+    </div>
+
+    <script type="module" src="../../backend/user.js"></script>
+    <script type="module" src="../scripts/editPerfil.js"></script>
+    
+</body>
+</html>
