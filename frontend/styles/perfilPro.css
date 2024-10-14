@@ -112,17 +112,29 @@ body {
 
 .editar-container{
   display: flex;
+  flex: 60%;
   flex-direction: column;
-  align-self: center;
+  justify-content: center;
   
-  gap: 1rem; 
   
+}
+
+.caixaTexto {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  
+}
+
+.caixaBotao {
+  display: flex;
+  justify-content: center;
+ 
 }
 
 .editarBox {
     display: flex;
     background-color: #fff;
-
     width: 250px;
     height: 60px;
     padding: 5px;
@@ -131,14 +143,22 @@ body {
 }
 
 .editarBox input{
+    font-size: 17px;
+    margin-left: 10px;
     width: 100%;
     outline: none;
     border: none;
 }
 
-#mudarBotao {
-    height: 50px;
-    width: 100px;
-    
-    
+.botao {
+  font-size: 18px;
+    height: 60px;
+    width: 130px;   
+}
+
+#botaoVoltar {
+  display: flex;
+  flex: 40%;
+  justify-self: flex-start;
+  margin: 5px;
 }

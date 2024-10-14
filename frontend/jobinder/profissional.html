@@ -10,35 +10,40 @@
 </head>
 <body>
 
-    
     <div class="editar-space">
             <div class="opcoes-edicao" id="opcoes">
                 <button id="editNome">EDITAR NOME</button>
                 <button id="editDesc">EDITAR DESCRICAO</button>
                 <button id="editImg">EDITAR IMAGENS</button>
             </div>
+            
+            <div style="display: none;" id="botaoVoltar"> <button class="botao" id="voltar">Voltar</button></div>
 
             <div style="display: none;" id="interfaceNome" class="editar-container">
-                <div class="editarBox">
-
-                    <input type="text" placeholder="Escreva um novo nome"></input>
-
+                <div class="caixaTexto">
+                    <div class="editarBox">
+                        <input type="text" id="input-name" placeholder="Escreva um novo nome"></input>
+                    </div>
                 </div>
-                <button id="mudarBotao">Mudar Nome</button>
+                <div class="caixaBotao">
+                    <button class="botao" id="submit-nome">Mudar Nome</button>
+                </div>
             </div>
 
             <div style="display: none;" id="interfaceDesc" class="editar-container">
-                <p>Editar descricao: </p>
-                <div class="editarBox">
+                <div class="caixaTexto">
+                    <div class="editarBox">
+                        
+                        <input type="text" id="input-descricao" placeholder="Escreva uma nova descrição"></input>
                     
-                    <input type="text" placeholder="Escreva uma nova descrição"></input>
-                
+                    </div>
                 </div>
-
-                <button id="mudarBotao">Mudar Descrição</button>
+                <div class="caixaBotao">
+                <button class="botao" id="submit-desc">Mudar Descrição</button>
+                </div>
            </div>
             
-            <button style="display: none;" id="mudarBotao">Escolher nova imagem</button>
+            <button style="display: none;" id="botao">Escolher nova imagem</button>
 
     </div>
 

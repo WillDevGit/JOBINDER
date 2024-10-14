@@ -40,6 +40,35 @@ const updateUser = (cellphone, user) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
+// Update the userName
+const updateUserName = (cellphone, newName) => {
+  // Verifica se o usuário já existe
+  if (users[cellphone]) {
+    // Atualiza apenas o atributo fullName
+    users[cellphone].fullName = newName;
+    
+    // Atualiza o localStorage com os novos dados do usuário
+    localStorage.setItem("users", JSON.stringify(users));
+  } else {
+    console.log("Usuário não encontrado");
+  }
+};
+
+// Update the services
+const updateUserServices = (cellphone, newServices) => {
+  // Verifica se o usuário já existe
+  if (users[cellphone]) {
+    // Atualiza apenas o atributo fullName
+    users[cellphone].serviceProfile.services = newServices;
+    
+    // Atualiza o localStorage com os novos dados do usuário
+    localStorage.setItem("users", JSON.stringify(users));
+  } else {
+    console.log("Usuário não encontrado");
+  }
+};
+
+
 // Get the user logged
 const userLogged = () => {
   return JSON.parse(localStorage.getItem("userLogged"));
@@ -59,4 +88,6 @@ export {
   updateUser,
   userLogged,
   setUserLogged,
+  updateUserName,
+  updateUserServices, 
 };
