@@ -8,17 +8,7 @@
     <title>JOBINDER</title>
 </head>
 <body>
-    <div class="chat">
-        <div id="headerChat">
-            <h3>Mensagens<h3>
-            <div id="searchChatBox">
-                <input typ="text" id="chatText" placeholder="Localizar mensagem"></input>
-                <a id="searchChatBtn" href="#">
-                    <img src="../images/lupa.png"></img>
-                </a>
-            </div>
-        </div>
-    </div>
+    
     <div class="match">
         <nav>
             <a id="logo" href="./home.html"> JOBINDER </a>
@@ -30,13 +20,27 @@
             </div>
             <div><img src="../images/maps.png"></div>
         </nav>
-        
-        <div id="board"></div>
 
+        <div id="board"></div>
+    </div>
+    <div class="chat">
+        <div id="headerChat">
+            <h3>Mensagens<h3>
+            <div id="searchChatBox">
+                <input typ="text" id="chatText" placeholder="Localizar mensagem"></input>
+                <a id="searchChatBtn" href="#">
+                    <img src="../images/lupa.png"></img>
+                </a>
+            </div>
+        </div>
+        <div id="chat-space">
+
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script type="module" defer src="../../backend/index.js" ></script>
+    <script type="module" defer src="../../backend/chat.js"></script>
     
 </body>
 </html>
