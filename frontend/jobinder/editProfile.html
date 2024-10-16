@@ -4,16 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../styles/perfilPro.css" />
+    <link rel="stylesheet" href="../styles/editProfile.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Perfil Profissional</title>
   </head>
   <body>
     <div class="edit-container">
+      <div id="home">
+        <a href="./home.html">Página Inicial</a>
+      </div>
+
       <div id="options">
         <button id="edit-name">EDITAR NOME</button>
         <button id="edit-description">EDITAR DESCRICAO</button>
-        <button id="edit-img">EDITAR IMAGENS</button>
+        <button id="edit-image">EDITAR IMAGEM</button>
       </div>
 
       <button class="botao" id="voltar">Voltar</button>
@@ -25,11 +29,16 @@
 
       <div id="edit-description-container">
         <textarea
-          name="nome"
+          name="name"
           id="textarea-description"
           placeholder="Escreva uma nova descrição"
         ></textarea>
         <button class="botao" id="submit-description">Mudar Descrição</button>
+      </div>
+
+      <div id="edit-image-container">
+        <input type="file" id="input-image" accept="image/*" />
+        <button class="botao" id="submit-image">Mudar Imagem</button>
       </div>
     </div>
 

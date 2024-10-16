@@ -93,6 +93,43 @@ const updateUserServices = (cellphone, newServices) => {
   }
 };
 
+// Update the service image
+const updateServiceImg = (cellphone, file) => {
+  const userExists = getUser(cellphone);
+
+  if (!userExists) {
+    alert("Usuário não encontrado.");
+    return;
+  }
+
+  if (!file) {
+    alert("O campo 'Imagem do Serviço' é obrigatório.");
+    return;
+  }
+
+  // Validar se o arquivo é uma imagem
+  const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
+  if (!validImageTypes.includes(file.type)) {
+    alert("Por favor, envie uma imagem no formato JPEG, PNG ou GIF.");
+    return;
+  }
+
+  // Converter a imagem para Base64
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const serviceImgBase64 = event.target.result;
+
+    // Atualizar a imagem do serviço no objeto do usuário
+    userExists.serviceProfile.serviceImg = serviceImgBase64;
+
+    // Atualizar o usuário no localStorage
+    updateUser(cellphone, userExists);
+  };
+
+  // Ler a imagem como Data URL
+  reader.readAsDataURL(file);
+};
+
 // Get the user logged
 const userLogged = () => {
   return JSON.parse(localStorage.getItem("userLogged"));
@@ -115,4 +152,5 @@ export {
   updateUserName,
   validUserServices,
   updateUserServices,
+  updateServiceImg,
 };

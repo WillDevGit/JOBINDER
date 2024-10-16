@@ -6,6 +6,22 @@ body {
   align-items: center;
 }
 
+#home {
+  margin-top: 1.5rem;
+  margin-left: -5rem;
+}
+
+#home a {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: var(--darkGreen);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
 .edit-container {
   background-image: linear-gradient(
     to right top,
@@ -20,23 +36,31 @@ body {
   width: 15rem;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+#options {
+  margin: auto 0;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button {
   cursor: pointer;
   background-color: var(--blue);
   color: #fff;
-  
+
   font-size: 1rem;
   padding: 1rem;
   width: 90%;
   border-radius: 1rem;
   border: none;
-  
+
   transition: all 0.2s;
-  
+
   &:hover {
     background-color: var(--darkBlue);
   }
@@ -44,7 +68,7 @@ button {
 
 #voltar {
   display: none;
-  
+
   width: 4rem;
   padding: 0.5rem 2rem;
   border-radius: 0.5rem;
@@ -56,23 +80,13 @@ button {
   left: 0.5rem;
 }
 
-#edit-name-container {
+#edit-name-container,
+#edit-description-container,
+#edit-image-container {
   display: none;
 
   height: 100%;
-  width: 100%;
-  gap: 2rem;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#edit-description-container {
-  display: none;
-
-  height: 100%;
-  width: 100%;
+  width: 95%;
   gap: 2rem;
 
   flex-direction: column;
@@ -91,13 +105,6 @@ button {
   font-size: 1.2rem;
 }
 
-#options {
-  gap: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 input {
   outline: none;
   border: none;
@@ -107,6 +114,35 @@ input {
   padding: 1rem;
   border-radius: 0.5rem;
 }
+
+#input-image {
+  cursor: pointer;
+  background-color: #f9f9f9;
+
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 2px dashed #ccc;
+}
+
+#input-image:hover {
+  cursor: pointer;
+  border-color: #888;
+  background-color: #f0f0f0;
+}
+
+#input-image:focus {
+  cursor: pointer;
+  outline: none;
+  border-color: #0056b3;
+}
+
+#input-image::file-selector-button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
 .profile-container {
   flex: 60%;
   display: flex;

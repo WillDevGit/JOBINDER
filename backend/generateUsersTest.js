@@ -90,6 +90,22 @@ const createUsersTest = async () => {
 
   // Update the users in the localStorage
   localStorage.setItem("users", JSON.stringify(usersTest));
+
+  // object length
+  console.log(Object.keys(usersTest).length);
 };
 
-createUsersTest();
+// Check if users have already been generated
+const initializeUsers = () => {
+  const usersInStorage = localStorage.getItem("users");
+
+  // Only create users if they haven't been created before
+  if (!usersInStorage) {
+    createUsersTest();
+  } else {
+    console.log("Usuários já foram gerados anteriormente.");
+  }
+};
+
+// Call the initialize function
+initializeUsers();

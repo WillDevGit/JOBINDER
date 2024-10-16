@@ -3,17 +3,20 @@ import {
   getUserData,
   updateUserName,
   updateUserServices,
+  updateServiceImg,
   validUserName,
   validUserServices,
 } from "../../backend/user.js";
 
-const user = userLogged();
+const userLoggedCell = userLogged();
 const usuarioDados = getUserData(userLogged());
 
 const opcoesDiv = document.getElementById("options");
 const editFullNameButton = document.getElementById("edit-name");
 const editServicesButton = document.getElementById("edit-description");
+const editImageButton = document.getElementById("edit-image");
 
+const home = document.getElementById("home");
 const botaoVoltar = document.getElementById("voltar");
 
 const editName = document.getElementById("edit-name-container");
@@ -23,6 +26,10 @@ const submitName = document.getElementById("submit-name");
 const editServices = document.getElementById("edit-description-container");
 const textareaServices = document.getElementById("textarea-description");
 const submitServices = document.getElementById("submit-description");
+
+const editImage = document.getElementById("edit-image-container");
+const inputImage = document.getElementById("input-image");
+const submitImage = document.getElementById("submit-image");
 
 const imagem = document.getElementById("img");
 const fullname = document.getElementById("fullname");
@@ -39,6 +46,7 @@ avaliability.textContent = usuarioDados.serviceProfile.avaliability;
 
 // Change to the name editing interface
 editFullNameButton.addEventListener("click", () => {
+  home.style.display = "none";
   opcoesDiv.style.display = "none";
   botaoVoltar.style.display = "flex";
   editName.style.display = "flex";
@@ -46,9 +54,18 @@ editFullNameButton.addEventListener("click", () => {
 
 // Change to the services editing interface
 editServicesButton.addEventListener("click", () => {
+  home.style.display = "none";
   opcoesDiv.style.display = "none";
   botaoVoltar.style.display = "flex";
   editServices.style.display = "flex";
+});
+
+// Change to the image editing interface
+editImageButton.addEventListener("click", () => {
+  home.style.display = "none";
+  opcoesDiv.style.display = "none";
+  botaoVoltar.style.display = "flex";
+  editImage.style.display = "flex";
 });
 
 // Return to the options interface
@@ -63,7 +80,7 @@ submitName.addEventListener("click", () => {
 
   if (!validNewName) return;
 
-  updateUserName(user, newName);
+  updateUserName(userLoggedCell, newName);
   fullname.textContent = newName;
   inputName.value = "";
 });
@@ -75,7 +92,14 @@ submitServices.addEventListener("click", () => {
 
   if (!validNewServices) return;
 
-  updateUserServices(user, newServices);
+  updateUserServices(userLoggedCell, newServices);
   services.textContent = newServices;
   textareaServices.value = "";
+});
+
+// Submit the new image
+submitImage.addEventListener("click", () => {
+  const serviceImgFile = inputImage.files[0];
+  updateServiceImg(userLoggedCell, serviceImgFile);
+  imagem.src = URL.createObjectURL(serviceImgFile);
 });
