@@ -6,6 +6,21 @@ body {
   align-items: center;
 }
 
+#home {
+  margin-top: 2rem;
+}
+
+#home a {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: var(--darkGreen);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
 .edit-container {
   background-image: linear-gradient(
     to right top,
@@ -17,18 +32,19 @@ body {
   );
 
   height: 100%;
-  width: 100%;
+  width: 30%;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-#voltar {
-  display: none;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+#options {
+  margin: auto 0;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button {
@@ -36,8 +52,9 @@ button {
   background-color: var(--blue);
   color: #fff;
 
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 1rem;
+  width: 90%;
   border-radius: 1rem;
   border: none;
 
@@ -48,23 +65,27 @@ button {
   }
 }
 
-#edit-name-container {
+#voltar {
   display: none;
 
-  height: 100%;
-  width: 100%;
-  gap: 2rem;
+  width: 4rem;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
 
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
 }
 
-#edit-description-container {
+#edit-name-container,
+#edit-description-container,
+#edit-image-container {
   display: none;
 
   height: 100%;
-  width: 100%;
+  width: 95%;
   gap: 2rem;
 
   flex-direction: column;
@@ -83,22 +104,44 @@ button {
   font-size: 1.2rem;
 }
 
-#options {
-  gap: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 input {
   outline: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   width: 90%;
   padding: 1rem;
   border-radius: 0.5rem;
 }
+
+#input-image {
+  cursor: pointer;
+  background-color: #f9f9f9;
+
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 2px dashed #ccc;
+}
+
+#input-image:hover {
+  cursor: pointer;
+  border-color: #888;
+  background-color: #f0f0f0;
+}
+
+#input-image:focus {
+  cursor: pointer;
+  outline: none;
+  border-color: #0056b3;
+}
+
+#input-image::file-selector-button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
 .profile-container {
   flex: 60%;
   display: flex;
@@ -112,35 +155,40 @@ input {
 
   width: 35rem;
   height: 35rem;
+  border-radius: 0.5rem;
 
   display: flex;
   flex-direction: column;
 }
 
+.profile > *:not(:first-child) {
+  margin: 0.5rem 1.5rem;
+}
+
+.profile > div > *:first-child {
+  font-weight: 600;
+}
+
 #img {
   height: 60%;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 #name {
-  font-size: 1.5rem;
-  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 1.3rem;
 }
 
 #specialtie {
-  font-weight: 600;
-  font-size: 1.2rem;
-  padding-left: 1rem;
+  font-size: 1rem;
 }
 
 #description {
   word-break: break-all;
   overflow-wrap: break-word;
   font-size: 1rem;
-  padding: 1rem;
 }
 
 #avaliability {
-  font-weight: 600;
   font-size: 1rem;
-  padding-left: 1rem;
 }

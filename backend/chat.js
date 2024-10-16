@@ -1,22 +1,22 @@
 
 
-const createChat = (namePerfil, imagem) => {
+const createChat = (profileName, image) => {
     let box = document.createElement("div"); 
 
-    box.classList.add("chatBox"); 
+    box.classList.add("chat-box"); 
 
-    let icon = document.createElement("div"); 
-    icon.style.backgroundImage= `url(${imagem})`;
-    icon.classList.add("icon-perfil"); 
+    let img = document.createElement("img"); 
+    img.src = image;
+    img.classList.add("profile-img"); 
 
-    let nome = document.createElement("div"); 
-    nome.innerHTML = namePerfil; 
-    nome.classList.add("nome-perfil"); 
+    let profileNameDiv = document.createElement("div"); 
+    profileNameDiv.innerHTML = profileName; 
+    profileNameDiv.classList.add("profile-name"); 
 
     let chatSpace = document.getElementById("chat-space"); 
     
-    box.appendChild(icon); 
-    box.appendChild(nome); 
+    box.appendChild(img); 
+    box.appendChild(profileNameDiv); 
     chatSpace.appendChild(box); 
 
 }

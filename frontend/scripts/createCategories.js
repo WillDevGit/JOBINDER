@@ -24,6 +24,8 @@ const categories = [
 // Select the category
 let categoriaSelecionada = null;
 
+let onlyEditSpecialtie = false;
+
 // Create the categories
 categories.forEach((categoria) => {
   const a = document.createElement("a");
@@ -64,11 +66,15 @@ confirmCategory.addEventListener("click", () => {
   // Save the service profile data in the user object
   if (!user.serviceProfile) {
     user.serviceProfile = {};
+    onlyEditSpecialtie = false;
+  } else {
+    onlyEditSpecialtie = true;
   }
 
   user.serviceProfile.specialties = categoriaSelecionada;
   updateUser(user);
 
   // Redirect to the Create Service Profile page
-  window.location.href = "./createServiceProfile.html";
+  if (onlyEditSpecialtie) window.location.href = "./editProfile.html";
+  else window.location.href = "./createServiceProfile.html";
 });

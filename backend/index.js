@@ -26,9 +26,21 @@ usersData.forEach((user) => {
       img: user.serviceProfile.serviceImg,
       nome: `<h3>${user.fullName}</h3>`,
       desc: `
-      <p>Especialidade: ${user.serviceProfile.specialties}</p> 
-      <p>Serviços: ${user.serviceProfile.services}</p> 
-      <p>Disponibilidade: ${user.serviceProfile.avaliability}</p>`,
+      <div>
+        <span>Especialidade: </span>
+        <span>${user.serviceProfile.specialties}</span> 
+      </div>
+
+      <div>
+          <span>Disponibilidade: </span>
+          <span>${user.serviceProfile.avaliability}</span>
+      </div>
+
+      <div>
+        <span>Descrição: </span>
+        <span>${user.serviceProfile.services}</span>
+      </div> 
+       `,
       id: user.cellphone,
     });
   }
@@ -200,7 +212,7 @@ class Carousel {
       // Verify if the card was moved to the right or to the left
       if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
         createChat(
-          this.topCard.querySelector(".nomeCard").innerHTML,
+          this.topCard.querySelector(".name-card").innerHTML,
           this.topCard.imgPerfil
         );
 
@@ -263,14 +275,14 @@ class Carousel {
     imagem.classList.add("imagem");
 
     //Add the name to the card
-    let nomeCard = document.createElement("div");
-    nomeCard.innerHTML = cardContent[index].nome;
-    nomeCard.classList.add("nomeCard");
+    let nameCard = document.createElement("div");
+    nameCard.innerHTML = cardContent[index].nome;
+    nameCard.classList.add("name-card");
 
     // Add the description to the card
-    let descricao = document.createElement("div");
-    descricao.innerHTML = cardContent[index].desc;
-    descricao.classList.add("descricao");
+    let description = document.createElement("div");
+    description.innerHTML = cardContent[index].desc;
+    description.classList.add("description");
 
     // TODO: Adicionar botões de ação
     // Buttons
@@ -297,8 +309,8 @@ class Carousel {
 
     // Add the event listener to the buttons
     card.appendChild(imagem);
-    card.appendChild(nomeCard);
-    card.appendChild(descricao);
+    card.appendChild(nameCard);
+    card.appendChild(description);
     card.appendChild(botoes);
 
     /** 

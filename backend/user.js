@@ -40,34 +40,95 @@ const updateUser = (cellphone, user) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
+const validUserName = (name) => {
+  if (name === "") {
+    alert("Nome não pode ser vazio");
+    return false;
+  } else if (name.length <= 3) {
+    alert("Nome muito curto");
+    return false;
+  } else if (name.length > 25) {
+    alert("Nome muito longo");
+    return false;
+  } else if (!name.match(/^[a-zA-Z\s]*$/)) {
+    alert("Nome inválido");
+    return false;
+  }
+  return true;
+};
+
 // Update the userName
 const updateUserName = (cellphone, newName) => {
-  // Verifica se o usuário já existe
-  if (users[cellphone]) {
-    // Atualiza apenas o atributo fullName
-    users[cellphone].fullName = newName;
-    
-    // Atualiza o localStorage com os novos dados do usuário
-    localStorage.setItem("users", JSON.stringify(users));
-  } else {
-    console.log("Usuário não encontrado");
+  const validNewUserName = validUserName(newName);
+  const userExists = getUser(cellphone);
+
+  if (validNewUserName && userExists) {
+    userExists.fullName = newName;
+    updateUser(cellphone, userExists);
   }
+};
+
+const validUserServices = (services) => {
+  if (services === "") {
+    alert('O campo "Serviços" é obrigatório.');
+    return false;
+  } else if (services.length <= 10) {
+    alert("Descrição dos serviços muito curta");
+    return false;
+  } else if (services.length > 200) {
+    alert("Descrição dos serviços muito longa");
+    return false;
+  }
+  return true;
 };
 
 // Update the services
 const updateUserServices = (cellphone, newServices) => {
-  // Verifica se o usuário já existe
-  if (users[cellphone]) {
-    // Atualiza apenas o atributo fullName
-    users[cellphone].serviceProfile.services = newServices;
-    
-    // Atualiza o localStorage com os novos dados do usuário
-    localStorage.setItem("users", JSON.stringify(users));
-  } else {
-    console.log("Usuário não encontrado");
+  const validNewUserServices = validUserServices(newServices);
+  const userExists = getUser(cellphone);
+
+  if (validNewUserServices && userExists) {
+    userExists.serviceProfile.services = newServices;
+    updateUser(cellphone, userExists);
   }
 };
 
+// Update the service image
+const updateServiceImg = (cellphone, file) => {
+  const userExists = getUser(cellphone);
+
+  if (!userExists) {
+    alert("Usuário não encontrado.");
+    return;
+  }
+
+  if (!file) {
+    alert("O campo 'Imagem do Serviço' é obrigatório.");
+    return;
+  }
+
+  // Validar se o arquivo é uma imagem
+  const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
+  if (!validImageTypes.includes(file.type)) {
+    alert("Por favor, envie uma imagem no formato JPEG, PNG ou GIF.");
+    return;
+  }
+
+  // Converter a imagem para Base64
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const serviceImgBase64 = event.target.result;
+
+    // Atualizar a imagem do serviço no objeto do usuário
+    userExists.serviceProfile.serviceImg = serviceImgBase64;
+
+    // Atualizar o usuário no localStorage
+    updateUser(cellphone, userExists);
+  };
+
+  // Ler a imagem como Data URL
+  reader.readAsDataURL(file);
+};
 
 // Get the user logged
 const userLogged = () => {
@@ -79,7 +140,6 @@ const setUserLogged = (cellphone) => {
   localStorage.setItem("userLogged", JSON.stringify(cellphone));
 };
 
-
 export {
   createUser,
   getUsersData,
@@ -88,6 +148,9 @@ export {
   updateUser,
   userLogged,
   setUserLogged,
+  validUserName,
   updateUserName,
-  updateUserServices, 
+  validUserServices,
+  updateUserServices,
+  updateServiceImg,
 };

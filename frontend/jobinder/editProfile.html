@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../styles/editProfile.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
+    <title>Perfil Profissional</title>
+  </head>
+  <body>
+    <div class="edit-container">
+      <div id="home">
+        <a href="./home.html">Página Inicial</a>
+      </div>
+
+      <section id="options">
+        <button id="edit-name">Editar Nome</button>
+        <button id="edit-specialtie">Editar Especialidade</button>
+        <button id="edit-description">Editar Descrição</button>
+        <button id="edit-image">Editar Imagem</button>
+      </section>
+
+      <button class="botao" id="voltar">Voltar</button>
+
+      <section id="edit-name-container">
+        <input type="text" id="input-name" placeholder="Escreva um novo nome" />
+        <button class="botao" id="submit-name">Mudar Nome</button>
+      </section>
+
+      <section id="edit-description-container">
+        <textarea
+          name="name"
+          id="textarea-description"
+          placeholder="Escreva uma nova descrição"
+        ></textarea>
+        <button class="botao" id="submit-description">Mudar Descrição</button>
+      </section>
+
+      <section id="edit-image-container">
+        <input type="file" id="input-image" accept="image/*" />
+        <button class="botao" id="submit-image">Mudar Imagem</button>
+      </section>
+    </div>
+
+    <section class="profile-container">
+      <div class="profile">
+        <img id="img" />
+        <h1 id="fullname"></h1>
+        <div>
+          <span>Especialidade:</span>
+          <span id="specialtie"></span>
+        </div>
+        <div>
+          <span>Disponível:</span>
+          <span id="avaliability"></span>
+        </div>
+        <div>
+          <span>Descrição:</span>
+          <span id="services"></span>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="../../backend/user.js"></script>
+    <script type="module" defer src="../scripts/editProfile.js"></script>
+  </body>
+</html>
