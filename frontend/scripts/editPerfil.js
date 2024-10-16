@@ -1,61 +1,75 @@
-import { getUser, userLogged, getUserData, updateUserName, updateUserServices } from "../../backend/user.js";
+import {
+  getUser,
+  userLogged,
+  getUserData,
+  updateUserName,
+  updateUserServices,
+} from "../../backend/user.js";
 
-// Pegar id dos elementos
 const user = userLogged();
-const usuarioDados = getUserData(userLogged()); 
-const imagem = document.getElementById("imagem"); 
-const nome = document.getElementById("nomeCard"); 
-const descricao = document.getElementById("descricao"); 
-const nomeButtonEdit = document.getElementById("editNome"); 
-const descButtonEdit = document.getElementById("editDesc"); 
-const opcoesDiv = document.getElementById("opcoes"); 
-const botaoVoltar = document.getElementById("voltar"); 
-const novoNome = document.getElementById("input-name"); 
-const novaDescricao = document.getElementById("input-descricao"); 
-const submitNome = document.getElementById("submit-nome");
-const submitDesc = document.getElementById("submit-desc");
+const usuarioDados = getUserData(userLogged());
 
+const opcoesDiv = document.getElementById("options");
+const editNameButton = document.getElementById("edit-name");
+const editDescriptionButton = document.getElementById("edit-description");
 
-// Adiciona dados do perfil do usuario no card 
-imagem.style.backgroundImage = `url(${usuarioDados.serviceProfile.serviceImg})`;
-nome.innerHTML = usuarioDados.fullName; 
-descricao.innerHTML = usuarioDados.serviceProfile.services; 
+const botaoVoltar = document.getElementById("voltar");
+
+const editName = document.getElementById("edit-name-container");
+const inputName = document.getElementById("input-name");
+const submitName = document.getElementById("submit-name");
+
+const editDescription = document.getElementById("edit-description-container");
+const textareaDescription = document.getElementById("textarea-description");
+const submitDescription = document.getElementById("submit-description");
+
+const imagem = document.getElementById("img");
+const nome = document.getElementById("name");
+const specialtie = document.getElementById("specialtie");
+const avaliability = document.getElementById("avaliability");
+const descricao = document.getElementById("description");
+
+// Adiciona dados do perfil do usuario no card
+//alterar src imagem de fundo
+imagem.src = usuarioDados.serviceProfile.serviceImg;
+specialtie.textContent = "Especialidade: " + usuarioDados.serviceProfile.specialties;
+nome.textContent = usuarioDados.fullName;
+descricao.textContent = usuarioDados.serviceProfile.services;
+avaliability.textContent = "Disponibilidade: " + usuarioDados.serviceProfile.avaliability;
 
 // Mudar para interface de edição do nome
-nomeButtonEdit.addEventListener("click" , () => {
-    const editarNome = document.getElementById("interfaceNome"); 
-    const caixaVoltar = document.getElementById("botaoVoltar")
-    opcoesDiv.style.display = "none";
-    caixaVoltar.style.display= "block"
-    editarNome.style.display = "block"; 
-
-}); 
+editNameButton.addEventListener("click", () => {
+  opcoesDiv.style.display = "none";
+  botaoVoltar.style.display = "flex";
+  editName.style.display = "flex";
+});
 
 // Mudar para interface de edição da descrição
-descButtonEdit.addEventListener("click" , () => {
-    const editarDesc = document.getElementById("interfaceDesc"); 
-    const caixaVoltar = document.getElementById("botaoVoltar");
-    opcoesDiv.style.display = "none";
-    caixaVoltar.style.display= "block"
-    editarDesc.style.display = "block"; 
-}); 
+editDescriptionButton.addEventListener("click", () => {
+  opcoesDiv.style.display = "none";
+  botaoVoltar.style.display = "flex";
+  editDescription.style.display = "flex";
+});
 
 // Volta para o menu de opções
 botaoVoltar.addEventListener("click", () => {
-    location.reload();
-}); 
+  location.reload();
+});
 
-submitNome.addEventListener("click", ()=> {
-    updateUserName(user, novoNome.value);
-    nome.innerHTML = novoNome.value;
-}); 
+submitName.addEventListener("click", () => {
+  const newName = inputName.value;
+  if (newName === "") return;
+  updateUserName(user, newName);
+  nome.textContent = newName;
+  inputName.value = "";
+});
 
-submitDesc.addEventListener("click", ()=>{
-    updateUserServices(user, novaDescricao.value);
-    descricao.innerHTML = novaDescricao.value;
-}); 
+submitDescription.addEventListener("click", () => {
+  const newDescription = textareaDescription.value;
+  if (newDescription === "") return;
+  updateUserServices(user, newDescription);
+  descricao.textContent = newDescription.value;
+  textareaDescription.value = "";
+});
 
-
-console.log( getUserData(user));
-
-
+console.log(getUserData(user));

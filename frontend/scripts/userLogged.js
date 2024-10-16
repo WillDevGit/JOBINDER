@@ -30,7 +30,7 @@ exit.addEventListener("click", () => {
 
 const dadosUsuarios = getUserData(user); 
 
-if (dadosUsuarios.serviceProfile) {
+if (dadosUsuarios && dadosUsuarios.serviceProfile) {
   // Se o perfil foi criado, esconde o link de criar e mostra o de entrar
   createServiceProfile.style.display = "none";
   enterProfilePro.style.display = "block";

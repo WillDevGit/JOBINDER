@@ -14,8 +14,8 @@ const createUser = (user) => {
 const getUsersData = () => {
   const usersData = [];
   for (const user in users) {
-    const { fullName, cellphone, category, serviceProfile } = users[user];
-    usersData.push({ fullName, cellphone, category, serviceProfile });
+    const { fullName, cellphone, serviceProfile } = users[user];
+    usersData.push({ fullName, cellphone, serviceProfile });
   }
   return usersData;
 };
@@ -29,8 +29,8 @@ const getUser = (cellphone) => {
 const getUserData = (cellphone) => {
   const user = users[cellphone];
   if (user) {
-    const { fullName, cellphone, category, serviceProfile } = user;
-    return { fullName, cellphone, category, serviceProfile };
+    const { fullName, cellphone, serviceProfile } = user;
+    return { fullName, cellphone, serviceProfile };
   } else return null;
 };
 

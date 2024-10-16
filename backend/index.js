@@ -24,7 +24,7 @@ usersData.forEach((user) => {
   if (!userData || user.cellphone !== userData.cellphone) {
     cardContent.push({
       img: user.serviceProfile.serviceImg,
-      nome: `<h3>${user.fullName}</h3>`, 
+      nome: `<h3>${user.fullName}</h3>`,
       desc: `
       <p>Especialidade: ${user.serviceProfile.specialties}</p> 
       <p>Serviços: ${user.serviceProfile.services}</p> 
@@ -40,12 +40,14 @@ class Carousel {
   constructor(element) {
     this.board = element;
 
+    if (cardContent.length === 0) {
+      return;
+    }
+
     // Add first card
     this.push();
-
     // Add second card
     this.push();
-
     // handle gestures
     this.handle();
   }
@@ -197,11 +199,10 @@ class Carousel {
 
       // Verify if the card was moved to the right or to the left
       if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
-        
-        createChat(this.topCard.querySelector(".nomeCard").innerHTML, 
-                   this.topCard.imgPerfil);
-        //console.log(this.topCard.querySelector(".descricao").innerHTML);
-        console.log(this.topCard.imgPerfil); 
+        createChat(
+          this.topCard.querySelector(".nomeCard").innerHTML,
+          this.topCard.imgPerfil
+        );
 
         successful = true;
         // get right border position
@@ -251,8 +252,8 @@ class Carousel {
   push() {
     // Create a new card and add it to the board
     let card = document.createElement("div");
-    card.id = cardContent[index].id; 
-    card.imgPerfil = cardContent[index].img; 
+    card.id = cardContent[index].id;
+    card.imgPerfil = cardContent[index].img;
 
     card.classList.add("card");
 
@@ -261,10 +262,10 @@ class Carousel {
     imagem.style.backgroundImage = `url(${cardContent[index].img})`;
     imagem.classList.add("imagem");
 
-    //Add the name to the card 
-    let nomeCard = document.createElement("div"); 
-    nomeCard.innerHTML = cardContent[index].nome; 
-    nomeCard.classList.add("nomeCard"); 
+    //Add the name to the card
+    let nomeCard = document.createElement("div");
+    nomeCard.innerHTML = cardContent[index].nome;
+    nomeCard.classList.add("nomeCard");
 
     // Add the description to the card
     let descricao = document.createElement("div");
@@ -296,7 +297,7 @@ class Carousel {
 
     // Add the event listener to the buttons
     card.appendChild(imagem);
-    card.appendChild(nomeCard); 
+    card.appendChild(nomeCard);
     card.appendChild(descricao);
     card.appendChild(botoes);
 
@@ -314,4 +315,3 @@ class Carousel {
 let board = document.querySelector("#board");
 
 let carousel = new Carousel(board);
-

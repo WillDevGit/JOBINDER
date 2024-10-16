@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/cliente.css">
-    <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/cliente.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>JOBINDER</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <div class="match">
-        <nav>
-            <a id="logo" href="./home.html"> JOBINDER </a>
-            <div class="search-box">
-                <input type="text" id="search-text" placeholder="Procurar Serviço"></input>
-                <a href="#" id="search-btn"> <!---Função -->
-                    <img src="../images/lupa.png">
-                </a>
-            </div>
-            <div><img src="../images/maps.png"></div>
-        </nav>
-
-        <div id="board"></div>
-    </div>
-    <div class="chat">
-        <div id="headerChat">
-            <h3>Mensagens<h3>
-            <div id="searchChatBox">
-                <input typ="text" id="chatText" placeholder="Localizar mensagem"></input>
-                <a id="searchChatBtn" href="#">
-                    <img src="../images/lupa.png"></img>
-                </a>
-            </div>
+      <nav>
+        <a id="logo" href="./home.html"> JOBINDER </a>
+        <div class="search-box">
+          <input type="text" id="search-text" placeholder="Procurar Serviço" />
+          <a href="#" id="search-btn">
+            <img src="../images/lupa.png" />
+          </a>
         </div>
-        <div id="chat-space">
+        <div><img src="../images/maps.png" /></div>
+      </nav>
 
-        </div>
+      <div id="board"></div>
     </div>
+
+    <section class="chat">
+      <div id="headerChat">
+        <h3>Mensagens</h3>
+        <!-- Correção feita aqui -->
+        <div id="searchChatBox">
+          <input type="text" id="chatText" placeholder="Localizar mensagem" />
+          <a id="searchChatBtn" href="#">
+            <img src="../images/lupa.png" />
+          </a>
+        </div>
+      </div>
+
+      <div id="chat-space"></div>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-    <script type="module" defer src="../../backend/index.js" ></script>
+    <script type="module" defer src="../../backend/index.js"></script>
     <script type="module" defer src="../../backend/chat.js"></script>
-    
-</body>
+  </body>
 </html>

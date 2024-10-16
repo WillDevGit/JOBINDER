@@ -2,163 +2,145 @@
 @import url(./configs/reset.css);
 
 body {
-    background-color: var(--grey);
-    display: flex;
+  background-color: var(--grey);
+  align-items: center;
 }
 
+.edit-container {
+  background-image: linear-gradient(
+    to right top,
+    #365462,
+    #3e5d6c,
+    #456776,
+    #4d7181,
+    #557b8b
+  );
 
-.perfil-space {
-    flex: 60%; 
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.perfil { 
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-    width: 500px;
-    height: 500px;
-
-    display: flex;
-    flex-direction: column;
+#voltar {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
 
+button {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: #fff;
 
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
 
-.editar-space {
-    flex: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #557b8b;
-    
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkBlue);
+  }
 }
 
-.opcoes-edicao {
+#edit-name-container {
+  display: none;
+
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-description-container {
+  display: none;
+
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-description-container textarea {
+  resize: none;
+  width: 90%;
+  height: 15rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+}
+
+#options {
+  gap: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: 2px red solid;
-  gap: 0.5rem;
 }
 
-.opcoes-edicao button {
-  width: 250px;
-  height: 60px;
+input {
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+
+  width: 90%;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
-
-#imagem {
-    background-color: #fff;
-    background-size: cover;
-    flex: 60%;
-}
-  
-#nomeCard {
-    padding-left: 15px;
-    flex: 5%; 
-    font-size: 25px;
-}
-  
-#descricao {
-    padding-left: 15px;
-    flex: 25%;
-  }
-
-.chat {
-    flex: 30%; 
-    background-image: linear-gradient(
-      to right top,
-      #365462,
-      #3e5d6c,
-      #456776,
-      #4d7181,
-      #557b8b
-    );
-  
-    height: 100%;
-    
-    display: flex;
-    flex-direction: column;
-
-  }
-
-  #headerChat {
-    padding: 1rem;
-    gap: 2rem;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #headerChat h3 {
-    color: #fff;
-  }
-  
-  #searchChatBox {
-    display: flex;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 10px;
-  }
-  
-  #searchChatBox input {
-    outline: none;
-    border: none;
-  }
-
-
-.editar-container{
-  display: flex;
+.profile-container {
   flex: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  width: 35rem;
+  height: 35rem;
+
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  
-  
 }
 
-.caixaTexto {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  
+#img {
+  height: 60%;
 }
 
-.caixaBotao {
-  display: flex;
-  justify-content: center;
- 
+#name {
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
-.editarBox {
-    display: flex;
-    background-color: #fff;
-    width: 250px;
-    height: 60px;
-    padding: 5px;
-    border-radius: 10px;
-    
+#specialtie {
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-left: 1rem;
 }
 
-.editarBox input{
-    font-size: 17px;
-    margin-left: 10px;
-    width: 100%;
-    outline: none;
-    border: none;
+#description {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+  padding: 1rem;
 }
 
-.botao {
-  font-size: 18px;
-    height: 60px;
-    width: 130px;   
-}
-
-#botaoVoltar {
-  display: flex;
-  flex: 40%;
-  justify-self: flex-start;
-  margin: 5px;
+#avaliability {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-left: 1rem;
 }

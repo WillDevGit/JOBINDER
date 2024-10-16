@@ -2,6 +2,7 @@
 @import url(./configs/colors.css);
 
 body {
+  font-family: "Inter", sans-serif;
   background-color: var(--blue);
   gap: 2rem;
   flex-direction: column;

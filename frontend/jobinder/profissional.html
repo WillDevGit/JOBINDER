@@ -1,78 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../styles/perfilPro.css">
-    <link rel="shortcut icon" href="../images/favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../styles/perfilPro.css" />
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Perfil Profissional</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="edit-container">
+      <div id="options">
+        <button id="edit-name">EDITAR NOME</button>
+        <button id="edit-description">EDITAR DESCRICAO</button>
+        <button id="edit-img">EDITAR IMAGENS</button>
+      </div>
 
-    <div class="editar-space">
-            <div class="opcoes-edicao" id="opcoes">
-                <button id="editNome">EDITAR NOME</button>
-                <button id="editDesc">EDITAR DESCRICAO</button>
-                <button id="editImg">EDITAR IMAGENS</button>
-            </div>
-            
-            <div style="display: none;" id="botaoVoltar"> <button class="botao" id="voltar">Voltar</button></div>
+      <button class="botao" id="voltar">Voltar</button>
 
-            <div style="display: none;" id="interfaceNome" class="editar-container">
-                <div class="caixaTexto">
-                    <div class="editarBox">
-                        <input type="text" id="input-name" placeholder="Escreva um novo nome"></input>
-                    </div>
-                </div>
-                <div class="caixaBotao">
-                    <button class="botao" id="submit-nome">Mudar Nome</button>
-                </div>
-            </div>
+      <div id="edit-name-container">
+        <input type="text" id="input-name" placeholder="Escreva um novo nome" />
+        <button class="botao" id="submit-name">Mudar Nome</button>
+      </div>
 
-            <div style="display: none;" id="interfaceDesc" class="editar-container">
-                <div class="caixaTexto">
-                    <div class="editarBox">
-                        
-                        <input type="text" id="input-descricao" placeholder="Escreva uma nova descrição"></input>
-                    
-                    </div>
-                </div>
-                <div class="caixaBotao">
-                <button class="botao" id="submit-desc">Mudar Descrição</button>
-                </div>
-           </div>
-            
-            <button style="display: none;" id="botao">Escolher nova imagem</button>
-
+      <div id="edit-description-container">
+        <textarea
+          name="nome"
+          id="textarea-description"
+          placeholder="Escreva uma nova descrição"
+        ></textarea>
+        <button class="botao" id="submit-description">Mudar Descrição</button>
+      </div>
     </div>
 
-    <div class="perfil-space">
-        <div class="perfil">
-            <div id="imagem"></div>
-            <div id="nomeCard"></div>
-            <div id="descricao"></div>
-        </div>
-
-    </div>
-
-    <div class="chat">
-        <div id="headerChat">
-            <h3>Mensagens<h3>
-            <div id="searchChatBox">
-                <input type="text" id="chatText" placeholder="Localizar mensagem"></input>
-                <a id="searchChatBtn" href="#">
-                    <img src="../images/lupa.png"></img>
-                </a>
-            </div>
-        </div>
-        <div id="chat-space">
-
-        </div>
+    <div class="profile-container">
+      <div class="profile">
+        <img id="img" />
+        <h1 id="name"></h1>
+        <p id="specialtie"></p>
+        <p id="avaliability"></p>
+        <p id="description"></p>
+      </div>
     </div>
 
     <script type="module" src="../../backend/user.js"></script>
-    <script type="module" src="../scripts/editPerfil.js"></script>
-    
-</body>
+    <script type="module" defer src="../scripts/editPerfil.js"></script>
+  </body>
 </html>
