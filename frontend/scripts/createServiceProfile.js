@@ -1,6 +1,9 @@
-import { getUser, updateUser, userLogged } from "../../backend/user.js";
-
-
+import {
+  getUser,
+  updateUser,
+  userLogged,
+  validUserServices,
+} from "../../backend/user.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Get the form elements
@@ -32,10 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const avaliability = inputAvaliability.value;
     const serviceImgFile = inputServiceImg.files[0];
 
-    if (services === "") {
-      alert('O campo "Serviços" é obrigatório.');
-      return;
-    }
+    if (!validUserServices(services)) return;
 
     if (avaliability === "") {
       alert('O campo "Disponibilidade" é obrigatório.');
@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
     // Parse the image to Base64
     const reader = new FileReader();
     reader.onload = function (event) {
@@ -57,17 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
       user.serviceProfile.services = services;
       user.serviceProfile.avaliability = avaliability;
       user.serviceProfile.serviceImg = serviceImgBase64;
-      user.serviceProfile.hasServiceProfile = true; 
-    
+
       // Update the user in the localStorage
       updateUser(user);
 
-    
-      
       // Redirect to the Home page
       window.location.href = "./home.html";
-
-
     };
 
     // Read the image as Data URL

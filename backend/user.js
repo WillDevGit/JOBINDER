@@ -40,34 +40,58 @@ const updateUser = (cellphone, user) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
+const validUserName = (name) => {
+  if (name === "") {
+    alert("Nome não pode ser vazio");
+    return false;
+  } else if (name.length <= 3) {
+    alert("Nome muito curto");
+    return false;
+  } else if (name.length > 25) {
+    alert("Nome muito longo");
+    return false;
+  } else if (!name.match(/^[a-zA-Z\s]*$/)) {
+    alert("Nome inválido");
+    return false;
+  }
+  return true;
+};
+
 // Update the userName
 const updateUserName = (cellphone, newName) => {
-  // Verifica se o usuário já existe
-  if (users[cellphone]) {
-    // Atualiza apenas o atributo fullName
-    users[cellphone].fullName = newName;
-    
-    // Atualiza o localStorage com os novos dados do usuário
-    localStorage.setItem("users", JSON.stringify(users));
-  } else {
-    console.log("Usuário não encontrado");
+  const validNewUserName = validUserName(newName);
+  const userExists = getUser(cellphone);
+
+  if (validNewUserName && userExists) {
+    userExists.fullName = newName;
+    updateUser(cellphone, userExists);
   }
+};
+
+const validUserServices = (services) => {
+  if (services === "") {
+    alert('O campo "Serviços" é obrigatório.');
+    return false;
+  } else if (services.length <= 10) {
+    alert("Descrição dos serviços muito curta");
+    return false;
+  } else if (services.length > 100) {
+    alert("Descrição dos serviços muito longa");
+    return false;
+  }
+  return true;
 };
 
 // Update the services
 const updateUserServices = (cellphone, newServices) => {
-  // Verifica se o usuário já existe
-  if (users[cellphone]) {
-    // Atualiza apenas o atributo fullName
-    users[cellphone].serviceProfile.services = newServices;
-    
-    // Atualiza o localStorage com os novos dados do usuário
-    localStorage.setItem("users", JSON.stringify(users));
-  } else {
-    console.log("Usuário não encontrado");
+  const validNewUserServices = validUserServices(newServices);
+  const userExists = getUser(cellphone);
+
+  if (validNewUserServices && userExists) {
+    userExists.serviceProfile.services = newServices;
+    updateUser(cellphone, userExists);
   }
 };
-
 
 // Get the user logged
 const userLogged = () => {
@@ -79,7 +103,6 @@ const setUserLogged = (cellphone) => {
   localStorage.setItem("userLogged", JSON.stringify(cellphone));
 };
 
-
 export {
   createUser,
   getUsersData,
@@ -88,6 +111,8 @@ export {
   updateUser,
   userLogged,
   setUserLogged,
+  validUserName,
   updateUserName,
-  updateUserServices, 
+  validUserServices,
+  updateUserServices,
 };
