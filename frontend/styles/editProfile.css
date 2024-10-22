@@ -12,11 +12,13 @@ body {
 
 #home a {
   cursor: pointer;
+  background-color: var(--darkGreen);
   color: #fff;
   text-decoration: none;
+  text-wrap: nowrap;
   font-weight: 700;
   font-size: 1rem;
-  background-color: var(--darkGreen);
+
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
 }

@@ -1,15 +1,21 @@
-import { getUserData, getUsersData, userLogged } from "./user.js";
-import { createChat } from "./chat.js";
+import {
+  userLogged,
+  getUserData,
+  getUsersData,
+  getUsersMatchedId,
+  insertUserInUsersMatchedId,
+} from "./user.js";
+import { updateChat } from "../frontend/scripts/chat.js";
 
 // Get the user logged
-const userLoggedCell = userLogged();
+const userLoggedId = userLogged();
 
 // User can be not logged
 let userData = null;
 
 // Get the user data if the user is logged
-if (userLoggedCell) {
-  userData = getUserData(userLoggedCell);
+if (userLoggedId) {
+  userData = getUserData(userLoggedId);
 }
 
 // Get the users data
@@ -20,6 +26,12 @@ let cardContent = [];
 // Create the cards content with the users data
 usersData.forEach((user) => {
   if (!user.serviceProfile) return;
+
+  const userAlreadyMatched = getUsersMatchedId(userLoggedId).includes(
+    user.cellphone
+  );
+
+  if (userAlreadyMatched) return;
 
   if (!userData || user.cellphone !== userData.cellphone) {
     cardContent.push({
@@ -211,10 +223,8 @@ class Carousel {
 
       // Verify if the card was moved to the right or to the left
       if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
-        createChat(
-          this.topCard.querySelector(".name-card").innerHTML,
-          this.topCard.imgPerfil
-        );
+        insertUserInUsersMatchedId(userLoggedId, this.topCard.id);
+        updateChat();
 
         successful = true;
         // get right border position

@@ -155,15 +155,6 @@ nav {
   height: 3rem;
 }
 
-#chat-space {
-  height: 100%;
-  position: relative;
-  overflow: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 .profile > *:not(:first-child) {
   margin: 0.5rem 1.5rem;
 }
@@ -182,7 +173,16 @@ nav {
   font-size: 1rem;
 }
 
-.chat-box {
+#chat-container {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#chat-container .chat-box {
   cursor: pointer;
   background-color: var(--blue);
   color: var(--grey);
@@ -194,9 +194,11 @@ nav {
 
   display: flex;
   align-items: center;
+
+  position: relative;
 }
 
-.chat-box .profile-img {
+#chat-container .chat-box .profile-img {
   width: 3.5rem;
   height: 3.5rem;
   margin: 0.5rem;
@@ -204,7 +206,103 @@ nav {
   object-fit: cover;
 }
 
-.chat-box .profile-name h3{
+#chat-container .chat-box .profile-name h3 {
   margin-left: 0.5rem;
   font-weight: 500;
+}
+
+#chat-container .chat-box .delete-button {
+  background: none;
+  border: none;
+  text-align: center;
+  color: var(--red);
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  position: absolute;
+  right: 1rem;
+}
+
+#delete-user-matched-aside {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  inset: 0;
+}
+
+#delete-user-matched-aside .delete-user-matched-container {
+  background-color: var(--blue);
+  text-align: center;
+  color: #fff;
+  font-size: 1.3rem;
+
+  width: 25rem;
+  padding: 2rem;
+  gap: 3rem;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete-user-matched-aside .delete-user-matched-container div:first-child {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#delete-user-matched-aside .delete-user-matched-container .buttons {
+  gap: 3rem;
+  display: flex;
+}
+
+#delete-user-matched-aside
+  .delete-user-matched-container
+  .buttons
+  #cancel-delete {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  font-size: 1.1rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+}
+
+#delete-user-matched-aside
+  .delete-user-matched-container
+  .buttons
+  #confirm-delete {
+  cursor: pointer;
+  background-color: var(--green);
+  color: #fff;
+  font-size: 1.1rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkGreen);
+  }
 }

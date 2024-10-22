@@ -1,7 +1,45 @@
-// Get the users from the local storage
+// Get the users
 const users = localStorage.getItem("users")
   ? JSON.parse(localStorage.getItem("users"))
   : {};
+
+// Get the user logged
+const userLogged = () => {
+  return JSON.parse(localStorage.getItem("userLogged"));
+};
+
+// Set the user logged
+const setUserLogged = (cellphone) => {
+  localStorage.setItem("userLogged", JSON.stringify(cellphone));
+};
+
+// Get the users matched id
+const getUsersMatchedId = (userLoggedId) => {
+  const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
+  return JSON.parse(localStorage.getItem(usersMatchedIdStrStorage)) || [];
+};
+
+// Update the users matched id
+const insertUserInUsersMatchedId = (userLoggedId, newId) => {
+  const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
+  const usersMatchedId = getUsersMatchedId(userLoggedId);
+  usersMatchedId.push(newId);
+  localStorage.setItem(
+    usersMatchedIdStrStorage,
+    JSON.stringify(usersMatchedId)
+  );
+};
+
+// Delete the user in the users matched id
+const deleteUserInUsersMatchedId = (userLoggedId, id) => {
+  const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
+  const usersMatchedId = getUsersMatchedId(userLoggedId);
+  const newUsersMatchedId = usersMatchedId.filter((userId) => userId !== id);
+  localStorage.setItem(
+    usersMatchedIdStrStorage,
+    JSON.stringify(newUsersMatchedId)
+  );
+};
 
 // Create a new user
 const createUser = (user) => {
@@ -107,50 +145,43 @@ const updateServiceImg = (cellphone, file) => {
     return;
   }
 
-  // Validar se o arquivo é uma imagem
+  // Check if the file is an image
   const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
   if (!validImageTypes.includes(file.type)) {
     alert("Por favor, envie uma imagem no formato JPEG, PNG ou GIF.");
     return;
   }
 
-  // Converter a imagem para Base64
+  // Parse the file to base64
   const reader = new FileReader();
   reader.onload = function (event) {
     const serviceImgBase64 = event.target.result;
 
-    // Atualizar a imagem do serviço no objeto do usuário
+    // Update the user service image
     userExists.serviceProfile.serviceImg = serviceImgBase64;
 
-    // Atualizar o usuário no localStorage
+    // Update the user
     updateUser(cellphone, userExists);
   };
 
-  // Ler a imagem como Data URL
+  // Read the file
   reader.readAsDataURL(file);
 };
 
-// Get the user logged
-const userLogged = () => {
-  return JSON.parse(localStorage.getItem("userLogged"));
-};
-
-// Set the user logged
-const setUserLogged = (cellphone) => {
-  localStorage.setItem("userLogged", JSON.stringify(cellphone));
-};
-
 export {
+  userLogged,
+  setUserLogged,
+  getUsersMatchedId,
   createUser,
   getUsersData,
   getUser,
   getUserData,
   updateUser,
-  userLogged,
-  setUserLogged,
   validUserName,
   updateUserName,
   validUserServices,
   updateUserServices,
   updateServiceImg,
+  insertUserInUsersMatchedId,
+  deleteUserInUsersMatchedId,
 };

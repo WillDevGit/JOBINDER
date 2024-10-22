@@ -34,11 +34,25 @@
         </div>
       </div>
 
-      <div id="chat-space"></div>
+      <div id="chat-container"></div>
     </section>
+
+    <aside id="delete-user-matched-aside">
+      <div class="delete-user-matched-container">
+        <div>
+          <span>Você deseja realmente apagar a conversa com </span>
+          <span id="delete-user-matched-fullname">Leonaro Aoun?</span>
+          <span>(todos os dados da conversa serão apagados)</span>
+        </div>
+        <div class="buttons">
+          <button id="cancel-delete">Cancelar</button>
+          <button id="confirm-delete">Apagar</button>
+        </div>
+      </div>
+    </aside>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script type="module" defer src="../../backend/index.js"></script>
-    <script type="module" defer src="../../backend/chat.js"></script>
+    <script type="module" defer src="../scripts/chat.js"></script>
   </body>
 </html>

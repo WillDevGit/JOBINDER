@@ -90,9 +90,6 @@ const createUsersTest = async () => {
 
   // Update the users in the localStorage
   localStorage.setItem("users", JSON.stringify(usersTest));
-
-  // object length
-  console.log(Object.keys(usersTest).length);
 };
 
 // Check if users have already been generated
