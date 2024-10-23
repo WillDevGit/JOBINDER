@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputServiceImg = document.getElementById("input-service-img");
 
   // Get the user data
-  const userLoggedCell = userLogged();
-  const user = getUser(userLoggedCell);
+  const userLoggedId = userLogged();
+  const user = getUser(userLoggedId);
 
   // Fill the form fields with the user data
   specialties.textContent = user.serviceProfile.specialties;

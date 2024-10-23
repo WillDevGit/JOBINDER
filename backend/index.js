@@ -32,7 +32,6 @@ usersData.forEach((user) => {
   );
 
   if (userAlreadyMatched) return;
-
   if (!userData || user.cellphone !== userData.cellphone) {
     cardContent.push({
       img: user.serviceProfile.serviceImg,

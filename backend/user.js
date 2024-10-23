@@ -1,7 +1,18 @@
 // Get the users
-const users = localStorage.getItem("users")
-  ? JSON.parse(localStorage.getItem("users"))
-  : {};
+const getUsers = () => {
+  return JSON.parse(localStorage.getItem("users")) || {};
+};
+
+// Get the users data
+const getUsersData = () => {
+  const users = getUsers();
+  const usersData = [];
+  for (const user in users) {
+    const { fullName, cellphone, serviceProfile } = users[user];
+    usersData.push({ fullName, cellphone, serviceProfile });
+  }
+  return usersData;
+};
 
 // Get the user logged
 const userLogged = () => {
@@ -9,8 +20,8 @@ const userLogged = () => {
 };
 
 // Set the user logged
-const setUserLogged = (cellphone) => {
-  localStorage.setItem("userLogged", JSON.stringify(cellphone));
+const setUserLogged = (id) => {
+  localStorage.setItem("userLogged", JSON.stringify(id));
 };
 
 // Get the users matched id
@@ -21,6 +32,7 @@ const getUsersMatchedId = (userLoggedId) => {
 
 // Update the users matched id
 const insertUserInUsersMatchedId = (userLoggedId, newId) => {
+  // Update the users matched id of the user logged
   const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
   const usersMatchedId = getUsersMatchedId(userLoggedId);
   usersMatchedId.push(newId);
@@ -28,10 +40,20 @@ const insertUserInUsersMatchedId = (userLoggedId, newId) => {
     usersMatchedIdStrStorage,
     JSON.stringify(usersMatchedId)
   );
+
+  // Update the users matched id of the other user
+  const usersMatchedIdStrStorage2 = `usersMatchedId-${newId}`;
+  const usersMatchedId2 = getUsersMatchedId(newId);
+  usersMatchedId2.push(userLoggedId);
+  localStorage.setItem(
+    usersMatchedIdStrStorage2,
+    JSON.stringify(usersMatchedId2)
+  );
 };
 
 // Delete the user in the users matched id
 const deleteUserInUsersMatchedId = (userLoggedId, id) => {
+  // Delete the user in the users matched id of the user logged
   const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
   const usersMatchedId = getUsersMatchedId(userLoggedId);
   const newUsersMatchedId = usersMatchedId.filter((userId) => userId !== id);
@@ -39,33 +61,55 @@ const deleteUserInUsersMatchedId = (userLoggedId, id) => {
     usersMatchedIdStrStorage,
     JSON.stringify(newUsersMatchedId)
   );
+
+  // Delete the user in the users matched id of the other user
+  const usersMatchedIdStrStorage2 = `usersMatchedId-${id}`;
+  const usersMatchedId2 = getUsersMatchedId(id);
+  const newUsersMatchedId2 = usersMatchedId2.filter(
+    (userId) => userId !== userLoggedId
+  );
+  localStorage.setItem(
+    usersMatchedIdStrStorage2,
+    JSON.stringify(newUsersMatchedId2)
+  );
+};
+
+const getChatMessages = (userMatched) => {
+  const ids = [userLogged(), userMatched].sort();
+  const chatKey = `chat-${ids[0]}-${ids[1]}`;
+  return JSON.parse(localStorage.getItem(chatKey)) || [];
+};
+
+const addChatMessage = (userMatched, message) => {
+  const ids = [userLogged(), userMatched].sort();
+  const chatKey = `chat-${ids[0]}-${ids[1]}`;
+  const chat = getChatMessages(userMatched);
+  chat.push({
+    sender: userLogged(),
+    message,
+    timestamp: Date.now(),
+  });
+  localStorage.setItem(chatKey, JSON.stringify(chat));
 };
 
 // Create a new user
 const createUser = (user) => {
-  const cellphone = Object.keys(user)[0];
-  users[cellphone] = user[cellphone];
+  const users = getUsers();
+  const id = Object.keys(user)[0];
+  users[id] = user[id];
   localStorage.setItem("users", JSON.stringify(users));
 };
 
-// Get the users data
-const getUsersData = () => {
-  const usersData = [];
-  for (const user in users) {
-    const { fullName, cellphone, serviceProfile } = users[user];
-    usersData.push({ fullName, cellphone, serviceProfile });
-  }
-  return usersData;
+// Get the user by id
+const getUser = (id) => {
+  const users = getUsers();
+  return users[id];
 };
 
-// Get the user by cellphone
-const getUser = (cellphone) => {
-  return users[cellphone];
-};
-
-// Get the user data by cellphone
-const getUserData = (cellphone) => {
-  const user = users[cellphone];
+// Get the user data by id
+const getUserData = (id) => {
+  const users = getUsers();
+  const user = users[id];
   if (user) {
     const { fullName, cellphone, serviceProfile } = user;
     return { fullName, cellphone, serviceProfile };
@@ -73,8 +117,9 @@ const getUserData = (cellphone) => {
 };
 
 // Update the user
-const updateUser = (cellphone, user) => {
-  users[cellphone] = user;
+const updateUser = (id, user) => {
+  const users = getUsers();
+  users[id] = user;
   localStorage.setItem("users", JSON.stringify(users));
 };
 
@@ -96,13 +141,13 @@ const validUserName = (name) => {
 };
 
 // Update the userName
-const updateUserName = (cellphone, newName) => {
+const updateUserName = (id, newName) => {
   const validNewUserName = validUserName(newName);
-  const userExists = getUser(cellphone);
+  const userExists = getUser(id);
 
   if (validNewUserName && userExists) {
     userExists.fullName = newName;
-    updateUser(cellphone, userExists);
+    updateUser(id, userExists);
   }
 };
 
@@ -121,19 +166,19 @@ const validUserServices = (services) => {
 };
 
 // Update the services
-const updateUserServices = (cellphone, newServices) => {
+const updateUserServices = (id, newServices) => {
   const validNewUserServices = validUserServices(newServices);
-  const userExists = getUser(cellphone);
+  const userExists = getUser(id);
 
   if (validNewUserServices && userExists) {
     userExists.serviceProfile.services = newServices;
-    updateUser(cellphone, userExists);
+    updateUser(id, userExists);
   }
 };
 
 // Update the service image
-const updateServiceImg = (cellphone, file) => {
-  const userExists = getUser(cellphone);
+const updateServiceImg = (id, file) => {
+  const userExists = getUser(id);
 
   if (!userExists) {
     alert("Usuário não encontrado.");
@@ -161,7 +206,7 @@ const updateServiceImg = (cellphone, file) => {
     userExists.serviceProfile.serviceImg = serviceImgBase64;
 
     // Update the user
-    updateUser(cellphone, userExists);
+    updateUser(id, userExists);
   };
 
   // Read the file

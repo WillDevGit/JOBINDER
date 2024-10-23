@@ -12,14 +12,14 @@ const users = localStorage.getItem("users")
 
 // Create the user
 const createUser = (user) => {
-  const cellphone = Object.keys(user)[0];
-  users[cellphone] = user[cellphone];
+  const id = Object.keys(user)[0];
+  users[id] = user[id];
   localStorage.setItem("users", JSON.stringify(users));
 };
 
 // Get the user data
-const getUserData = (cellphone) => {
-  const user = users[cellphone];
+const getUserData = (id) => {
+  const user = users[id];
   if (user) {
     const { fullName, cellphone } = user;
     return { fullName, cellphone };
@@ -34,7 +34,8 @@ form.addEventListener("submit", (event) => {
   const cellphone = inputCellphone.value;
   const password = inputPassword.value;
   const confirmPassword = inputConfirmPassword.value;
-
+  const id = cellphone;
+  
   if (fullName === "") {
     alert('O campo "Nome Completo" é obrigatório.');
     return;
@@ -61,7 +62,7 @@ form.addEventListener("submit", (event) => {
   }
 
   // Verify if the user exists
-  const cellphoneExists = getUserData(cellphone);
+  const cellphoneExists = getUserData(id);
 
   if (cellphoneExists) {
     alert("Celular já cadastrado.");
@@ -73,7 +74,7 @@ form.addEventListener("submit", (event) => {
 
   // Create the user object
   const user = {
-    [cellphone]: {
+    [id]: {
       fullName,
       cellphone,
       password: hashedPassword,

@@ -54,6 +54,7 @@ const createUsersTest = async () => {
 
     // Get the cellphone without special characters
     const cellphone = user.cell.replace(/[^0-9]/g, "");
+    const id = cellphone;
 
     let specialties = null;
 
@@ -66,8 +67,8 @@ const createUsersTest = async () => {
     else specialties = "Serralheiro";
 
     let object = {
-      [cellphone]: {
-        cellphone: cellphone,
+      [id]: {
+        cellphone,
         fullName: `${user.name.first} ${user.name.last}`,
         password: hashedPassword,
         serviceProfile: {
@@ -75,13 +76,13 @@ const createUsersTest = async () => {
           serviceImg: `../../backend/database/${imgs[index]}`,
           services:
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
-          specialties: specialties,
+          specialties,
         },
       },
     };
 
     // Add the user to the usersTest object
-    usersTest[cellphone] = object[cellphone];
+    usersTest[id] = object[id];
   });
 
   // Get the users in the localStorage

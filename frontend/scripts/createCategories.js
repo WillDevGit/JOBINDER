@@ -5,8 +5,8 @@ const list = document.getElementById("list");
 const categoriasElements = document.getElementsByClassName("categoria");
 const confirmCategory = document.getElementById("confirm-category");
 
-const userLoggedCell = userLogged();
-const user = getUser(userLoggedCell);
+const userLoggedId = userLogged();
+const user = getUser(userLoggedId);
 
 // Categories list
 const categories = [
@@ -72,7 +72,7 @@ confirmCategory.addEventListener("click", () => {
   }
 
   user.serviceProfile.specialties = categoriaSelecionada;
-  updateUser(user);
+  updateUser(userLoggedId, user);
 
   // Redirect to the Create Service Profile page
   if (onlyEditSpecialtie) window.location.href = "./editProfile.html";

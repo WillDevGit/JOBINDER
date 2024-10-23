@@ -22,7 +22,7 @@ let usersMatchedId = getUsersMatchedId(userLoggedId);
 // Control variables
 let userMatchedToBeDeleted = null;
 
-const createChat = (id, userMatchedData) => {
+const createChatDOM = (id, userMatchedData) => {
   const chatContainer = document.getElementById("chat-container");
 
   const box = document.createElement("div");
@@ -63,7 +63,7 @@ const updateChat = () => {
   usersMatchedId = getUsersMatchedId(userLoggedId);
   usersMatchedId.forEach((id) => {
     const userMatchedData = getUserData(id);
-    createChat(id, userMatchedData);
+    createChatDOM(id, userMatchedData);
   });
 };
 
@@ -84,7 +84,12 @@ confirmDeleteButton.addEventListener("click", () =>
 
 usersMatchedId.forEach((id) => {
   const userMatchedData = getUserData(id);
-  createChat(id, userMatchedData);
+  createChatDOM(id, userMatchedData);
 });
 
-export { createChat, updateChat };
+const createChat = () => {
+  localStorage
+}
+
+
+export { updateChat };
