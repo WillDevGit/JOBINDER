@@ -22,6 +22,8 @@ let usersMatchedId = getUsersMatchedId(userLoggedId);
 // Control variables
 let userMatchedToBeDeleted = null;
 
+
+
 const createChatDOM = (id, userMatchedData) => {
   const chatContainer = document.getElementById("chat-container");
 
@@ -40,15 +42,18 @@ const createChatDOM = (id, userMatchedData) => {
   deleteButton.textContent = "X";
   deleteButton.classList.add("delete-button");
   deleteButton.addEventListener("click", () => {
+    event.stopPropagation(); 
     deleteUserMatchedAside.style.display = "flex";
     deleteUserMatchedFullname.textContent = userMatchedData.fullName + "?";
     userMatchedToBeDeleted = id;
   });
-
+  
   box.appendChild(img);
   box.appendChild(profileNameSpan);
   box.appendChild(deleteButton);
   chatContainer.appendChild(box);
+  handleChatClick();
+  
 };
 
 const cleanChat = () => {
@@ -93,24 +98,35 @@ const createChat = () => {
 
 
 
-const chatList = document.getElementsByClassName("chat-box");
-const botaoVoltar = document.getElementById("btn-back");
 
 // Adiciona um evento de clique para cada elemento na coleção
-Array.from(chatList).forEach(chatBox => {
-    chatBox.addEventListener("click", () => {
-        const chat = document.getElementsByClassName("chat"); 
-        const privateChat = document.getElementsByClassName("private-chat"); 
+function handleChatClick() {
+  // Converte a lista de elementos com a classe "chat-box" em um array
+  
+  const chatList = Array.from(document.getElementsByClassName("chat-box"));
+  
+  // Para cada elemento do array (cada chatBox), adiciona o evento de clique
+  chatList.forEach(chatBox => {
+      chatBox.addEventListener("click", () => {
+          const chat = document.getElementsByClassName("chat");
+          const privateChat = document.getElementsByClassName("private-chat");
 
-        chat[0].style.display = "none"; 
-        privateChat[0].style.display = "flex"; 
-    });
-});
+          // Esconde o chat público e mostra o chat privado
+          if (chat.length > 0 && privateChat.length > 0) {
+              chat[0].style.display = "none";
+              privateChat[0].style.display = "flex";
+          }
+      });
+  });
+}
+
+// Chama a função para aplicar o comportamento nos elementos de chat
+
+const botaoVoltar = document.getElementById("btn-back");
 
 botaoVoltar.addEventListener("click", () => {
   const chat = document.getElementsByClassName("chat"); 
   const privateChat = document.getElementsByClassName("private-chat"); 
-
   chat[0].style.display = "flex"; 
   privateChat[0].style.display = "none"; 
 });
