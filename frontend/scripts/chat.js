@@ -92,4 +92,27 @@ const createChat = () => {
 }
 
 
+
+const chatList = document.getElementsByClassName("chat-box");
+const botaoVoltar = document.getElementById("btn-back");
+
+// Adiciona um evento de clique para cada elemento na coleção
+Array.from(chatList).forEach(chatBox => {
+    chatBox.addEventListener("click", () => {
+        const chat = document.getElementsByClassName("chat"); 
+        const privateChat = document.getElementsByClassName("private-chat"); 
+
+        chat[0].style.display = "none"; 
+        privateChat[0].style.display = "flex"; 
+    });
+});
+
+botaoVoltar.addEventListener("click", () => {
+  const chat = document.getElementsByClassName("chat"); 
+  const privateChat = document.getElementsByClassName("private-chat"); 
+
+  chat[0].style.display = "flex"; 
+  privateChat[0].style.display = "none"; 
+});
+
 export { updateChat };

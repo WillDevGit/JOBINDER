@@ -306,3 +306,74 @@ nav {
     background-color: var(--darkGreen);
   }
 }
+
+.private-chat {
+  display: none;
+
+  background-image: linear-gradient(
+    to right top,
+    #87b9cf,
+    #5d8ba1,
+    #537c8d,
+    #5a8496,
+    #8baebd
+  );
+
+  height: 100%;
+
+  flex-direction: column;
+  flex: 30%;
+
+}
+
+#opcoes-private-chat{
+  display: flex;
+  flex: 10%;
+  align-items: center;
+  background-color: #467285;
+
+}
+
+#message-area {
+  flex: 80%;
+  background-color: white;
+}
+
+#input-text-area {
+  flex: 10%;
+  display: flex;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid rgb(189, 186, 186);
+}
+
+#input-message {
+  flex: 70%;
+  font-size: 16px;
+  padding: 8px;
+  outline: none;
+  border: none;
+}
+
+#btn-send {
+  cursor: pointer;
+  background-color: var(--green);
+  color: #fff;
+  font-size: 1.3rem;
+  
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--darkGreen);
+  }
+}
+
+#btn-back{
+  width: 60px;
+  height: 40px;
+  margin-left: 0.5rem;
+}
