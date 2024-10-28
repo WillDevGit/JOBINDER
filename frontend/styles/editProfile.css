@@ -82,7 +82,8 @@ button {
 }
 
 #edit-name-container,
-#edit-description-container,
+#edit-avaliability-container,
+#edit-services-container,
 #edit-image-container {
   display: none;
 
@@ -95,7 +96,7 @@ button {
   align-items: center;
 }
 
-#edit-description-container textarea {
+#edit-services-container textarea {
   resize: none;
   width: 90%;
   height: 15rem;
@@ -185,7 +186,13 @@ input {
   font-size: 1rem;
 }
 
-#description {
+#avaliability {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+}
+
+#services {
   word-break: break-all;
   overflow-wrap: break-word;
   font-size: 1rem;

@@ -3,7 +3,19 @@ import {
   getUserData,
   getUsersMatchedId,
   deleteUserInUsersMatchedId,
+  getChatMessages,
+  addChatMessage,
 } from "../../backend/user.js";
+
+// Chat DOM Elements
+const chatContainer = document.getElementById("chat-container");
+const privateChat = document.getElementById("private-chat");
+const chatMessagesContainer = document.getElementById(
+  "chat-messages-container"
+);
+const exitPrivateChat = document.getElementById("exit-private-chat");
+const textAreaChat = document.getElementById("textarea-chat");
+const sendMessageForm = document.getElementById("send-message-form");
 
 // Delete user matched DOM Elements
 const deleteUserMatchedAside = document.getElementById(
@@ -21,17 +33,28 @@ let usersMatchedId = getUsersMatchedId(userLoggedId);
 
 // Control variables
 let userMatchedToBeDeleted = null;
+let chatUserMatchedId = null;
 
-
-
-const createChatDOM = (id, userMatchedData) => {
-  const chatContainer = document.getElementById("chat-container");
-
+const createChatDOM = (userMatchedId, userMatchedData) => {
   const box = document.createElement("div");
   box.classList.add("chat-box");
+  box.addEventListener("click", (event) => {
+    if (event.target.tagName !== "BUTTON") {
+      chatContainer.style.display = "none";
+      privateChat.style.display = "flex";
+      createPrivateChat(userMatchedId);
+    }
+  });
 
   const img = document.createElement("img");
-  img.src = userMatchedData.serviceProfile.serviceImg;
+  if (
+    !userMatchedData.serviceProfile ||
+    !userMatchedData.serviceProfile.serviceImg
+  ) {
+    img.src = "../images/no-service.jpg.webp";
+  } else {
+    img.src = userMatchedData.serviceProfile.serviceImg;
+  }
   img.classList.add("profile-img");
 
   const profileNameSpan = document.createElement("span");
@@ -42,93 +65,115 @@ const createChatDOM = (id, userMatchedData) => {
   deleteButton.textContent = "X";
   deleteButton.classList.add("delete-button");
   deleteButton.addEventListener("click", () => {
-    event.stopPropagation(); 
+    event.stopPropagation();
     deleteUserMatchedAside.style.display = "flex";
     deleteUserMatchedFullname.textContent = userMatchedData.fullName + "?";
-    userMatchedToBeDeleted = id;
+    userMatchedToBeDeleted = userMatchedId;
   });
-  
+
   box.appendChild(img);
   box.appendChild(profileNameSpan);
   box.appendChild(deleteButton);
   chatContainer.appendChild(box);
-  handleChatClick();
-  
 };
 
-const cleanChat = () => {
-  const chatContainer = document.getElementById("chat-container");
+const cleanChatBoxes = () => {
   while (chatContainer.firstChild) {
     chatContainer.removeChild(chatContainer.firstChild);
   }
 };
 
 const updateChat = () => {
-  cleanChat();
+  cleanChatBoxes();
   usersMatchedId = getUsersMatchedId(userLoggedId);
-  usersMatchedId.forEach((id) => {
-    const userMatchedData = getUserData(id);
-    createChatDOM(id, userMatchedData);
+  usersMatchedId.forEach((userMatchedId) => {
+    const userMatchedData = getUserData(userMatchedId);
+    createChatDOM(userMatchedId, userMatchedData);
   });
 };
 
-const deleteUserMatched = (id) => {
-  deleteUserInUsersMatchedId(userLoggedId, id);
+const deleteUserMatched = (userMatchedId) => {
+  deleteUserInUsersMatchedId(userLoggedId, userMatchedId);
   userMatchedToBeDeleted = null;
   updateChat();
   deleteUserMatchedAside.style.display = "none";
 };
 
+const cleanChatMessages = () => {
+  while (chatMessagesContainer.firstChild) {
+    chatMessagesContainer.removeChild(chatMessagesContainer.firstChild);
+  }
+};
+
+const createPrivateChat = (userMatchedId) => {
+  chatUserMatchedId = userMatchedId;
+  const chatMessages = getChatMessages(userLoggedId, userMatchedId);
+  chatMessages.forEach((chatMessage) => {
+    const message = document.createElement("div");
+
+    if (chatMessage.sender === userLoggedId) {
+      message.classList.add("sender-message");
+    } else {
+      message.classList.add("receiver-message");
+    }
+
+    message.classList.add("message");
+
+    message.textContent = chatMessage.message;
+    chatMessagesContainer.appendChild(message);
+  });
+};
+
 cancelDeleteButton.addEventListener("click", () => {
   deleteUserMatchedAside.style.display = "none";
+  userMatchedToBeDeleted = null;
 });
 
 confirmDeleteButton.addEventListener("click", () =>
   deleteUserMatched(userMatchedToBeDeleted)
 );
 
-usersMatchedId.forEach((id) => {
-  const userMatchedData = getUserData(id);
-  createChatDOM(id, userMatchedData);
+exitPrivateChat.addEventListener("click", () => {
+  chatUserMatchedId = null;
+  privateChat.style.display = "none";
+  chatContainer.style.display = "flex";
+  while (chatMessagesContainer.firstChild) {
+    chatMessagesContainer.removeChild(chatMessagesContainer.firstChild);
+  }
 });
 
-const createChat = () => {
-  localStorage
-}
+const maxLines = 6;
+const lineHeight = 1.2 * 16;
+const maxHeight = lineHeight * maxLines;
 
+textAreaChat.addEventListener("input", () => {
+  textAreaChat.style.height = "auto";
+  const newHeight = Math.min(textAreaChat.scrollHeight, maxHeight);
+  textAreaChat.style.height = `${newHeight}px`;
+});
 
+textAreaChat.addEventListener("keypress", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    if (textAreaChat.value.trim() === "") return;
+    event.preventDefault();
+    sendMessageForm.requestSubmit();
+  }
+});
 
+sendMessageForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const message = textAreaChat.value;
+  textAreaChat.value = "";
+  textAreaChat.style.height = "auto";
+  textAreaChat.style.height = textAreaChat.scrollHeight + "px";
+  addChatMessage(userLoggedId, chatUserMatchedId, message);
+  cleanChatMessages();
+  createPrivateChat(chatUserMatchedId);
+});
 
-// Adiciona um evento de clique para cada elemento na coleção
-function handleChatClick() {
-  // Converte a lista de elementos com a classe "chat-box" em um array
-  
-  const chatList = Array.from(document.getElementsByClassName("chat-box"));
-  
-  // Para cada elemento do array (cada chatBox), adiciona o evento de clique
-  chatList.forEach(chatBox => {
-      chatBox.addEventListener("click", () => {
-          const chat = document.getElementsByClassName("chat");
-          const privateChat = document.getElementsByClassName("private-chat");
-
-          // Esconde o chat público e mostra o chat privado
-          if (chat.length > 0 && privateChat.length > 0) {
-              chat[0].style.display = "none";
-              privateChat[0].style.display = "flex";
-          }
-      });
-  });
-}
-
-// Chama a função para aplicar o comportamento nos elementos de chat
-
-const botaoVoltar = document.getElementById("btn-back");
-
-botaoVoltar.addEventListener("click", () => {
-  const chat = document.getElementsByClassName("chat"); 
-  const privateChat = document.getElementsByClassName("private-chat"); 
-  chat[0].style.display = "flex"; 
-  privateChat[0].style.display = "none"; 
+usersMatchedId.forEach((userMatchedId) => {
+  const userMatchedData = getUserData(userMatchedId);
+  createChatDOM(userMatchedId, userMatchedData);
 });
 
 export { updateChat };

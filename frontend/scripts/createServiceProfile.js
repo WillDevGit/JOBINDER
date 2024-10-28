@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       user.serviceProfile.serviceImg = serviceImgBase64;
 
       // Update the user in the localStorage
-      updateUser(user);
+      updateUser(userLoggedId, user);
 
       // Redirect to the Home page
       window.location.href = "./home.html";

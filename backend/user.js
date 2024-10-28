@@ -25,71 +25,78 @@ const setUserLogged = (id) => {
 };
 
 // Get the users matched id
-const getUsersMatchedId = (userLoggedId) => {
-  const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
-  return JSON.parse(localStorage.getItem(usersMatchedIdStrStorage)) || [];
+const getUsersMatchedId = (id) => {
+  if (!id) id = -1; // If user is not logged
+  const usersMatchedIdObj =
+    JSON.parse(localStorage.getItem("usersMatchedId")) || {};
+  return usersMatchedIdObj[id] || [];
 };
 
 // Update the users matched id
 const insertUserInUsersMatchedId = (userLoggedId, newId) => {
+  const usersMatchedIdObj =
+    JSON.parse(localStorage.getItem("usersMatchedId")) || {};
+  if (!userLoggedId) userLoggedId = -1; // If user is not logged
+
   // Update the users matched id of the user logged
-  const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
-  const usersMatchedId = getUsersMatchedId(userLoggedId);
-  usersMatchedId.push(newId);
-  localStorage.setItem(
-    usersMatchedIdStrStorage,
-    JSON.stringify(usersMatchedId)
-  );
+  const usersMatchedIdArray = getUsersMatchedId(userLoggedId);
+  usersMatchedIdArray.push(newId);
+  usersMatchedIdObj[userLoggedId] = usersMatchedIdArray;
 
   // Update the users matched id of the other user
-  const usersMatchedIdStrStorage2 = `usersMatchedId-${newId}`;
-  const usersMatchedId2 = getUsersMatchedId(newId);
-  usersMatchedId2.push(userLoggedId);
-  localStorage.setItem(
-    usersMatchedIdStrStorage2,
-    JSON.stringify(usersMatchedId2)
-  );
+  const usersMatchedIdArray2 = getUsersMatchedId(newId);
+  usersMatchedIdArray2.push(userLoggedId);
+  usersMatchedIdObj[newId] = usersMatchedIdArray2;
+
+  localStorage.setItem("usersMatchedId", JSON.stringify(usersMatchedIdObj));
 };
 
 // Delete the user in the users matched id
 const deleteUserInUsersMatchedId = (userLoggedId, id) => {
+  const usersMatchedIdObj =
+    JSON.parse(localStorage.getItem("usersMatchedId")) || {};
+  if (!userLoggedId) userLoggedId = -1; // If user is not logged
+
   // Delete the user in the users matched id of the user logged
-  const usersMatchedIdStrStorage = `usersMatchedId-${userLoggedId}`;
-  const usersMatchedId = getUsersMatchedId(userLoggedId);
-  const newUsersMatchedId = usersMatchedId.filter((userId) => userId !== id);
-  localStorage.setItem(
-    usersMatchedIdStrStorage,
-    JSON.stringify(newUsersMatchedId)
+  const usersMatchedIdArray = getUsersMatchedId(userLoggedId);
+  const newUsersMatchedIdArray = usersMatchedIdArray.filter(
+    (userId) => userId !== id
   );
+  usersMatchedIdObj[userLoggedId] = newUsersMatchedIdArray;
 
   // Delete the user in the users matched id of the other user
-  const usersMatchedIdStrStorage2 = `usersMatchedId-${id}`;
-  const usersMatchedId2 = getUsersMatchedId(id);
-  const newUsersMatchedId2 = usersMatchedId2.filter(
+  const usersMatchedIdArray2 = getUsersMatchedId(id);
+  const newUsersMatchedIdArray2 = usersMatchedIdArray2.filter(
     (userId) => userId !== userLoggedId
   );
-  localStorage.setItem(
-    usersMatchedIdStrStorage2,
-    JSON.stringify(newUsersMatchedId2)
-  );
+  usersMatchedIdObj[id] = newUsersMatchedIdArray2;
+
+  localStorage.setItem("usersMatchedId", JSON.stringify(usersMatchedIdObj));
 };
 
-const getChatMessages = (userMatched) => {
-  const ids = [userLogged(), userMatched].sort();
+// Get the chat messages
+const getChatMessages = (userLoggedId, userMatched) => {
+  const chatMessages = JSON.parse(localStorage.getItem("chatMessages")) || {};
+  if (!userLoggedId) userLoggedId = -1; // If user is not logged
+  const ids = [userLoggedId, userMatched].sort();
   const chatKey = `chat-${ids[0]}-${ids[1]}`;
-  return JSON.parse(localStorage.getItem(chatKey)) || [];
+  return chatMessages[chatKey] || [];
 };
 
-const addChatMessage = (userMatched, message) => {
-  const ids = [userLogged(), userMatched].sort();
+// Add a chat message
+const addChatMessage = (userLoggedId, userMatched, message) => {
+  const chatMessages = JSON.parse(localStorage.getItem("chatMessages")) || {};
+  if (!userLoggedId) userLoggedId = -1; // If user is not logged
+  const ids = [userLoggedId, userMatched].sort();
   const chatKey = `chat-${ids[0]}-${ids[1]}`;
-  const chat = getChatMessages(userMatched);
+  const chat = getChatMessages(userLoggedId, userMatched);
   chat.push({
-    sender: userLogged(),
+    sender: userLoggedId,
     message,
     timestamp: Date.now(),
   });
-  localStorage.setItem(chatKey, JSON.stringify(chat));
+  chatMessages[chatKey] = chat;
+  localStorage.setItem("chatMessages", JSON.stringify(chatMessages));
 };
 
 // Create a new user
@@ -123,6 +130,7 @@ const updateUser = (id, user) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
+// Check if the user name is valid
 const validUserName = (name) => {
   if (name === "") {
     alert("Nome não pode ser vazio");
@@ -140,17 +148,55 @@ const validUserName = (name) => {
   return true;
 };
 
-// Update the userName
+// Update the user name
 const updateUserName = (id, newName) => {
   const validNewUserName = validUserName(newName);
   const userExists = getUser(id);
 
   if (validNewUserName && userExists) {
-    userExists.fullName = newName;
+    const newNameCaptalized = newName
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
+    userExists.fullName = newNameCaptalized;
     updateUser(id, userExists);
+    return newNameCaptalized;
   }
+
+  return null;
 };
 
+// Check if the user avaliability is valid
+const validUserAvaliability = (avaliability) => {
+  if (avaliability === "") {
+    alert('O campo "Disponibilidade" é obrigatório.');
+    return false;
+  } else if (avaliability.length <= 10) {
+    alert("Descrição da disponibilidade muito curta");
+    return false;
+  } else if (avaliability.length > 200) {
+    alert("Descrição da disponibilidade muito longa");
+    return false;
+  }
+  return true;
+};
+
+// Update the user avaliability
+const updateUserAvaliability = (id, newAvaliability) => {
+  const validNewUserAvaliability = validUserAvaliability(newAvaliability);
+  const userExists = getUser(id);
+
+  if (validNewUserAvaliability && userExists) {
+    userExists.serviceProfile.avaliability = newAvaliability;
+    updateUser(id, userExists);
+    return newAvaliability;
+  }
+
+  return null;
+};
+
+// Check if the user services is valid
 const validUserServices = (services) => {
   if (services === "") {
     alert('O campo "Serviços" é obrigatório.');
@@ -165,7 +211,7 @@ const validUserServices = (services) => {
   return true;
 };
 
-// Update the services
+// Update the user services
 const updateUserServices = (id, newServices) => {
   const validNewUserServices = validUserServices(newServices);
   const userExists = getUser(id);
@@ -173,7 +219,10 @@ const updateUserServices = (id, newServices) => {
   if (validNewUserServices && userExists) {
     userExists.serviceProfile.services = newServices;
     updateUser(id, userExists);
+    return newServices;
   }
+
+  return null;
 };
 
 // Update the service image
@@ -224,9 +273,13 @@ export {
   updateUser,
   validUserName,
   updateUserName,
+  validUserAvaliability,
+  updateUserAvaliability,
   validUserServices,
   updateUserServices,
   updateServiceImg,
   insertUserInUsersMatchedId,
   deleteUserInUsersMatchedId,
+  getChatMessages,
+  addChatMessage,
 };

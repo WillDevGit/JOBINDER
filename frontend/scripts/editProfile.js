@@ -2,19 +2,19 @@ import {
   userLogged,
   getUserData,
   updateUserName,
+  updateUserAvaliability,
   updateUserServices,
   updateServiceImg,
-  validUserName,
-  validUserServices,
 } from "../../backend/user.js";
 
-const userLoggedCell = userLogged();
+const userLoggedId = userLogged();
 const usuarioDados = getUserData(userLogged());
 
 const opcoesDiv = document.getElementById("options");
 const editFullNameButton = document.getElementById("edit-name");
 const editSpecialtieButton = document.getElementById("edit-specialtie");
-const editServicesButton = document.getElementById("edit-description");
+const editAvaliabilityButton = document.getElementById("edit-avaliability");
+const editServicesButton = document.getElementById("edit-services");
 const editImageButton = document.getElementById("edit-image");
 
 const home = document.getElementById("home");
@@ -24,9 +24,13 @@ const editName = document.getElementById("edit-name-container");
 const inputName = document.getElementById("input-name");
 const submitName = document.getElementById("submit-name");
 
-const editServices = document.getElementById("edit-description-container");
-const textareaServices = document.getElementById("textarea-description");
-const submitServices = document.getElementById("submit-description");
+const editAvaliability = document.getElementById("edit-avaliability-container");
+const inputAvaliability = document.getElementById("input-avaliability");
+const submitAvaliability = document.getElementById("submit-avaliability");
+
+const editServices = document.getElementById("edit-services-container");
+const textareaServices = document.getElementById("textarea-services");
+const submitServices = document.getElementById("submit-services");
 
 const editImage = document.getElementById("edit-image-container");
 const inputImage = document.getElementById("input-image");
@@ -57,6 +61,13 @@ editSpecialtieButton.addEventListener("click", () => {
   window.location.href = "categories.html";
 });
 
+editAvaliabilityButton.addEventListener("click", () => {
+  home.style.display = "none";
+  opcoesDiv.style.display = "none";
+  botaoVoltar.style.display = "flex";
+  editAvaliability.style.display = "flex";
+});
+
 // Change to the services editing interface
 editServicesButton.addEventListener("click", () => {
   home.style.display = "none";
@@ -80,36 +91,40 @@ botaoVoltar.addEventListener("click", () => {
 
 // Submit the new name
 submitName.addEventListener("click", () => {
-  const newName = inputName.value;
-  const validNewName = validUserName(newName);
+  const newNameInput = inputName.value;
+  const newName = updateUserName(userLoggedId, newNameInput);
 
-  if (!validNewName) return;
+  if (!newName) return;
 
-  const newNameCaptalized = newName
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
-  updateUserName(userLoggedCell, newNameCaptalized);
-  fullname.textContent = newNameCaptalized;
+  fullname.textContent = newName;
   inputName.value = "";
 });
 
-// Submit the new services
+// Submit the new user avaliability
+submitAvaliability.addEventListener("click", () => {
+  const newAvaliabilityInput = inputAvaliability.value;
+  const newAvaliability = updateUserAvaliability(userLoggedId, newAvaliabilityInput);
+
+  if(!newAvaliability) return;
+
+  avaliability.textContent = newAvaliability;
+  inputAvaliability.value = "";
+});
+
+// Submit the new user services
 submitServices.addEventListener("click", () => {
-  const newServices = textareaServices.value;
-  const validNewServices = validUserServices(newServices);
+  const newServicesInput = textareaServices.value;
+  const newServices = updateUserServices(userLoggedId, newServicesInput);
 
-  if (!validNewServices) return;
+  if (!newServices) return;
 
-  updateUserServices(userLoggedCell, newServices);
   services.textContent = newServices;
   textareaServices.value = "";
 });
 
-// Submit the new image
+// Submit the new service image
 submitImage.addEventListener("click", () => {
   const serviceImgFile = inputImage.files[0];
-  updateServiceImg(userLoggedCell, serviceImgFile);
+  updateServiceImg(userLoggedId, serviceImgFile);
   imagem.src = URL.createObjectURL(serviceImgFile);
 });

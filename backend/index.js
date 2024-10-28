@@ -291,7 +291,7 @@ class Carousel {
     // Add the description to the card
     let description = document.createElement("div");
     description.innerHTML = cardContent[index].desc;
-    description.classList.add("description");
+    description.classList.add("services");
 
     // TODO: Adicionar botões de ação
     // Buttons
@@ -321,12 +321,6 @@ class Carousel {
     card.appendChild(nameCard);
     card.appendChild(description);
     card.appendChild(botoes);
-
-    /** 
-        codigo original 
-        card.style.backgroundImage =
-            "url('https://picsum.photos/320/320/?random=" + Math.round(Math.random() * 1000000) + "')"
-        */
 
     this.board.insertBefore(card, this.board.firstChild);
     index = index == cardContent.length - 1 ? 0 : (index += 1);

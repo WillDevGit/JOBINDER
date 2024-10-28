@@ -35,16 +35,19 @@
       </div>
 
       <div id="chat-container"></div>
-    </section>
 
-    <section class="private-chat">
-      <div id="opcoes-private-chat">
-        <button id="btn-back">Voltar</button>
-      </div>
-      <div id="message-area"></div>
-      <div id="input-text-area">
-        <input type="text" id="input-message" placeholder="Digite uma mensagem...">
-        <input type="submit" id="btn-send" value="enviar" />
+      <div id="private-chat">
+        <div id="options-private-chat">
+          <button id="exit-private-chat">Voltar</button>
+        </div>
+        <div id="chat-messages-container"></div>
+        <form id="send-message-form">
+          <textarea
+            placeholder="Digite uma mensagem..."
+            id="textarea-chat"
+          ></textarea>
+          <input type="submit" id="send-message" value="enviar" />
+        </form>
       </div>
     </section>
 
