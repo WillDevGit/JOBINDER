@@ -1,4 +1,5 @@
-import { userLogged, getUserData } from "../../backend/user.js";
+import { userLoggedId } from "../../backend/createUserSession.js";
+import { getUserData } from "../../backend/user.js";
 
 // Get the elements from the DOM
 const exit = document.getElementById("exit");
@@ -7,15 +8,11 @@ const register = document.getElementById("register");
 const createServiceProfile = document.getElementById("create-service-profile");
 const enterProfilePro = document.getElementById("enter-profile-pro");
 
-
-// Get the user logged 
-const user = userLogged();
-
 // Show the elements according to the user logged
-exit.style.display = user ? "block" : "none";
-login.style.display = user ? "none" : "block";
-register.style.display = user ? "none" : "block";
-createServiceProfile.style.display = user ? "block" : "none";
+exit.style.display = userLoggedId ? "block" : "none";
+login.style.display = userLoggedId ? "none" : "block";
+register.style.display = userLoggedId ? "none" : "block";
+createServiceProfile.style.display = userLoggedId ? "block" : "none";
 
 // Add the click event to the exit button
 exit.addEventListener("click", () => {
@@ -28,7 +25,7 @@ exit.addEventListener("click", () => {
 
 });
 
-const dadosUsuarios = getUserData(user); 
+const dadosUsuarios = getUserData(userLoggedId); 
 
 if (dadosUsuarios && dadosUsuarios.serviceProfile) {
   // Se o perfil foi criado, esconde o link de criar e mostra o de entrar

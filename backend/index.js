@@ -1,14 +1,11 @@
+import { userLoggedId } from "./createUserSession.js";
 import {
-  userLogged,
   getUserData,
   getUsersData,
   getUsersMatchedId,
   insertUserInUsersMatchedId,
 } from "./user.js";
 import { updateChat } from "../frontend/scripts/chat.js";
-
-// Get the user logged
-const userLoggedId = userLogged();
 
 // User can be not logged
 let userData = null;

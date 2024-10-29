@@ -1,11 +1,11 @@
-import { getUser, userLogged, updateUser } from "../../backend/user.js";
+import { userLoggedId } from "../../backend/createUserSession.js"; 
+import { getUser, updateUser } from "../../backend/user.js";
 
 // Get the elements from the DOM
 const list = document.getElementById("list");
 const categoriasElements = document.getElementsByClassName("categoria");
 const confirmCategory = document.getElementById("confirm-category");
 
-const userLoggedId = userLogged();
 const user = getUser(userLoggedId);
 
 // Categories list

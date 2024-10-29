@@ -1,7 +1,7 @@
+import { userLoggedId } from "../../backend/createUserSession.js";
 import {
   getUser,
   updateUser,
-  userLogged,
   validUserServices,
 } from "../../backend/user.js";
 
@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputServiceImg = document.getElementById("input-service-img");
 
   // Get the user data
-  const userLoggedId = userLogged();
   const user = getUser(userLoggedId);
 
   // Fill the form fields with the user data

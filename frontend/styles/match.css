@@ -1,0 +1,157 @@
+@import url(./configs/colors.css);
+@import url(./configs/reset.css);
+
+body {
+  background-color: var(--grey);
+  display: flex;
+}
+
+#logo {
+  text-decoration: none;
+  color: var(--blue);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+#headerChat {
+  padding: 1rem;
+  gap: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#headerChat h3 {
+  color: #fff;
+}
+
+#searchChatBox {
+  display: flex;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#searchChatBox input {
+  outline: none;
+  border: none;
+}
+
+.match {
+  flex: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search-box {
+  background-color: #fff;
+
+  width: 20rem;
+  height: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-box a {
+  display: flex;
+  align-items: center;
+}
+
+#search-text {
+  width: 90%;
+  border: none;
+  outline: none;
+}
+
+#board {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  width: 530px;
+  height: 530px;
+
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.imagem {
+  background-color: #fff;
+  background-size: cover;
+  width: 100%;
+  height: 60%;
+}
+
+.name-card {
+  margin: 1rem 1rem 0;
+}
+
+.services {
+  margin: 0 1rem;
+}
+
+.services > * {
+  margin-top: 0.5rem;
+}
+.services > div span:first-child {
+  font-weight: 600;
+}
+
+.botoes {
+  gap: 4rem;
+  padding: 0.5rem 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.botoes img {
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+}
+
+.profile > *:not(:first-child) {
+  margin: 0.5rem 1.5rem;
+}
+
+.profile > div > *:first-child {
+  font-weight: 600;
+}
+
+#services {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+}
+
+#avaliability {
+  font-size: 1rem;
+}

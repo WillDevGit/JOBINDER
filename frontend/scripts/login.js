@@ -1,4 +1,5 @@
-import { getUser, getUserData, setUserLogged } from "../../backend/user.js";
+import { setUserLogged } from "../../backend/createUserSession.js";
+import { getUser } from "../../backend/user.js";
 
 // Get the form elements
 const login = document.getElementById("login");

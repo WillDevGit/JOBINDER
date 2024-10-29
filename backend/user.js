@@ -14,16 +14,6 @@ const getUsersData = () => {
   return usersData;
 };
 
-// Get the user logged
-const userLogged = () => {
-  return JSON.parse(localStorage.getItem("userLogged"));
-};
-
-// Set the user logged
-const setUserLogged = (id) => {
-  localStorage.setItem("userLogged", JSON.stringify(id));
-};
-
 // Get the users matched id
 const getUsersMatchedId = (id) => {
   if (!id) id = -1; // If user is not logged
@@ -263,8 +253,6 @@ const updateServiceImg = (id, file) => {
 };
 
 export {
-  userLogged,
-  setUserLogged,
   getUsersMatchedId,
   createUser,
   getUsersData,

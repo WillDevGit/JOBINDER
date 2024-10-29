@@ -1,5 +1,5 @@
+import { userLoggedId } from "../../backend/createUserSession.js";
 import {
-  userLogged,
   getUserData,
   getUsersMatchedId,
   deleteUserInUsersMatchedId,
@@ -28,12 +28,13 @@ const cancelDeleteButton = document.getElementById("cancel-delete");
 const confirmDeleteButton = document.getElementById("confirm-delete");
 
 // Data
-const userLoggedId = userLogged();
 let usersMatchedId = getUsersMatchedId(userLoggedId);
 
 // Control variables
 let userMatchedToBeDeleted = null;
 let chatUserMatchedId = null;
+let unloggedUser = false;
+let loggedUserNoServiceProfile = false;
 
 const createChatDOM = (userMatchedId, userMatchedData) => {
   const box = document.createElement("div");
@@ -47,29 +48,35 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
   });
 
   const img = document.createElement("img");
-  if (
-    !userMatchedData.serviceProfile ||
-    !userMatchedData.serviceProfile.serviceImg
-  ) {
+  img.classList.add("profile-img");
+
+  if (!userMatchedData) unloggedUser = true;
+  else if (!userMatchedData.serviceProfile) loggedUserNoServiceProfile = true;
+
+  if (unloggedUser || loggedUserNoServiceProfile) {
     img.src = "../images/no-service.jpg.webp";
   } else {
     img.src = userMatchedData.serviceProfile.serviceImg;
   }
-  img.classList.add("profile-img");
 
   const profileNameSpan = document.createElement("span");
-  profileNameSpan.textContent = userMatchedData.fullName;
   profileNameSpan.classList.add("profile-name");
+  profileNameSpan.textContent = unloggedUser
+    ? "Usuário não logado"
+    : userMatchedData.fullName;
 
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "X";
   deleteButton.classList.add("delete-button");
-  deleteButton.addEventListener("click", () => {
-    event.stopPropagation();
+  deleteButton.textContent = "X";
+  deleteButton.addEventListener("click", (e) => {
+    e.stopPropagation();
     deleteUserMatchedAside.style.display = "flex";
     deleteUserMatchedFullname.textContent = userMatchedData.fullName + "?";
     userMatchedToBeDeleted = userMatchedId;
   });
+
+  unloggedUser = false;
+  loggedUserNoServiceProfile = false;
 
   box.appendChild(img);
   box.appendChild(profileNameSpan);
@@ -84,8 +91,8 @@ const cleanChatBoxes = () => {
 };
 
 const updateChat = () => {
-  cleanChatBoxes();
   usersMatchedId = getUsersMatchedId(userLoggedId);
+  cleanChatBoxes();
   usersMatchedId.forEach((userMatchedId) => {
     const userMatchedData = getUserData(userMatchedId);
     createChatDOM(userMatchedId, userMatchedData);
@@ -171,9 +178,14 @@ sendMessageForm.addEventListener("submit", (event) => {
   createPrivateChat(chatUserMatchedId);
 });
 
-usersMatchedId.forEach((userMatchedId) => {
-  const userMatchedData = getUserData(userMatchedId);
-  createChatDOM(userMatchedId, userMatchedData);
-});
+// Update the chat every second
+setInterval(() => {
+  if (chatUserMatchedId) {
+    cleanChatMessages();
+    createPrivateChat(chatUserMatchedId);
+  }
+}, 1000);
+
+updateChat();
 
 export { updateChat };

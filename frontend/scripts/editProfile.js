@@ -1,5 +1,5 @@
+import { userLoggedId } from "../../backend/createUserSession.js"; 
 import {
-  userLogged,
   getUserData,
   updateUserName,
   updateUserAvaliability,
@@ -7,8 +7,7 @@ import {
   updateServiceImg,
 } from "../../backend/user.js";
 
-const userLoggedId = userLogged();
-const usuarioDados = getUserData(userLogged());
+const usuarioDados = getUserData(userLoggedId);
 
 const opcoesDiv = document.getElementById("options");
 const editFullNameButton = document.getElementById("edit-name");
@@ -103,9 +102,12 @@ submitName.addEventListener("click", () => {
 // Submit the new user avaliability
 submitAvaliability.addEventListener("click", () => {
   const newAvaliabilityInput = inputAvaliability.value;
-  const newAvaliability = updateUserAvaliability(userLoggedId, newAvaliabilityInput);
+  const newAvaliability = updateUserAvaliability(
+    userLoggedId,
+    newAvaliabilityInput
+  );
 
-  if(!newAvaliability) return;
+  if (!newAvaliability) return;
 
   avaliability.textContent = newAvaliability;
   inputAvaliability.value = "";
