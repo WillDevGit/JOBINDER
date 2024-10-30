@@ -59,11 +59,24 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
     img.src = userMatchedData.serviceProfile.serviceImg;
   }
 
+  const nameMessageDiv = document.createElement("div");
+  nameMessageDiv.classList.add("name-last-message");
+
   const profileNameSpan = document.createElement("span");
   profileNameSpan.classList.add("profile-name");
   profileNameSpan.textContent = unloggedUser
     ? "Usuário não logado"
     : userMatchedData.fullName;
+
+  const lastMessageSpan = document.createElement("span");
+  lastMessageSpan.classList.add("last-message");
+  const messages = getChatMessages(userLoggedId, userMatchedId);
+  if (messages.length === 0) lastMessageSpan.textContent = "";
+  else {
+    const lastMessage = messages[messages.length - 1].message;
+    lastMessageSpan.textContent =
+      lastMessage.length > 20 ? lastMessage.slice(0, 20) + "..." : lastMessage;
+  }
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
@@ -71,7 +84,10 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
   deleteButton.addEventListener("click", (e) => {
     e.stopPropagation();
     deleteUserMatchedAside.style.display = "flex";
-    deleteUserMatchedFullname.textContent = userMatchedData.fullName + "?";
+    deleteUserMatchedFullname.textContent =
+      userMatchedData === null
+        ? "(Usuário não logado)?"
+        : userMatchedData && userMatchedData.fullName + "?";
     userMatchedToBeDeleted = userMatchedId;
   });
 
@@ -79,7 +95,9 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
   loggedUserNoServiceProfile = false;
 
   box.appendChild(img);
-  box.appendChild(profileNameSpan);
+  box.appendChild(nameMessageDiv);
+  nameMessageDiv.appendChild(profileNameSpan);
+  nameMessageDiv.appendChild(lastMessageSpan);
   box.appendChild(deleteButton);
   chatContainer.appendChild(box);
 };
@@ -147,12 +165,12 @@ exitPrivateChat.addEventListener("click", () => {
   while (chatMessagesContainer.firstChild) {
     chatMessagesContainer.removeChild(chatMessagesContainer.firstChild);
   }
+  updateChat();
 });
 
 const maxLines = 6;
 const lineHeight = 1.2 * 16;
 const maxHeight = lineHeight * maxLines;
-
 textAreaChat.addEventListener("input", () => {
   textAreaChat.style.height = "auto";
   const newHeight = Math.min(textAreaChat.scrollHeight, maxHeight);
@@ -184,6 +202,7 @@ setInterval(() => {
     cleanChatMessages();
     createPrivateChat(chatUserMatchedId);
   }
+  updateChat();
 }, 1000);
 
 updateChat();

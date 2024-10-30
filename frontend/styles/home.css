@@ -77,7 +77,7 @@ header {
   flex-direction: column;
   padding: 0 6rem;
   margin-top: 10rem;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .contrate-page .presentation {
@@ -105,12 +105,11 @@ header {
   color: #fff;
   font-size: 1.5rem;
 
-  width: 50%;
+  width: 15rem;
   padding: 0.5rem;
   border-radius: 1rem;
   border: none;
 
-  align-self: center;
 
   transition: background-color 0.3s;
 
@@ -120,6 +119,7 @@ header {
 }
 
 .contrate-page a {
+  background-color: red;
   text-decoration: none;
   color: #fff;
 }

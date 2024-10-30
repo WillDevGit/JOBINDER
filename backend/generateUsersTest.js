@@ -44,7 +44,7 @@ const getRandomUser = async () => {
   }
 };
 
-// Save the users in the localStorage
+// Save the users in the database
 const createUsersTest = async () => {
   const users = await getRandomUser();
 
@@ -85,11 +85,11 @@ const createUsersTest = async () => {
     usersTest[id] = object[id];
   });
 
-  // Get the users in the localStorage
+  // Get the users in the database
   let usersInStorage = JSON.parse(localStorage.getItem("users"));
   if (!usersInStorage) usersInStorage = {};
 
-  // Update the users in the localStorage
+  // Update the users in the database
   localStorage.setItem("users", JSON.stringify(usersTest));
 };
 
