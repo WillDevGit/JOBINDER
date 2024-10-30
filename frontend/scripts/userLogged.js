@@ -8,11 +8,13 @@ const register = document.getElementById("register");
 const createServiceProfile = document.getElementById("create-service-profile");
 const enterProfilePro = document.getElementById("enter-profile-pro");
 
+const isUserLogged = userLoggedId !== -1;
+
 // Show the elements according to the user logged
-exit.style.display = userLoggedId ? "block" : "none";
-login.style.display = userLoggedId ? "none" : "block";
-register.style.display = userLoggedId ? "none" : "block";
-createServiceProfile.style.display = userLoggedId ? "block" : "none";
+exit.style.display = isUserLogged ? "block" : "none";
+login.style.display = isUserLogged ? "none" : "block";
+register.style.display = isUserLogged ? "none" : "block";
+createServiceProfile.style.display = isUserLogged ? "block" : "none";
 
 // Add the click event to the exit button
 exit.addEventListener("click", () => {
@@ -22,14 +24,13 @@ exit.addEventListener("click", () => {
   register.style.display = "block";
   createServiceProfile.style.display = "none";
   enterProfilePro.style.display = "none";
-
 });
 
-const dadosUsuarios = getUserData(userLoggedId); 
+const dadosUsuarios = getUserData(userLoggedId);
 
 if (dadosUsuarios && dadosUsuarios.serviceProfile) {
-  // Se o perfil foi criado, esconde o link de criar e mostra o de entrar
+  // If the user has a service profile, show the enter profile button
   createServiceProfile.style.display = "none";
   enterProfilePro.style.display = "block";
-  enterProfilePro.href = "./editProfile.html"; 
+  enterProfilePro.href = "./editProfile.html";
 }

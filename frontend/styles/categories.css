@@ -118,10 +118,61 @@ button {
   transition: all 0.2s;
 
   &:hover {
-    opacity: 0.8;;
+    opacity: 0.8;
   }
 
   &:active {
     transform: scale(0.95);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #list {
+    gap: 3rem;
+  }
+
+  .categoria {
+    width: 9rem;
+    height: 7rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #list {
+    gap: 4rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categoria {
+    width: 11rem;
+    height: 9rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #list {
+    gap: 3rem;
+    row-gap: 3.5rem;
+  }
+
+  .categoria {
+    width: 10rem;
+    height: 8rem;
+  }
+
+  .categoria h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #list {
+    gap: 2rem;
+    row-gap: 3.5rem;
+  }
+
+  .categoria {
+    width: 8rem;
+    height: 6rem;
   }
 }

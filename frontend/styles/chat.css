@@ -19,11 +19,26 @@
 
 #chat-container {
   height: 100%;
-  overflow: none;
-
+  
   display: flex;
   align-items: center;
   flex-direction: column;
+  
+  overflow: none;
+  overflow-y: auto;
+}
+
+#chat-container::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+#chat-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+  background-color: var(--darkGrey);
+  border-radius: 0.5rem;
 }
 
 #chat-container .chat-box {

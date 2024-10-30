@@ -6,24 +6,7 @@ body {
   align-items: center;
 }
 
-#home {
-  margin-top: 2rem;
-}
-
-#home a {
-  cursor: pointer;
-  background-color: var(--darkGreen);
-  color: #fff;
-  text-decoration: none;
-  text-wrap: nowrap;
-  font-weight: 700;
-  font-size: 1rem;
-
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-}
-
-.edit-container {
+#edit-container {
   background-image: linear-gradient(
     to right top,
     #365462,
@@ -39,6 +22,74 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  transition: transform 2s;
+}
+
+@keyframes editContainerAnimationOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes editContainerAnimationIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.edit-container-animation-in {
+  animation: editContainerAnimationIn 0.5s forwards;
+}
+
+.edit-container-animation-out {
+  animation: editContainerAnimationOut 0.5s forwards;
+}
+
+#header {
+  margin-top: 2rem;
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#header a {
+  cursor: pointer;
+  background-color: var(--darkGreen);
+  text-decoration: none;
+  text-wrap: nowrap;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+#exit-edit-profile {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+
+  width: 5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
 }
 
 #options {
@@ -122,8 +173,8 @@ input {
   background-color: #f9f9f9;
 
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
   border-radius: 4px;
   border: 2px dashed #ccc;
 }
@@ -142,7 +193,7 @@ input {
 
 #input-image::file-selector-button {
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 0.5rem;
 }
 
 .profile-container {
@@ -152,7 +203,7 @@ input {
   align-items: center;
 }
 
-.profile {
+.profile-container .profile {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -164,40 +215,190 @@ input {
   flex-direction: column;
 }
 
-.profile > *:not(:first-child) {
+.profile-container .profile > *:not(:first-child) {
   margin: 0.5rem 1.5rem;
 }
 
-.profile > div > *:first-child {
+.profile-container .profile > div > *:first-child {
   font-weight: 600;
 }
 
-#img {
+.profile-container .profile #img {
   height: 60%;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-#name {
+.profile-container .profile #fullname {
   margin-top: 1rem;
-  font-size: 1.3rem;
+  font-size: 2rem;
 }
 
-#specialtie {
+.profile-container .profile #specialtie {
   font-size: 1rem;
 }
 
-#avaliability {
+.profile-container .profile #avaliability {
   word-break: break-all;
   overflow-wrap: break-word;
   font-size: 1rem;
 }
 
-#services {
+.profile-container .profile #avaliability {
+  font-size: 1rem;
+}
+
+.profile-container .profile #services {
   word-break: break-all;
   overflow-wrap: break-word;
   font-size: 1rem;
 }
 
-#avaliability {
-  font-size: 1rem;
+#edit-profile {
+  display: none;
+  padding: 1rem;
+  width: 20rem;
+}
+
+@media screen and (max-width: 800px) {
+  .profile-container .profile {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 0.5rem;
+  }
+
+  .profile-container .profile > div > span {
+    font-size: 0.9rem;
+  }
+
+  .profile-container .profile #fullname {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    justify-content: center;
+  }
+
+  #edit-container {
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    width: 17rem;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .profile-container .profile {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile-container .profile {
+    width: 27rem;
+    height: 27rem;
+  }
+
+  .profile-container .profile > *:not(:first-child) {
+    margin: 0.3rem 1rem;
+  }
+
+  .profile-container .profile #fullname {
+    font-size: 1.5rem;
+  }
+
+  .profile-container .profile #specialtie {
+    font-size: 0.8rem;
+  }
+
+  .profile-container .profile #avaliability {
+    font-size: 0.8rem;
+  }
+
+  .profile-container .profile #services {
+    font-size: 0.8rem;
+  }
+
+  .profile-container .profile > div > span {
+    font-size: 0.8rem;
+  }
+
+  #edit-profile {
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .profile-container .profile {
+    width: 22rem;
+    height: 22rem;
+  }
+
+  .profile-container .profile > *:not(:first-child) {
+    margin: 0.2rem 1rem;
+  }
+
+  .profile-container .profile #fullname {
+    font-size: 1.3rem;
+  }
+
+  .profile-container .profile #specialtie {
+    font-size: 0.7rem;
+  }
+
+  .profile-container .profile #avaliability {
+    font-size: 0.7rem;
+  }
+
+  .profile-container .profile #services {
+    font-size: 0.7rem;
+  }
+
+  .profile-container .profile > div > span {
+    font-size: 0.7rem;
+  }
+
+  #edit-profile {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .profile-container .profile {
+    width: 19rem;
+    height: 19rem;
+  }
+
+  .profile-container .profile > *:not(:first-child) {
+    margin: 0.1rem 0.5rem;
+  }
+
+  .profile-container .profile #fullname {
+    font-size: 1rem;
+  }
+
+  .profile-container .profile #specialtie {
+    font-size: 0.6rem;
+  }
+
+  .profile-container .profile #avaliability {
+    font-size: 0.6rem;
+  }
+
+  .profile-container .profile #services {
+    font-size: 0.6rem;
+  }
+
+  .profile-container .profile > div > span {
+    font-size: 0.6rem;
+  }
+
+  #edit-profile {
+    width: 10rem;
+  }
 }
