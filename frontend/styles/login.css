@@ -25,6 +25,10 @@ body {
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #login-container h1 {
@@ -48,7 +52,7 @@ body {
 #login-container #login input[type="password"] {
   background-color: var(--grey);
   font-size: 1.3rem;
- 
+
   width: 20rem;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -71,5 +75,14 @@ body {
 
   &:hover {
     background-color: var(--darkBlue);
+  }
+}
+
+#login-container > a {
+  color: var(--red);
+  margin-top: 1.5rem;
+
+  &:hover {
+    color: var(--darkRed);
   }
 }

@@ -4,6 +4,7 @@
 body {
   background-color: var(--grey);
   display: flex;
+  justify-content: center;
 }
 
 #logo {
@@ -13,35 +14,12 @@ body {
   font-weight: 900;
 }
 
-#headerChat {
-  padding: 1rem;
-  gap: 2rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#headerChat h3 {
-  color: #fff;
-}
-
-#searchChatBox {
-  display: flex;
-  background-color: #fff;
-  padding: 5px;
-  border-radius: 10px;
-}
-
-#searchChatBox input {
-  outline: none;
-  border: none;
-}
-
 .match {
-  flex: 70%;
+  width: 70%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 nav {
@@ -89,8 +67,8 @@ nav {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  width: 530px;
-  height: 530px;
+  width: 33rem;
+  height: 33rem;
 
   display: flex;
   flex-direction: column;
@@ -110,7 +88,7 @@ nav {
 }
 
 .name-card {
-  margin: 1rem 1rem 0;
+  margin: 1rem 1rem 0.5rem;
 }
 
 .services {
@@ -120,7 +98,7 @@ nav {
 .services > * {
   margin-top: 0.5rem;
 }
-.services > div span:first-child {
+.services > div > span:first-child {
   font-weight: 600;
 }
 
@@ -138,20 +116,102 @@ nav {
   height: 3rem;
 }
 
-.profile > *:not(:first-child) {
-  margin: 0.5rem 1.5rem;
-}
-
-.profile > div > *:first-child {
-  font-weight: 600;
-}
-
-#services {
+.services-container > span:nth-child(2) {
   word-break: break-all;
   overflow-wrap: break-word;
-  font-size: 1rem;
 }
 
-#avaliability {
-  font-size: 1rem;
+#open-chat {
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--blue);
+
+  width: 9rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin-bottom: 1rem;
+
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: var(--darkBlue);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 29rem;
+    height: 29rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .match {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    width: 24.5rem;
+    height: 24.5rem;
+  }
+
+  .card .name-card {
+    margin-bottom: 0.5rem;
+  }
+
+  .card .imagem {
+    height: 70%;
+  }
+
+  .services > div > span {
+    font-size: 0.8rem;
+  }
+
+  .services > * {
+    margin-top: 0.2rem;
+  }
+
+  .botoes {
+    gap: 3rem;
+    padding: 1rem 0;
+  }
+
+  .botoes img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    width: 21rem;
+    height: 25rem;
+  }
+
+  .services > div > span {
+    font-size: 0.8rem;
+  }
+
+  .services > * {
+    margin-top: 0.2rem;
+  }
+
+  .botoes {
+    gap: 3rem;
+    padding: 1rem 0;
+  }
+
+  .botoes img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card {
+    width: 19.5rem;
+    height: 25rem;
+  }
 }

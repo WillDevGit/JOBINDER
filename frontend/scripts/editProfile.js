@@ -19,8 +19,8 @@ const editImageButton = document.getElementById("edit-image");
 
 const header = document.getElementById("header");
 const botaoVoltar = document.getElementById("voltar");
-const exitEditProfile = document.getElementById("exit-edit-profile");
-const editProfileButton = document.getElementById("edit-profile");
+const closeEditProfileButton = document.getElementById("close-edit-profile");
+const openProfileButton = document.getElementById("edit-profile");
 
 const editName = document.getElementById("edit-name-container");
 const inputName = document.getElementById("input-name");
@@ -55,8 +55,9 @@ avaliability.textContent = usuarioDados.serviceProfile.avaliability;
 let editProfileClicked = false;
 
 // Show the edit profile interface
-editProfileButton.addEventListener("click", () => {
+openProfileButton.addEventListener("click", () => {
   editProfileClicked = true;
+  closeEditProfileButton.style.display = "block";
   editContainer.classList.remove("edit-container-animation-out");
   editContainer.classList.add("edit-container-animation-in");
 });
@@ -101,11 +102,11 @@ botaoVoltar.addEventListener("click", () => {
   location.reload();
 });
 
-// Exit the edit profile interface
-exitEditProfile.addEventListener("click", () => {
+// Close the edit profile interface
+closeEditProfileButton.addEventListener("click", () => {
   editProfileClicked = false;
-  editContainer.classList.add("edit-container-animation-out");
   editContainer.classList.remove("edit-container-animation-in");
+  editContainer.classList.add("edit-container-animation-out");
 });
 
 // Submit the new name
@@ -151,32 +152,22 @@ submitImage.addEventListener("click", () => {
   imagem.src = URL.createObjectURL(serviceImgFile);
 });
 
-if (window.innerWidth <= 700) {
-  if (!editProfileClicked) {
-    editContainer.classList.add("edit-container-animation-out");
-    editContainer.classList.remove("edit-container-animation-in");
-  }
-  editProfileButton.style.display = "block";
-  exitEditProfile.style.display = "block";
-} else {
-  exitEditProfile.style.display = "none";
-  editProfileButton.style.display = "none";
-  editContainer.classList.add("edit-container-animation-in");
-  editContainer.classList.remove("edit-container-animation-out");
-}
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth <= 700) {
-    if (!editProfileClicked) {
-      editContainer.classList.add("edit-container-animation-out");
-      editContainer.classList.remove("edit-container-animation-in");
-    }
-    editProfileButton.style.display = "block";
-    exitEditProfile.style.display = "block";
-  } else {
-    exitEditProfile.style.display = "none";
-    editProfileButton.style.display = "none";
-    editContainer.classList.add("edit-container-animation-in");
+const displayEditProfile = () => {
+  if (window.innerWidth > 700) {
+    closeEditProfileButton.style.display = "none";
+    openProfileButton.style.display = "none";
     editContainer.classList.remove("edit-container-animation-out");
+  } else {
+    openProfileButton.style.display = "block";
+    closeEditProfileButton.style.display = "block";
+    if (!editProfileClicked) {
+      editContainer.classList.remove("edit-container-animation-in");
+    } else {
+      editContainer.style.display = "flex";
+    }
   }
-});
+};
+
+window.addEventListener("resize", displayEditProfile);
+
+displayEditProfile();

@@ -34,17 +34,17 @@ usersData.forEach((user) => {
       img: user.serviceProfile.serviceImg,
       nome: `<h3>${user.fullName}</h3>`,
       desc: `
-      <div>
+      <div class="specialtie-container">
         <span>Especialidade: </span>
         <span>${user.serviceProfile.specialties}</span> 
       </div>
 
-      <div>
+      <div class="avaliability-container">
           <span>Disponibilidade: </span>
           <span>${user.serviceProfile.avaliability}</span>
       </div>
 
-      <div>
+      <div class="services-container">
         <span>Descrição: </span>
         <span>${user.serviceProfile.services}</span>
       </div> 

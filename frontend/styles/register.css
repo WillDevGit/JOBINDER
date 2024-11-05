@@ -50,7 +50,7 @@ body {
 #register-container #register input[type="password"] {
   background-color: var(--grey);
   font-size: 1.3rem;
-  
+
   width: 20rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -78,5 +78,13 @@ body {
 
   &:hover {
     background-color: var(--darkBlue);
+  }
+}
+
+#register-container > a {
+  color: var(--red);
+
+  &:hover {
+    color: var(--darkRed);
   }
 }

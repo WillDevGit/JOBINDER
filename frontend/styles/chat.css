@@ -1,6 +1,6 @@
 @import url(./configs/colors.css);
 
-.chat {
+#chat {
   background-image: linear-gradient(
     to right top,
     #365462,
@@ -10,11 +10,57 @@
     #557b8b
   );
 
+  width: 45%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
-  flex: 30%;
+}
+
+#headerChat {
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#headerChat h3 {
+  color: #fff;
+}
+
+#searchChatBox {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 50%;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#searchChatBox input {
+  text-indent: 0.5rem;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+#chat #close-chat {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  font-size: 1rem;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
 }
 
 #chat-container {
@@ -46,7 +92,7 @@
   background-color: var(--blue);
   color: var(--grey);
 
-  width: 20rem;
+  width: 90%;
   height: 4rem;
   border-radius: 0.5rem;
   margin: 0.5rem;
@@ -66,12 +112,12 @@
 }
 
 #chat-container .chat-box .name-last-message {
+  gap: 0.2rem;
+  margin-left: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 0.2rem;
-  margin-left: 0.5rem;
 }
 
 #chat-container .chat-box .profile-name h3 {
@@ -202,18 +248,18 @@
 
 #private-chat #options-private-chat #exit-private-chat {
   cursor: pointer;
-  background-color: var(--red);
+  background-color: var(--blue);
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: none;
 
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: var(--darkRed);
+    background-color: var(--darkBlue);
   }
 }
 
@@ -327,5 +373,67 @@
 
   &:hover {
     background-color: var(--darkGreen);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #chat {
+    position: fixed;
+    right: 0;
+    width: 50%;
+  }
+
+  #searchChatBox {
+    width: 74%;
+  }
+
+  #private-chat {
+    max-height: calc(100vh - 6.8rem);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #chat {
+    width: 60%;
+  }
+
+  #searchChatBox {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #searchChatBox {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #chat {
+    width: 70%;
+  }
+
+  #searchChatBox {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #chat {
+    width: 100%;
+  }
+
+  #searchChatBox {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #searchChatBox {
+    width: 70%;
+  }
+
+  #chat {
+    width: 100%;
   }
 }

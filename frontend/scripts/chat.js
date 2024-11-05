@@ -187,13 +187,23 @@ textAreaChat.addEventListener("keypress", (event) => {
 
 sendMessageForm.addEventListener("submit", (event) => {
   event.preventDefault();
+
   const message = textAreaChat.value;
+
+  if (message.trim() === "") return;
+
   textAreaChat.value = "";
   textAreaChat.style.height = "auto";
   textAreaChat.style.height = textAreaChat.scrollHeight + "px";
+
   addChatMessage(userLoggedId, chatUserMatchedId, message);
   cleanChatMessages();
   createPrivateChat(chatUserMatchedId);
+
+  // Scroll to the last message
+  const allMessageDivs = document.querySelectorAll(".message");
+  const lastMessageDiv = allMessageDivs[allMessageDivs.length - 1];
+  lastMessageDiv.scrollIntoView();
 });
 
 // Update the chat every second

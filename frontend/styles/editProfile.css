@@ -77,7 +77,7 @@ body {
   border-radius: 0.5rem;
 }
 
-#exit-edit-profile {
+#close-edit-profile {
   cursor: pointer;
   background-color: var(--red);
   color: #fff;
