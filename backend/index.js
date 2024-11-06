@@ -7,6 +7,9 @@ import {
 } from "./user.js";
 import { updateChat } from "../frontend/scripts/chat.js";
 
+// DOM Elements
+const newMatchesCounter = document.getElementById("new-matches-counter");
+
 // User can be not logged
 let userData = null;
 
@@ -17,6 +20,10 @@ if (userLoggedId) {
 
 // Get the users data
 const usersData = getUsersData();
+
+if (newMatchesCounter.textContent === "0")
+  newMatchesCounter.style.display = "none";
+else display = "block";
 
 let cardContent = [];
 
@@ -220,6 +227,10 @@ class Carousel {
       // Verify if the card was moved to the right or to the left
       if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
         insertUserInUsersMatchedId(userLoggedId, this.topCard.id);
+        if (newMatchesCounter.textContent === "0")
+          newMatchesCounter.style.display = "block";
+        newMatchesCounter.textContent =
+          parseInt(newMatchesCounter.textContent) + 1;
         updateChat();
 
         successful = true;

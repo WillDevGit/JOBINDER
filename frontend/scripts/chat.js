@@ -7,6 +7,9 @@ import {
   addChatMessage,
 } from "../../backend/user.js";
 
+// Match DOM Elements
+const newMatchesCounter = document.getElementById("new-matches-counter");
+
 // Chat DOM Elements
 const chatContainer = document.getElementById("chat-container");
 const privateChat = document.getElementById("private-chat");
@@ -93,11 +96,15 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
     userMatchedToBeDeleted = userMatchedId;
   });
 
+  const newUserMatchedSpan = document.createElement("span");
+  newUserMatchedSpan.classList.add("new-user-matched"); 
+
   box.appendChild(img);
   box.appendChild(nameMessageDiv);
   nameMessageDiv.appendChild(profileNameSpan);
   nameMessageDiv.appendChild(lastMessageSpan);
   box.appendChild(deleteButton);
+  box.appendChild(newUserMatchedSpan);
   chatContainer.appendChild(box);
 };
 
