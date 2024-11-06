@@ -69,6 +69,7 @@ nav {
 
   width: 33rem;
   height: 33rem;
+  border-radius: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -83,6 +84,7 @@ nav {
 .imagem {
   background-color: #fff;
   background-size: cover;
+  border-radius: 1rem 1rem 0rem 0rem ;
   width: 100%;
   height: 60%;
 }

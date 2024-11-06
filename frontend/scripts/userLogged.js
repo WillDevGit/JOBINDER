@@ -19,6 +19,8 @@ createServiceProfile.style.display = isUserLogged ? "block" : "none";
 // Add the click event to the exit button
 exit.addEventListener("click", () => {
   sessionStorage.removeItem("userLogged");
+  localStorage.removeItem("userLogged");
+
   exit.style.display = "none";
   login.style.display = "block";
   register.style.display = "block";

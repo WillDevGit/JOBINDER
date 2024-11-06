@@ -58,6 +58,7 @@ let editProfileClicked = false;
 openProfileButton.addEventListener("click", () => {
   editProfileClicked = true;
   closeEditProfileButton.style.display = "block";
+  editContainer.style.display = "flex";
   editContainer.classList.remove("edit-container-animation-out");
   editContainer.classList.add("edit-container-animation-in");
 });
@@ -154,6 +155,7 @@ submitImage.addEventListener("click", () => {
 
 const displayEditProfile = () => {
   if (window.innerWidth > 700) {
+    editContainer.style.display = "flex";
     closeEditProfileButton.style.display = "none";
     openProfileButton.style.display = "none";
     editContainer.classList.remove("edit-container-animation-out");
@@ -162,6 +164,7 @@ const displayEditProfile = () => {
     closeEditProfileButton.style.display = "block";
     if (!editProfileClicked) {
       editContainer.classList.remove("edit-container-animation-in");
+      editContainer.style.display = "none";
     } else {
       editContainer.style.display = "flex";
     }

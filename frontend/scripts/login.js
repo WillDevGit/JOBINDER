@@ -1,13 +1,17 @@
-import { setUserLogged } from "../../backend/createUserSession.js";
+import {
+  setUserLogged,
+  keepUserLogged,
+} from "../../backend/createUserSession.js";
 import { getUser } from "../../backend/user.js";
 
 // Get the form elements
-const login = document.getElementById("login");
 const inputCellphone = document.getElementById("input-cellphone");
 const inputPassword = document.getElementById("input-password");
+const keepLoggedInCheckbox = document.getElementById("keep-logged-in");
+const loginButton = document.getElementById("login");
 
 // Add the submit event to the form
-login.addEventListener("submit", (event) => {
+loginButton.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const cellphone = inputCellphone.value;
@@ -35,9 +39,10 @@ login.addEventListener("submit", (event) => {
     return;
   }
 
-  // Set the user logged in localStorage
-  setUserLogged(cellphone);
-
+  if (keepLoggedInCheckbox.checked)
+    keepUserLogged(cellphone); // Keep the user logged in the local storage
+  else setUserLogged(cellphone); // Set the user logged in the session
+  
   // Redirect to the home page
   window.location.href = "./home.html";
 });

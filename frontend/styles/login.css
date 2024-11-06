@@ -3,7 +3,6 @@
 
 body {
   background-color: var(--blue);
-  gap: 5rem;
   align-items: center;
   flex-direction: column;
 }
@@ -22,19 +21,23 @@ body {
 
 #login-container {
   background-color: #fff;
-  padding: 2rem;
+  width: 25rem;
+  height: 30rem;
   border-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: auto 0;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 #login-container h1 {
   color: var(--blue);
   margin-bottom: 1.5rem;
-  text-align: center;
+  border-bottom: 2px solid var(--blue);
 }
 
 #login-container #login {
@@ -45,29 +48,29 @@ body {
 
 #login-container #login label {
   color: var(--blue);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 #login-container #login input[type="text"],
 #login-container #login input[type="password"] {
   background-color: var(--grey);
-  font-size: 1.3rem;
+  font-size: 1rem;
 
   width: 20rem;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   border: none;
+  outline: none;
 }
 
 #login-container #login input[type="submit"] {
   cursor: pointer;
   background-color: var(--blue);
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 
-  width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   border: none;
 
@@ -78,11 +81,94 @@ body {
   }
 }
 
+#login-container .keep-logged-in-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#login-container .keep-logged-in-container label[for="keep-logged-in"] {
+  cursor: pointer;
+  color: #333;
+  font-size: 1rem;
+}
+
+#login-container .keep-logged-in-container #keep-logged-in {
+  cursor: pointer;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--lightBlue);
+  position: relative;
+}
+
+#login-container .keep-logged-in-container #keep-logged-in:checked {
+  background-color: var(--lightBlue);
+  border-color: var(--lightBlue);
+}
+
+#login-container .keep-logged-in-container #keep-logged-in:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 1rem;
+  position: absolute;
+  left: 20%;
+  top: -10%;
+}
+
 #login-container > a {
   color: var(--red);
   margin-top: 1.5rem;
 
   &:hover {
     color: var(--darkRed);
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .logo a {
+    font-size: 2rem;
+  }
+
+  #login-container {
+    gap: 0.5rem;
+    width: 20rem;
+    height: 27rem;
+  }
+
+  #login-container h1 {
+    font-size: 1.5rem;
+  }
+
+  #login-container #login label {
+    font-size: 1rem;
+  }
+
+  #login-container #login input[type="text"],
+  #login-container #login input[type="password"] {
+    font-size: 0.9rem;
+    width: 15rem;
+  }
+
+  #login-container #login input[type="submit"] {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #login-container .keep-logged-in-container label {
+    font-size: 0.9rem;
+  }
+
+  #login-container > a {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #login-container {
+    width: 100%;
+    height: 26rem;
   }
 }
