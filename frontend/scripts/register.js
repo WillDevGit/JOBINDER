@@ -30,28 +30,33 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   // Get the form values
-  const fullName = inputFullName.value;
   const cellphone = inputCellphone.value;
+  const fullName = inputFullName.value;
   const password = inputPassword.value;
   const confirmPassword = inputConfirmPassword.value;
   const id = cellphone;
-  
-  if (fullName === "") {
+
+  const newNameCaptalized = fullName
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+
+  if (!newNameCaptalized) {
     alert('O campo "Nome Completo" é obrigatório.');
     return;
   }
 
-  if (cellphone === "") {
+  if (!cellphone) {
     alert('O campo "Celular" é obrigatório.');
     return;
   }
 
-  if (password === "") {
+  if (!password) {
     alert('O campo "Senha" é obrigatório.');
     return;
   }
 
-  if (confirmPassword === "") {
+  if (!confirmPassword) {
     alert('O campo "Confirmar Senha" é obrigatório.');
     return;
   }
@@ -75,7 +80,7 @@ form.addEventListener("submit", (event) => {
   // Create the user object
   const user = {
     [id]: {
-      fullName,
+      fullName: newNameCaptalized,
       cellphone,
       password: hashedPassword,
     },

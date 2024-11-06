@@ -123,7 +123,7 @@ const updateUser = (id, user) => {
 // Check if the user name is valid
 const validUserName = (name) => {
   if (name === "") {
-    alert("Nome não pode ser vazio");
+    alert("Nome Completo não pode ser vazio");
     return false;
   } else if (name.length <= 3) {
     alert("Nome muito curto");
@@ -146,7 +146,7 @@ const updateUserName = (id, newName) => {
   if (validNewUserName && userExists) {
     const newNameCaptalized = newName
       .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(" ");
 
     userExists.fullName = newNameCaptalized;

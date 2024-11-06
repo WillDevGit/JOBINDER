@@ -13,7 +13,11 @@ const privateChat = document.getElementById("private-chat");
 const chatMessagesContainer = document.getElementById(
   "chat-messages-container"
 );
-const exitPrivateChat = document.getElementById("exit-private-chat");
+const exitPrivateChat = document.getElementById("close-private-chat");
+const userMatchedServiceImg = document.getElementById(
+  "user-matched-service-img"
+);
+const userMatchedFullname = document.getElementById("user-matched-fullname");
 const textAreaChat = document.getElementById("textarea-chat");
 const sendMessageForm = document.getElementById("send-message-form");
 
@@ -33,8 +37,6 @@ let usersMatchedId = getUsersMatchedId(userLoggedId);
 // Control variables
 let userMatchedToBeDeleted = null;
 let chatUserMatchedId = null;
-let unloggedUser = false;
-let loggedUserNoServiceProfile = false;
 
 const createChatDOM = (userMatchedId, userMatchedData) => {
   const box = document.createElement("div");
@@ -44,28 +46,28 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
       chatContainer.style.display = "none";
       privateChat.style.display = "flex";
       createPrivateChat(userMatchedId);
+
+      // Scroll to the last message
+      const allMessageDivs = document.querySelectorAll(".message");
+      const lastMessageDiv = allMessageDivs[allMessageDivs.length - 1];
+      if (allMessageDivs.length > 0) lastMessageDiv.scrollIntoView();
     }
   });
 
   const img = document.createElement("img");
   img.classList.add("profile-img");
 
-  if (!userMatchedData) unloggedUser = true;
-  else if (!userMatchedData.serviceProfile) loggedUserNoServiceProfile = true;
-
-  if (unloggedUser || loggedUserNoServiceProfile) {
+  if (!userMatchedData || !userMatchedData.serviceProfile)
     img.src = "../images/no-service.jpg.webp";
-  } else {
-    img.src = userMatchedData.serviceProfile.serviceImg;
-  }
+  else img.src = userMatchedData.serviceProfile.serviceImg;
 
   const nameMessageDiv = document.createElement("div");
   nameMessageDiv.classList.add("name-last-message");
 
   const profileNameSpan = document.createElement("span");
   profileNameSpan.classList.add("profile-name");
-  profileNameSpan.textContent = unloggedUser
-    ? "Usuário não logado"
+  profileNameSpan.textContent = !userMatchedData
+    ? "(Usuário não cadastrado)"
     : userMatchedData.fullName;
 
   const lastMessageSpan = document.createElement("span");
@@ -86,13 +88,10 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
     deleteUserMatchedAside.style.display = "flex";
     deleteUserMatchedFullname.textContent =
       userMatchedData === null
-        ? "(Usuário não logado)?"
+        ? "(Usuário não cadastrado)?"
         : userMatchedData && userMatchedData.fullName + "?";
     userMatchedToBeDeleted = userMatchedId;
   });
-
-  unloggedUser = false;
-  loggedUserNoServiceProfile = false;
 
   box.appendChild(img);
   box.appendChild(nameMessageDiv);
@@ -132,6 +131,20 @@ const cleanChatMessages = () => {
 
 const createPrivateChat = (userMatchedId) => {
   chatUserMatchedId = userMatchedId;
+
+  const userMatchedData = getUserData(chatUserMatchedId);
+
+  if (!userMatchedData) {
+    userMatchedFullname.textContent = "(Usuário não cadastrado)";
+    userMatchedServiceImg.src = "../images/no-service.jpg.webp";
+  } else {
+    userMatchedFullname.textContent =
+      userMatchedData.fullName || userMatchedFullname.textContent;
+    userMatchedServiceImg.src = userMatchedData.serviceProfile
+      ? userMatchedData.serviceProfile.serviceImg
+      : "../images/no-service.jpg.webp";
+  }
+
   const chatMessages = getChatMessages(userLoggedId, userMatchedId);
   chatMessages.forEach((chatMessage) => {
     const message = document.createElement("div");

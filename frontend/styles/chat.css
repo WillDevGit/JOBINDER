@@ -237,16 +237,16 @@
   justify-content: space-between;
 }
 
-#private-chat #options-private-chat {
+#private-chat #header-private-chat {
   width: 100%;
-  padding: 1rem;
-
+  padding: 1rem 0.5rem;
+  gap: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-#private-chat #options-private-chat #exit-private-chat {
+#private-chat #header-private-chat #close-private-chat {
   cursor: pointer;
   background-color: var(--blue);
   color: #fff;
@@ -261,6 +261,26 @@
   &:hover {
     background-color: var(--darkBlue);
   }
+}
+
+#private-chat #header-private-chat .user-matched-info {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#private-chat #header-private-chat #user-matched-service-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#private-chat #header-private-chat #user-matched-fullname {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 #private-chat #chat-messages-container {
