@@ -1,14 +1,7 @@
 @import url(./configs/colors.css);
 
 #chat {
-  background-image: linear-gradient(
-    to right top,
-    #365462,
-    #3e5d6c,
-    #456776,
-    #4d7181,
-    #557b8b
-  );
+  background-image: linear-gradient(to right top, #365462, #3e5d6c, #456776, #4d7181, #557b8b);
 
   width: 45%;
   height: 100%;
@@ -141,6 +134,22 @@
   position: absolute;
   right: 1rem;
 }
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 #chat-container .chat-box .new-user-matched {
   background-color: var(--green);
   color: #fff;
@@ -151,8 +160,18 @@
   border: none;
 
   position: absolute;
-  top: -0.2rem;
-  right: -0.2rem;
+  top: 0rem;
+  right: 0rem;
+
+  animation: pulse 1s infinite;
+}
+
+#chat-container .chat-box .hidden {
+  visibility: hidden;
+}
+
+#chat-container .chat-box .visible {
+  visibility: visible !important;
 }
 
 #delete-user-matched-aside {
@@ -199,10 +218,7 @@
   display: flex;
 }
 
-#delete-user-matched-aside
-  .delete-user-matched-container
-  .buttons
-  #cancel-delete {
+#delete-user-matched-aside .delete-user-matched-container .buttons #cancel-delete {
   cursor: pointer;
   background-color: var(--red);
   color: #fff;
@@ -219,10 +235,7 @@
   }
 }
 
-#delete-user-matched-aside
-  .delete-user-matched-container
-  .buttons
-  #confirm-delete {
+#delete-user-matched-aside .delete-user-matched-container .buttons #confirm-delete {
   cursor: pointer;
   background-color: var(--green);
   color: #fff;

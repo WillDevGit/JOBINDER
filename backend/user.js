@@ -1,6 +1,7 @@
 // Get the users
 const getUsers = () => {
-  return JSON.parse(localStorage.getItem("users")) || {};
+  const users = JSON.parse(localStorage.getItem("users"));
+  return users || {};
 };
 
 // Get the users data
@@ -62,31 +63,6 @@ const deleteUserInUsersMatchedId = (userLoggedId, id) => {
   usersMatchedIdObj[id] = newUsersMatchedIdArray2;
 
   localStorage.setItem("usersMatchedId", JSON.stringify(usersMatchedIdObj));
-};
-
-// Get the chat messages
-const getChatMessages = (userLoggedId, userMatched) => {
-  const chatMessages = JSON.parse(localStorage.getItem("chatMessages")) || {};
-  if (!userLoggedId) userLoggedId = -1; // If user is not logged
-  const ids = [userLoggedId, userMatched].sort();
-  const chatKey = `chat-${ids[0]}-${ids[1]}`;
-  return chatMessages[chatKey] || [];
-};
-
-// Add a chat message
-const addChatMessage = (userLoggedId, userMatched, message) => {
-  const chatMessages = JSON.parse(localStorage.getItem("chatMessages")) || {};
-  if (!userLoggedId) userLoggedId = -1; // If user is not logged
-  const ids = [userLoggedId, userMatched].sort();
-  const chatKey = `chat-${ids[0]}-${ids[1]}`;
-  const chat = getChatMessages(userLoggedId, userMatched);
-  chat.push({
-    sender: userLoggedId,
-    message,
-    timestamp: Date.now(),
-  });
-  chatMessages[chatKey] = chat;
-  localStorage.setItem("chatMessages", JSON.stringify(chatMessages));
 };
 
 // Create a new user
@@ -268,6 +244,4 @@ export {
   updateServiceImg,
   insertUserInUsersMatchedId,
   deleteUserInUsersMatchedId,
-  getChatMessages,
-  addChatMessage,
 };
