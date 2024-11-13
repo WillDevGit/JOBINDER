@@ -9,22 +9,28 @@
     <title>Perfil Profissional</title>
   </head>
   <body>
+    
     <a class="exit-to-home" href="./home.html">Página Inicial</a>
-
+    
     <div id="edit-container">
-      <header id="header">
-        <a href="./home.html">Página Inicial</a>
-        <button id="close-edit-profile">Fechar</button>
-      </header>
+      
+      <nav id="options">
+        <header id="header">
+          <span>Menu</span>
+        </header>
+        <ul>
+          <li><a href="./home.html">Página Inicial</a></li>
+          <li><a href="#" onclick=event.preventDefault() id="edit-name">Editar nome</a></li>
+          <li><a href="#" onclick=event.preventDefault() id="edit-specialtie">Editar Especialidade</a></li>
+          <li><a href="#" onclick=event.preventDefault() id="edit-avaliability">Editar Disponibilidade</a></li>
+          <li><a href="#" onclick=event.preventDefault() id="edit-services">Editar Descrição</a></li>
+          <li><a href="#" onclick=event.preventDefault() id="edit-image">Editar Imagem</a></li>
+          <li id="close-edit-profile"><a href="#" onclick=event.preventDefault()>X</a></li>
 
-      <section id="options">
-        <button id="edit-name">Editar Nome</button>
-        <button id="edit-specialtie">Editar Especialidade</button>
-        <button id="edit-avaliability">Editar Disponibilidade</button>
-        <button id="edit-services">Editar Descrição</button>
-        <button id="edit-image">Editar Imagem</button>
-      </section>
-
+        </ul>
+        
+      </nav>
+     
       <button class="botao" id="voltar">Voltar</button>
 
       <section id="edit-name-container">

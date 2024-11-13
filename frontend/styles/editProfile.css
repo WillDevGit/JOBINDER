@@ -57,14 +57,26 @@ body {
 }
 
 #header {
+  line-height: 65px;
+  text-align: center;
+  background-color: #314b57;
+  font-size: 25px;
+  font-weight: 700;
+  border-bottom: 1px solid #203e5e;
+  color: #fff;
+  /**
   margin-top: 2rem;
   gap: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  */
 }
 
 #header a {
+  color: white;
+  text-decoration: none;
+  /**
   cursor: pointer;
   background-color: var(--darkGreen);
   text-decoration: none;
@@ -75,9 +87,15 @@ body {
 
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  */
 }
 
-#close-edit-profile {
+#options #close-edit-profile {
+  padding-left: 20px;
+  text-align: center;
+  background-color: var(--darkRed);
+
+  /**
   cursor: pointer;
   background-color: var(--red);
   color: #fff;
@@ -90,11 +108,15 @@ body {
   border: none;
 
   transition: all 0.2s;
-
+  
   &:hover {
     background-color: var(--darkRed);
   }
+  */
+    
 }
+
+/**
 
 #options {
   margin: auto 0;
@@ -103,6 +125,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+*/
 
 button {
   cursor: pointer;
@@ -120,6 +143,40 @@ button {
   &:hover {
     background-color: var(--darkBlue);
   }
+}
+
+
+#options {
+  width: 100%;
+  height: 100%;
+}
+
+#options li {
+  padding-left: 40px;
+  line-height: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #203e5e;
+  cursor: pointer;
+}
+
+#options li:hover {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 0px 10px 3px #203e5e;
+}
+
+#options li:first-child {
+  border-top: none;
+}
+
+#options li a {
+  color: white; 
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
 #voltar {
@@ -423,3 +480,4 @@ input {
     width: 10rem;
   }
 }
+
