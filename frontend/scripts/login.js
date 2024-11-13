@@ -30,8 +30,7 @@ loginButton.addEventListener("submit", async (event) => {
 
   // Hash the entered password
   const hashedPassword = await hash(password);
-  console.log(hashedPassword);
-  
+
   // Check if the user exists and the password is correct
   if (!userExists || userExists.password !== hashedPassword) {
     toastr.error("Nome de usuário ou senha incorretos");

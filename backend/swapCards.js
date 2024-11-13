@@ -8,12 +8,6 @@ import {
 } from "./user.js";
 import { updateChatDOM } from "../frontend/scripts/chat.js";
 
-// Add the HammerJS library
-const scriptHammerJS = document.createElement("script");
-scriptHammerJS.src = "https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js";
-scriptHammerJS.async = true;
-document.head.appendChild(scriptHammerJS);
-
 // DOM Elements
 const newMatchesCounter = document.getElementById("new-matches-counter");
 
@@ -27,6 +21,7 @@ let userData = userLoggedId ? getUserData(userLoggedId) : null;
 let newMatchesIds = getNewMatchesIds(userLoggedId);
 
 let cardContent = [];
+let specialtie = null;
 
 const updateNewMatchesCounter = () => {
   newMatchesIds = getNewMatchesIds(userLoggedId);
@@ -35,46 +30,57 @@ const updateNewMatchesCounter = () => {
   else newMatchesCounter.style.display = "block";
 };
 
-// Create the cards content with the users data
-usersData.forEach((user) => {
-  if (!user.serviceProfile) return;
+let board = document.querySelector("#board");
 
-  const userAlreadyMatched = getUsersMatchedId(userLoggedId).includes(user.cellphone);
+const cleanCardContainer = () => {
+  // const cardContainer = document.querySelector("#board");
+  //cardContainer.innerHTML = "";
+  board.innerHTML = "";
+  cardContent = [];
+};
 
-  if (userAlreadyMatched) return;
-  if (!userData || user.cellphone !== userData.cellphone) {
-    cardContent.push({
-      img: user.serviceProfile.serviceImg,
-      nome: `<h3>${user.fullName}</h3>`,
-      desc: `
-      <div class="specialtie-container">
-        <span>Especialidade: </span>
-        <span>${user.serviceProfile.specialties}</span> 
-      </div>
+const createCards = (specialtie) => {
+  cleanCardContainer();
+  usersData.forEach((user) => {
+    if (!user.serviceProfile) return;
+    if (specialtie && user.serviceProfile.specialties !== specialtie) return;
 
-      <div class="avaliability-container">
-          <span>Disponibilidade: </span>
-          <span>${user.serviceProfile.avaliability}</span>
-      </div>
+    const userAlreadyMatched = getUsersMatchedId(userLoggedId).includes(user.cellphone);
+    if (userAlreadyMatched) return;
 
-      <div class="services-container">
-        <span>Descrição: </span>
-        <span>${user.serviceProfile.services}</span>
-      </div> 
-       `,
-      id: user.cellphone,
-    });
-  }
-});
+    if (!userData || user.cellphone !== userData.cellphone) {
+      cardContent.push({
+        img: user.serviceProfile.serviceImg,
+        nome: `<h3>${user.fullName}</h3>`,
+        desc: `
+        <div class="specialtie-container">
+          <span>Especialidade: </span>
+          <span>${user.serviceProfile.specialties}</span> 
+        </div>
+  
+        <div class="avaliability-container">
+            <span>Disponibilidade: </span>
+            <span>${user.serviceProfile.avaliability}</span>
+        </div>
+  
+        <div class="services-container">
+          <span>Descrição: </span>
+          <span>${user.serviceProfile.services}</span>
+        </div> 
+         `,
+        id: user.cellphone,
+      });
+    }
+  });
 
-let index = 0;
+  let index = 0;
 
-scriptHammerJS.onload = () => {
   class Carousel {
     constructor(element) {
       this.board = element;
 
       if (cardContent.length === 0) {
+        console.log("Não há usuários para exibir");
         return;
       }
 
@@ -328,10 +334,12 @@ scriptHammerJS.onload = () => {
       index = index == cardContent.length - 1 ? 0 : (index += 1);
     }
   }
-  let board = document.querySelector("#board");
 
   let carousel = new Carousel(board);
 };
+// Create the cards content with the users data
+
+createCards(specialtie);
 
 setInterval(() => {
   newMatchesIds = getNewMatchesIds(userLoggedId);
@@ -339,4 +347,4 @@ setInterval(() => {
 
 updateNewMatchesCounter();
 
-export { updateNewMatchesCounter };
+export { updateNewMatchesCounter, createCards };

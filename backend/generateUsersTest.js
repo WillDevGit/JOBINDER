@@ -1,4 +1,4 @@
-import { hash } from "../frontend/scripts/cryptoJS.js";
+import { getUsers, updateUsers } from "./user.js";
 
 const imgs = [
   "j1.png",
@@ -28,6 +28,12 @@ const imgs = [
 
 let usersTest = {};
 
+// Hash the string
+const hash = (string) => {
+  const hashedString = CryptoJS.SHA256(string).toString();
+  return hashedString;
+};
+
 // Get the users from the API
 const getRandomUser = async () => {
   try {
@@ -50,7 +56,7 @@ const createUsersTest = async () => {
 
   users.forEach(async (user, index) => {
     // Hash the password
-    const hashedPassword = await hash(user.login.password);
+    const hashedPassword = hash(user.login.password);
 
     // Get the cellphone without special characters
     const cellphone = user.cell.replace(/[^0-9]/g, "");
@@ -58,15 +64,15 @@ const createUsersTest = async () => {
 
     let specialties = null;
 
-    if (index >= 0 && index <= 4) specialties = "Jardineiro";
-    else if (index >= 5 && index <= 7) specialties = "Marceneiro";
+    if (index >= 0 && index <= 4) specialties = "Jardinagem";
+    else if (index >= 5 && index <= 7) specialties = "Marcenaria";
     else if (index >= 8 && index <= 9) specialties = "Pintor";
     else if (index >= 10 && index <= 12) specialties = "Poda de Árvores";
     else if (index >= 13 && index <= 15) specialties = "Pedreiro";
-    else if (index >= 13 && index <= 23) specialties = "Desenvolvedor Web";
-    else specialties = "Serralheiro";
+    else if (index >= 13 && index <= 23) specialties = "Desenvolvedor de Software";
+    else specialties = "Outros";
 
-    let object = {
+    let userTest = {
       [id]: {
         cellphone,
         fullName: `${user.name.first} ${user.name.last}`,
@@ -81,25 +87,20 @@ const createUsersTest = async () => {
       },
     };
 
-    // Add the user to the usersTest object
-    usersTest[id] = object[id];
+    // Add the userTest to the usersTest
+    usersTest[id] = userTest[id];
   });
 
-  // Get the users in the database
-  let usersInStorage = JSON.parse(localStorage.getItem("users"));
-  if (!usersInStorage) usersInStorage = {};
-
-  // Update the users in the database
-  localStorage.setItem("users", JSON.stringify(usersTest));
+  // Save the users in the database
+  updateUsers(usersTest);
 };
 
 // Check if users have already been generated
-const initializeUsers = () => {
-  const usersInStorage = localStorage.getItem("users");
-
+const initializeUsers = async () => {
+  const usersInStorage = getUsers();
   // Only create users if they haven't been created before
-  if (!usersInStorage) {
-    createUsersTest();
+  if (!usersInStorage || Object.keys(usersInStorage).length === 0) {
+    await createUsersTest();
   } else {
     console.log("Usuários já foram gerados anteriormente.");
   }

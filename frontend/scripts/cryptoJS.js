@@ -10,6 +10,5 @@ const cryptoJSLoaded = new Promise((resolve) => {
 export const hash = async (string) => {
   await cryptoJSLoaded;
   const hashedString = CryptoJS.SHA256(string).toString();
-  console.log(hashedString);
   return hashedString;
 };

@@ -8,11 +8,16 @@ const categories = [
   "Advocacia",
   "Cabelo",
   "Construção",
+  "Desenvolvedor de Software",
   "Educação",
   "Eventos",
   "Informática",
+  "Jardinagem",
   "Limpeza",
+  "Marcenaria",
   "Mecânica",
+  "Pedreiro",
+  "Pintor",
   "Saúde",
 ];
 

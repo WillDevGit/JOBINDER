@@ -4,6 +4,18 @@ const getUsers = () => {
   return users || {};
 };
 
+// Create the users
+const createUsers = (users) => {
+  localStorage.setItem("users", JSON.stringify(users));
+};
+
+// Update the users
+const updateUsers = (users) => {
+  const usersInStorage = getUsers();
+  const newUsers = { ...usersInStorage, ...users };
+  createUsers(newUsers);
+};
+
 // Get the users data
 const getUsersData = () => {
   const users = getUsers();
@@ -222,6 +234,8 @@ const updateServiceImg = (id, file) => {
 };
 
 export {
+  getUsers,
+  updateUsers,
   getUsersMatchedId,
   createUser,
   getUsersData,
