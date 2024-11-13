@@ -12,11 +12,12 @@
     <div class="match">
       <nav>
         <a id="logo" href="./home.html"> JOBINDER </a>
-        <div class="search-box">
-          <input type="text" id="search-text" placeholder="Procurar Serviço" />
-          <a href="#" id="search-btn">
+        <div id="search-box">
+          <input type="text" id="search-input" placeholder="Procurar Serviço" />
+          <a href="#" id="search-button">
             <img src="../images/lupa.png" />
           </a>
+          <div id="search-dropdown"></div>
         </div>
         <img src="../images/maps.png" />
       </nav>
@@ -75,7 +76,8 @@
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../scripts/fuseJS.js"></script>
     <script type="module" defer src="../../backend/swapCards.js"></script>
-    <script type="module" src="../scripts/chatResponsive.js"></script>
+    <script type="module" defer src="../scripts/chatResponsive.js"></script>
     <script type="module" defer src="../scripts/chat.js"></script>
+    <script type="module" defer src="../scripts/searchService.js"></script>
   </body>
 </html>
