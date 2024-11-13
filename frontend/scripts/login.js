@@ -1,8 +1,6 @@
-import {
-  setUserLogged,
-  keepUserLogged,
-} from "../../backend/createUserSession.js";
+import { setUserLogged, keepUserLogged } from "../../backend/createUserSession.js";
 import { getUser } from "../../backend/user.js";
+import { hash } from "./cryptoJS.js";
 
 // Get the form elements
 const inputCellphone = document.getElementById("input-cellphone");
@@ -11,19 +9,19 @@ const keepLoggedInCheckbox = document.getElementById("keep-logged-in");
 const loginButton = document.getElementById("login");
 
 // Add the submit event to the form
-loginButton.addEventListener("submit", (event) => {
+loginButton.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const cellphone = inputCellphone.value;
   const password = inputPassword.value;
 
   if (cellphone === "") {
-    alert('O campo "Celular" é obrigatório.');
+    toastr.error('O campo "Celular" é obrigatório.');
     return;
   }
 
   if (password === "") {
-    alert('O campo "Senha" é obrigatório.');
+    toastr.error('O campo "Senha" é obrigatório.');
     return;
   }
 
@@ -31,18 +29,23 @@ loginButton.addEventListener("submit", (event) => {
   const userExists = getUser(cellphone);
 
   // Hash the entered password
-  const hashedPassword = CryptoJS.SHA256(password).toString();
-
+  const hashedPassword = await hash(password);
+  console.log(hashedPassword);
+  
   // Check if the user exists and the password is correct
   if (!userExists || userExists.password !== hashedPassword) {
-    alert("Nome de usuário ou senha incorretos");
+    toastr.error("Nome de usuário ou senha incorretos");
     return;
   }
 
   if (keepLoggedInCheckbox.checked)
     keepUserLogged(cellphone); // Keep the user logged in the local storage
   else setUserLogged(cellphone); // Set the user logged in the session
-  
-  // Redirect to the home page
-  window.location.href = "./home.html";
+
+  toastr.success("Login efetuado com sucesso!");
+
+  // Redirect to the home page after 2 seconds
+  setTimeout(() => {
+    window.location.href = "./home.html";
+  }, 2000);
 });

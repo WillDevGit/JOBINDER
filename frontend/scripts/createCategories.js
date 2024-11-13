@@ -1,4 +1,4 @@
-import { userLoggedId } from "../../backend/createUserSession.js"; 
+import { userLoggedId } from "../../backend/createUserSession.js";
 import { getUser, updateUser } from "../../backend/user.js";
 
 // Get the elements from the DOM
@@ -59,7 +59,7 @@ const removeSelected = () => {
 // Confirm the category
 confirmCategory.addEventListener("click", () => {
   if (categoriaSelecionada === null) {
-    alert("Selecione uma categoria.");
+    toastr.warning("Selecione uma categoria.");
     return;
   }
 
@@ -74,7 +74,11 @@ confirmCategory.addEventListener("click", () => {
   user.serviceProfile.specialties = categoriaSelecionada;
   updateUser(userLoggedId, user);
 
-  // Redirect to the Create Service Profile page
-  if (onlyEditSpecialtie) window.location.href = "./editProfile.html";
-  else window.location.href = "./createServiceProfile.html";
+  toastr.success("Categoria selecionada com sucesso!");
+
+  // Redirect to the Create Service Profile page after 2 seconds
+  setTimeout(() => {
+    if (onlyEditSpecialtie) window.location.href = "./editProfile.html";
+    else window.location.href = "./createServiceProfile.html";
+  }, 2000);
 });

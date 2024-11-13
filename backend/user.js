@@ -18,15 +18,13 @@ const getUsersData = () => {
 // Get the users matched id
 const getUsersMatchedId = (id) => {
   if (!id) id = -1; // If user is not logged
-  const usersMatchedIdObj =
-    JSON.parse(localStorage.getItem("usersMatchedId")) || {};
+  const usersMatchedIdObj = JSON.parse(localStorage.getItem("usersMatchedId")) || {};
   return usersMatchedIdObj[id] || [];
 };
 
 // Update the users matched id
 const insertUserInUsersMatchedId = (userLoggedId, newId) => {
-  const usersMatchedIdObj =
-    JSON.parse(localStorage.getItem("usersMatchedId")) || {};
+  const usersMatchedIdObj = JSON.parse(localStorage.getItem("usersMatchedId")) || {};
   if (!userLoggedId) userLoggedId = -1; // If user is not logged
 
   // Update the users matched id of the user logged
@@ -44,22 +42,17 @@ const insertUserInUsersMatchedId = (userLoggedId, newId) => {
 
 // Delete the user in the users matched id
 const deleteUserInUsersMatchedId = (userLoggedId, id) => {
-  const usersMatchedIdObj =
-    JSON.parse(localStorage.getItem("usersMatchedId")) || {};
+  const usersMatchedIdObj = JSON.parse(localStorage.getItem("usersMatchedId")) || {};
   if (!userLoggedId) userLoggedId = -1; // If user is not logged
 
   // Delete the user in the users matched id of the user logged
   const usersMatchedIdArray = getUsersMatchedId(userLoggedId);
-  const newUsersMatchedIdArray = usersMatchedIdArray.filter(
-    (userId) => userId !== id
-  );
+  const newUsersMatchedIdArray = usersMatchedIdArray.filter((userId) => userId !== id);
   usersMatchedIdObj[userLoggedId] = newUsersMatchedIdArray;
 
   // Delete the user in the users matched id of the other user
   const usersMatchedIdArray2 = getUsersMatchedId(id);
-  const newUsersMatchedIdArray2 = usersMatchedIdArray2.filter(
-    (userId) => userId !== userLoggedId
-  );
+  const newUsersMatchedIdArray2 = usersMatchedIdArray2.filter((userId) => userId !== userLoggedId);
   usersMatchedIdObj[id] = newUsersMatchedIdArray2;
 
   localStorage.setItem("usersMatchedId", JSON.stringify(usersMatchedIdObj));
@@ -99,16 +92,16 @@ const updateUser = (id, user) => {
 // Check if the user name is valid
 const validUserName = (name) => {
   if (name === "") {
-    alert("Nome Completo não pode ser vazio");
+    toastr.error('O campo "Nome Completo" é obrigatório.');
     return false;
   } else if (name.length <= 3) {
-    alert("Nome muito curto");
+    toastr.error("Nome muito curto. Por favor, insira seu nome completo.");
     return false;
-  } else if (name.length > 25) {
-    alert("Nome muito longo");
+  } else if (name.length > 30) {
+    toastr.error("Nome muito longo");
     return false;
   } else if (!name.match(/^[a-zA-Z\s]*$/)) {
-    alert("Nome inválido");
+    toastr.error("Nome inválido");
     return false;
   }
   return true;
@@ -136,13 +129,13 @@ const updateUserName = (id, newName) => {
 // Check if the user avaliability is valid
 const validUserAvaliability = (avaliability) => {
   if (avaliability === "") {
-    alert('O campo "Disponibilidade" é obrigatório.');
+    toastr.error('O campo "Disponibilidade" é obrigatório.');
     return false;
   } else if (avaliability.length <= 10) {
-    alert("Descrição da disponibilidade muito curta");
+    toastr.error("Descrição da disponibilidade muito curta");
     return false;
-  } else if (avaliability.length > 200) {
-    alert("Descrição da disponibilidade muito longa");
+  } else if (avaliability.length > 100) {
+    toastr.error("Descrição da disponibilidade muito longa");
     return false;
   }
   return true;
@@ -165,13 +158,13 @@ const updateUserAvaliability = (id, newAvaliability) => {
 // Check if the user services is valid
 const validUserServices = (services) => {
   if (services === "") {
-    alert('O campo "Serviços" é obrigatório.');
+    toastr.error('O campo "Serviços" é obrigatório.');
     return false;
   } else if (services.length <= 10) {
-    alert("Descrição dos serviços muito curta");
+    toastr.error("Descrição dos serviços muito curta");
     return false;
   } else if (services.length > 200) {
-    alert("Descrição dos serviços muito longa");
+    toastr.error("Descrição dos serviços muito longa");
     return false;
   }
   return true;
@@ -196,19 +189,19 @@ const updateServiceImg = (id, file) => {
   const userExists = getUser(id);
 
   if (!userExists) {
-    alert("Usuário não encontrado.");
+    toastr.error("Usuário não encontrado.");
     return;
   }
 
   if (!file) {
-    alert("O campo 'Imagem do Serviço' é obrigatório.");
+    toastr.error("O campo 'Imagem do Serviço' é obrigatório.");
     return;
   }
 
   // Check if the file is an image
   const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
   if (!validImageTypes.includes(file.type)) {
-    alert("Por favor, envie uma imagem no formato JPEG, PNG ou GIF.");
+    toastr.error("Por favor, envie uma imagem no formato JPEG, PNG ou GIF.");
     return;
   }
 

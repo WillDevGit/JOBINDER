@@ -1,3 +1,5 @@
+import { hash } from "./cryptoJS.js";
+
 // Get the form and the inputs
 const form = document.getElementById("register");
 const inputFullName = document.getElementById("input-fullname");
@@ -6,9 +8,7 @@ const inputPassword = document.getElementById("input-password");
 const inputConfirmPassword = document.getElementById("input-confirm-password");
 
 // Get the users from localStorage
-const users = localStorage.getItem("users")
-  ? JSON.parse(localStorage.getItem("users"))
-  : {};
+const users = localStorage.getItem("users") ? JSON.parse(localStorage.getItem("users")) : {};
 
 // Create the user
 const createUser = (user) => {
@@ -26,7 +26,7 @@ const getUserData = (id) => {
   } else return null;
 };
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   // Get the form values
@@ -42,27 +42,27 @@ form.addEventListener("submit", (event) => {
     .join(" ");
 
   if (!newNameCaptalized) {
-    alert('O campo "Nome Completo" é obrigatório.');
+    toastr.error('O campo "Nome Completo" é obrigatório.');
     return;
   }
 
   if (!cellphone) {
-    alert('O campo "Celular" é obrigatório.');
+    toastr.error('O campo "Celular" é obrigatório.');
     return;
   }
 
   if (!password) {
-    alert('O campo "Senha" é obrigatório.');
+    toastr.error('O campo "Senha" é obrigatório.');
     return;
   }
 
   if (!confirmPassword) {
-    alert('O campo "Confirmar Senha" é obrigatório.');
+    toastr.error('O campo "Repita a senha" é obrigatório.');
     return;
   }
 
   if (password !== confirmPassword) {
-    alert("As senhas não coincidem.");
+    toastr.error("As senhas não coincidem.");
     return;
   }
 
@@ -70,12 +70,12 @@ form.addEventListener("submit", (event) => {
   const cellphoneExists = getUserData(id);
 
   if (cellphoneExists) {
-    alert("Celular já cadastrado.");
+    toastr.error("Celular já cadastrado.");
     return;
   }
 
   // Hash the password
-  const hashedPassword = CryptoJS.SHA256(password).toString();
+  const hashedPassword = await hash(password);
 
   // Create the user object
   const user = {
@@ -89,5 +89,10 @@ form.addEventListener("submit", (event) => {
   // Create the user
   createUser(user);
 
-  window.location.href = "./login.html";
+  toastr.success("Cadastro efetuado com sucesso!");
+
+  // Redirect to the login page after 2 seconds
+  setTimeout(() => {
+    window.location.href = "./login.html";
+  }, 2000);
 });

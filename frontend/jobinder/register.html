@@ -24,7 +24,7 @@
         <label for="input-password">Crie uma senha:</label>
         <input id="input-password" type="password" />
 
-        <label for="input-confirm-password">Confirmação da senha:</label>
+        <label for="input-confirm-password">Repita a senha:</label>
         <input id="input-confirm-password" type="password" />
 
         <input type="submit" id="submit-register" />
@@ -32,7 +32,8 @@
       <a href="./login.html">Faça login em sua conta aqui</a>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script type="module" src="../scripts/toaster.js"></script>
+    <script type="module" src="../scripts/cryptoJS.js"></script>
     <script defer type="module" src="../../backend/user.js"></script>
     <script defer type="module" src="../scripts/register.js"></script>
   </body>

@@ -1,9 +1,5 @@
 import { userLoggedId } from "../../backend/createUserSession.js";
-import {
-  getUser,
-  updateUser,
-  validUserServices,
-} from "../../backend/user.js";
+import { getUser, updateUser, validUserServices } from "../../backend/user.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Get the form elements
@@ -19,11 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fill the form fields with the user data
   specialties.textContent = user.serviceProfile.specialties;
 
-  if (user.serviceProfile.services)
-    inputServices.value = user.serviceProfile.services;
+  if (user.serviceProfile.services) inputServices.value = user.serviceProfile.services;
 
-  if (user.serviceProfile.avaliability)
-    inputAvaliability.value = user.serviceProfile.avaliability;
+  if (user.serviceProfile.avaliability) inputAvaliability.value = user.serviceProfile.avaliability;
 
   // Add the submit event to the form
   formServiceProfile.addEventListener("submit", (event) => {
@@ -37,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!validUserServices(services)) return;
 
     if (avaliability === "") {
-      alert('O campo "Disponibilidade" é obrigatório.');
+      toastr.error('O campo "Disponibilidade" é obrigatório.');
       return;
     }
 
     if (!serviceImgFile) {
-      alert('O campo "Imagem do Serviço" é obrigatório.');
+      toastr.error('O campo "Imagem do Serviço" é obrigatório.');
       return;
     }
 
@@ -59,8 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // Update the user in the localStorage
       updateUser(userLoggedId, user);
 
-      // Redirect to the Home page
-      window.location.href = "./home.html";
+      toastr.success("Perfil de serviço criado com sucesso!");
+
+      // Redirect to the Home page after 2 seconds
+      setTimeout(() => {
+        window.location.href = "./home.html";
+      }, 2000);
     };
 
     // Read the image as Data URL

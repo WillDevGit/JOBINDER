@@ -1,3 +1,5 @@
+import { hash } from "../frontend/scripts/cryptoJS.js";
+
 const imgs = [
   "j1.png",
   "j2.png",
@@ -29,9 +31,7 @@ let usersTest = {};
 // Get the users from the API
 const getRandomUser = async () => {
   try {
-    const response = await fetch(
-      "https://randomuser.me/api/?results=23&nat=br"
-    );
+    const response = await fetch("https://randomuser.me/api/?results=23&nat=br");
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -48,9 +48,9 @@ const getRandomUser = async () => {
 const createUsersTest = async () => {
   const users = await getRandomUser();
 
-  users.forEach((user, index) => {
+  users.forEach(async (user, index) => {
     // Hash the password
-    const hashedPassword = CryptoJS.SHA256(user.login.password).toString();
+    const hashedPassword = await hash(user.login.password);
 
     // Get the cellphone without special characters
     const cellphone = user.cell.replace(/[^0-9]/g, "");

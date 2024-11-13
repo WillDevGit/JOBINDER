@@ -52,10 +52,7 @@
         </div>
         <div id="chat-messages-container"></div>
         <form id="send-message-form">
-          <textarea
-            placeholder="Digite uma mensagem..."
-            id="textarea-chat"
-          ></textarea>
+          <textarea placeholder="Digite uma mensagem..." id="textarea-chat"></textarea>
           <input type="submit" id="send-message" value="enviar" />
         </form>
       </div>
@@ -75,9 +72,10 @@
       </div>
     </aside>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script type="module" src="../scripts/toaster.js"></script>
+    <script type="module" src="../scripts/fuseJS.js"></script>
     <script type="module" defer src="../../backend/swapCards.js"></script>
-    <script src="../scripts/chatResponsive.js"></script>
+    <script type="module" src="../scripts/chatResponsive.js"></script>
     <script type="module" defer src="../scripts/chat.js"></script>
   </body>
 </html>
