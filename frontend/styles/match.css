@@ -32,28 +32,62 @@ nav {
   align-items: center;
 }
 
-.search-box {
+#search-box {
   background-color: #fff;
 
   width: 20rem;
-  height: 2rem;
+  height: 2.5rem;
   padding: 1rem;
   border-radius: 1rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
-.search-box a {
+#search-box a {
   display: flex;
   align-items: center;
 }
 
-#search-text {
+#search-box #search-input {
+  font-size: 1rem;
   width: 90%;
   border: none;
   outline: none;
+}
+
+#search-box #search-dropdown {
+  display: none;
+  overflow: hidden;
+  background-color: #fff;
+
+  width: 100%;
+  border-radius: 0 0 1rem 1rem;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  border-top: 1px solid var(--grey);
+
+  z-index: 1;
+}
+
+#search-dropdown > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#search-dropdown > ul > li {
+  cursor: pointer;
+  width: 100%;
+  padding: 1rem;
+  &:hover {
+    background-color: var(--grey);
+  }
 }
 
 #board {
