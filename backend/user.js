@@ -196,6 +196,20 @@ const updateUserServices = (id, newServices) => {
   return null;
 };
 
+const updateLocation = (id, state, city) => {
+  const userExists = getUser(id);
+
+  if (!userExists) {
+    toastr.error("Usuário não encontrado.");
+    return;
+  }
+
+  userExists.serviceProfile.location.state = state;
+  userExists.serviceProfile.location.city = city;
+
+  updateUser(id, userExists);
+};
+
 // Update the service image
 const updateServiceImg = (id, file) => {
   const userExists = getUser(id);
@@ -248,6 +262,7 @@ export {
   updateUserAvaliability,
   validUserServices,
   updateUserServices,
+  updateLocation,
   updateServiceImg,
   insertUserInUsersMatchedId,
   deleteUserInUsersMatchedId,

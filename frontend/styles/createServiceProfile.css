@@ -23,12 +23,12 @@ body {
 
 #service-profile-container {
   background-color: #fff;
-  
+
   gap: 2rem;
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,22 +67,25 @@ body {
   user-select: none;
 }
 
-#form-service-profile input[type="submit"] {
+#form-service-profile #select-state,
+#form-service-profile #select-city {
   cursor: pointer;
-  background-color: var(--blue);
-  font-size: 1.3rem;
-  color: white;
-
-  width: 100%;
+  width: 20rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  font-size: 1.2rem;
   border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--grey);
 
-  transition: background-color 0.3s ease;
+  &:focus {
+    outline: none;
+  }
 }
 
-#form-service-profile input[type="submit"]:hover {
-  background-color: var(--darkBlue);
+#form-service-profile #select-state option:first-child,
+#form-service-profile #select-city option:first-child {
+  color: #ccc;
 }
 
 #input-service-img {
@@ -108,4 +111,22 @@ body {
 
 #input-service-img::file-selector-button {
   padding: 5px 10px;
+}
+
+#form-service-profile input[type="submit"] {
+  cursor: pointer;
+  background-color: var(--blue);
+  font-size: 1.3rem;
+  color: white;
+
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--darkBlue);
+  }
 }

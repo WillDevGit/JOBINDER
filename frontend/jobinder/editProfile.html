@@ -9,28 +9,25 @@
     <title>Perfil Profissional</title>
   </head>
   <body>
-    
     <a class="exit-to-home" href="./home.html">Página Inicial</a>
-    
+
     <div id="edit-container">
-      
-      <nav id="options">
+      <section id="options">
         <header id="header">
           <span>Menu</span>
         </header>
-        <ul>
+        <ul id="options-list">
           <li><a href="./home.html">Página Inicial</a></li>
-          <li><a href="#" onclick=event.preventDefault() id="edit-name">Editar nome</a></li>
-          <li><a href="#" onclick=event.preventDefault() id="edit-specialtie">Editar Especialidade</a></li>
-          <li><a href="#" onclick=event.preventDefault() id="edit-avaliability">Editar Disponibilidade</a></li>
-          <li><a href="#" onclick=event.preventDefault() id="edit-services">Editar Descrição</a></li>
-          <li><a href="#" onclick=event.preventDefault() id="edit-image">Editar Imagem</a></li>
-          <li id="close-edit-profile"><a href="#" onclick=event.preventDefault()>X</a></li>
-
+          <li id="edit-name">Editar nome</li>
+          <li id="edit-specialtie">Editar Especialidade</li>
+          <li id="edit-avaliability">Editar Disponibilidade</li>
+          <li id="edit-services">Editar Descrição</li>
+          <li id="edit-state-city">Editar Estado e Cidade</li>
+          <li id="edit-image">Editar Imagem</li>
+          <li id="close-edit-profile">X</li>
         </ul>
-        
-      </nav>
-     
+      </section>
+
       <button class="botao" id="voltar">Voltar</button>
 
       <section id="edit-name-container">
@@ -54,6 +51,16 @@
           placeholder="Escreva uma nova descrição"
         ></textarea>
         <button class="botao" id="submit-services">Mudar Descrição</button>
+      </section>
+
+      <section id="edit-state-city-container">
+        <select name="" id="select-state">
+          <option value="" disabled selected>Selecione um estado</option>
+        </select>
+        <select name="" id="select-city">
+          <option value="" disabled selected>Selecione uma cidade</option>
+        </select>
+        <button class="botao" id="submit-state-city">Mudar Estado e Cidade</button>
       </section>
 
       <section id="edit-image-container">

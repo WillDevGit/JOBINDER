@@ -4,8 +4,10 @@ import {
   updateUserName,
   updateUserAvaliability,
   updateUserServices,
+  updateLocation,
   updateServiceImg,
 } from "../../backend/user.js";
+import { getStates, getCities } from "./brasilAPI.js";
 
 const usuarioDados = getUserData(userLoggedId);
 
@@ -15,6 +17,7 @@ const editFullNameButton = document.getElementById("edit-name");
 const editSpecialtieButton = document.getElementById("edit-specialtie");
 const editAvaliabilityButton = document.getElementById("edit-avaliability");
 const editServicesButton = document.getElementById("edit-services");
+const editStateCityButton = document.getElementById("edit-state-city");
 const editImageButton = document.getElementById("edit-image");
 
 const header = document.getElementById("header");
@@ -33,6 +36,11 @@ const submitAvaliability = document.getElementById("submit-avaliability");
 const editServices = document.getElementById("edit-services-container");
 const textareaServices = document.getElementById("textarea-services");
 const submitServices = document.getElementById("submit-services");
+
+const editStateCity = document.getElementById("edit-state-city-container");
+const selectState = document.getElementById("select-state");
+const selectCity = document.getElementById("select-city");
+const submitStateCity = document.getElementById("submit-state-city");
 
 const editImage = document.getElementById("edit-image-container");
 const inputImage = document.getElementById("input-image");
@@ -90,6 +98,14 @@ editServicesButton.addEventListener("click", () => {
   editServices.style.display = "flex";
 });
 
+// Change to the state and city editing interface
+editStateCityButton.addEventListener("click", () => {
+  header.style.display = "none";
+  options.style.display = "none";
+  botaoVoltar.style.display = "flex";
+  editStateCity.style.display = "flex";
+});
+
 // Change to the image editing interface
 editImageButton.addEventListener("click", () => {
   header.style.display = "none";
@@ -100,7 +116,14 @@ editImageButton.addEventListener("click", () => {
 
 // Return to the options interface
 botaoVoltar.addEventListener("click", () => {
-  location.reload();
+  botaoVoltar.style.display = "none";
+  editName.style.display = "none";
+  editAvaliability.style.display = "none";
+  editServices.style.display = "none";
+  editStateCity.style.display = "none";
+  editImage.style.display = "none";
+  header.style.display = "block";
+  options.style.display = "block";
 });
 
 // Close the edit profile interface
@@ -124,10 +147,7 @@ submitName.addEventListener("click", () => {
 // Submit the new user avaliability
 submitAvaliability.addEventListener("click", () => {
   const newAvaliabilityInput = inputAvaliability.value;
-  const newAvaliability = updateUserAvaliability(
-    userLoggedId,
-    newAvaliabilityInput
-  );
+  const newAvaliability = updateUserAvaliability(userLoggedId, newAvaliabilityInput);
 
   if (!newAvaliability) return;
 
@@ -144,6 +164,41 @@ submitServices.addEventListener("click", () => {
 
   services.textContent = newServices;
   textareaServices.value = "";
+});
+
+submitStateCity.addEventListener("click", () => {
+  const newCity = selectCity.value;
+  const newState = selectState.value;
+
+  if (!newCity || !newState) {
+    toastr.error("Selecione um estado e uma cidade.");
+    return;
+  }
+
+  updateLocation(userLoggedId, newState, newCity);
+
+  toastr.success("Cidade e estado atualizados com sucesso.");
+});
+
+// Get the cities of the selected state
+selectState.addEventListener("change", async () => {
+  const cities = await getCities(selectState.value);
+
+  selectCity.innerHTML = "";
+
+  const nullOption = document.createElement("option");
+  nullOption.value = "";
+  nullOption.textContent = "Selecione uma cidade";
+  nullOption.disabled = true;
+  nullOption.selected = true;
+  selectCity.appendChild(nullOption);
+
+  cities.forEach((city) => {
+    const option = document.createElement("option");
+    option.value = city.nome;
+    option.textContent = city.nome;
+    selectCity.appendChild(option);
+  });
 });
 
 // Submit the new service image
@@ -171,6 +226,20 @@ const displayEditProfile = () => {
   }
 };
 
+const createStatesOptions = async () => {
+  const states = await getStates();
+
+  states.sort((a, b) => (a.nome > b.nome ? 1 : -1));
+
+  states.forEach((state) => {
+    const option = document.createElement("option");
+    option.value = state.sigla;
+    option.textContent = state.nome;
+    selectState.appendChild(option);
+  });
+};
+
 window.addEventListener("resize", displayEditProfile);
 
+await createStatesOptions();
 displayEditProfile();
