@@ -7,7 +7,7 @@ import {
   updateLocation,
   updateServiceImg,
 } from "../../backend/user.js";
-import { getStates, getCities } from "./brasilAPI.js";
+import { getStates, getCities } from "./location.js";
 
 const usuarioDados = getUserData(userLoggedId);
 

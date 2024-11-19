@@ -14,13 +14,36 @@
         <a id="logo" href="./home.html"> JOBINDER </a>
         <div id="search-box">
           <input type="text" id="search-input" placeholder="Procurar Serviço" />
-          <a href="#" id="search-button">
+          <button id="search-button">
             <img src="../images/lupa.png" />
-          </a>
+          </button>
           <div id="search-dropdown"></div>
         </div>
-        <img src="../images/maps.png" />
+        <button id="search-map">
+          <img src="../images/maps.png" />
+        </button>
       </nav>
+
+      <aside id="select-state-city-aside">
+        <div class="select-state-city-container">
+          <div>
+            <label for="select-state">Estado:</label>
+            <select id="select-state">
+              <option value="" disabled selected>Selecione um estado</option>
+            </select>
+          </div>
+          <div>
+            <label for="select-city">Cidade:</label>
+            <select id="select-city">
+              <option value="" disabled selected>Selecione uma cidade</option>
+            </select>
+          </div>
+          <div class="buttons-state-city">
+            <button id="state-city-confirm">Confirmar</button>
+            <button id="state-city-cancel">Cancelar</button>
+          </div>
+        </div>
+      </aside>
 
       <div id="board"></div>
       <button id="open-chat">

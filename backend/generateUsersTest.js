@@ -1,4 +1,5 @@
 import { getUsers, updateUsers } from "./user.js";
+import { getCities } from "../frontend/scripts/location.js";
 
 const imgs = [
   "j1.png",
@@ -53,6 +54,7 @@ const getRandomUser = async () => {
 // Save the users in the database
 const createUsersTest = async () => {
   const users = await getRandomUser();
+  const cities = await getCities("SP");
 
   users.forEach(async (user, index) => {
     // Hash the password
@@ -63,6 +65,8 @@ const createUsersTest = async () => {
     const id = cellphone;
 
     let specialties = null;
+
+    const randomCity = cities[Math.floor(Math.random() * cities.length)].nome;
 
     if (index >= 0 && index <= 4) specialties = "Jardinagem";
     else if (index >= 5 && index <= 7) specialties = "Marcenaria";
@@ -84,8 +88,8 @@ const createUsersTest = async () => {
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
           specialties,
           location: {
-            state: user.location.state,
-            city: user.location.city,
+            state: "São Paulo",
+            city: randomCity,
           },
         },
       },

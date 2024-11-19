@@ -21,7 +21,8 @@ let userData = userLoggedId ? getUserData(userLoggedId) : null;
 let newMatchesIds = getNewMatchesIds(userLoggedId);
 
 let cardContent = [];
-let specialtie = null;
+let specialtieSearched = null;
+let citySearched = null;
 
 const updateNewMatchesCounter = () => {
   newMatchesIds = getNewMatchesIds(userLoggedId);
@@ -39,14 +40,21 @@ const cleanCardContainer = () => {
   cardContent = [];
 };
 
-const createCards = (specialtie) => {
+const userContainsRequirements = (user, specialtie, city) => {
+  if (!user.serviceProfile) return false;
+  if (specialtie && user.serviceProfile.specialties !== specialtie) return false;
+  if (city && user.serviceProfile.location.city !== city) return false;
+  
+  const userAlreadyMatched = getUsersMatchedId(userLoggedId).includes(user.cellphone);
+  if (userAlreadyMatched) return false;
+  
+  return true;
+};
+
+const createCards = (specialtie, city) => {
   cleanCardContainer();
   usersData.forEach((user) => {
-    if (!user.serviceProfile) return;
-    if (specialtie && user.serviceProfile.specialties !== specialtie) return;
-
-    const userAlreadyMatched = getUsersMatchedId(userLoggedId).includes(user.cellphone);
-    if (userAlreadyMatched) return;
+    if (!userContainsRequirements(user, specialtie, city)) return;
 
     if (!userData || user.cellphone !== userData.cellphone) {
       cardContent.push({
@@ -80,7 +88,7 @@ const createCards = (specialtie) => {
       this.board = element;
 
       if (cardContent.length === 0) {
-        console.log("Não há usuários para exibir");
+        toastr.error("Não há trabalhadores disponíveis com essas características");
         return;
       }
 
@@ -339,7 +347,7 @@ const createCards = (specialtie) => {
 };
 // Create the cards content with the users data
 
-createCards(specialtie);
+createCards(specialtieSearched, citySearched);
 
 setInterval(() => {
   newMatchesIds = getNewMatchesIds(userLoggedId);

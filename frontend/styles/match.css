@@ -22,7 +22,7 @@ body {
   justify-content: center;
 }
 
-nav {
+.match nav {
   width: 100%;
   padding: 1rem;
   gap: 1rem;
@@ -32,7 +32,7 @@ nav {
   align-items: center;
 }
 
-#search-box {
+.match nav #search-box {
   background-color: #fff;
 
   width: 20rem;
@@ -46,19 +46,21 @@ nav {
   position: relative;
 }
 
-#search-box a {
-  display: flex;
-  align-items: center;
-}
-
-#search-box #search-input {
+.match nav #search-box #search-input {
   font-size: 1rem;
   width: 90%;
   border: none;
   outline: none;
 }
 
-#search-box #search-dropdown {
+.match nav #search-box button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.match nav #search-box #search-dropdown {
   display: none;
   overflow: hidden;
   background-color: #fff;
@@ -75,13 +77,13 @@ nav {
   z-index: 1;
 }
 
-#search-dropdown > ul {
+.match nav #search-dropdown > ul {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
 
-#search-dropdown > ul > li {
+.match nav #search-dropdown > ul > li {
   cursor: pointer;
   width: 100%;
   padding: 1rem;
@@ -90,14 +92,109 @@ nav {
   }
 }
 
-#board {
+.match nav #search-map {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.match #select-state-city-aside {
+  display: none;
+  background-color: hsla(0, 0%, 0%, 0.9);
+
+  height: 100vh;
+  width: 100%;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  z-index: 4;
+}
+
+.match #select-state-city-aside .select-state-city-container {
+  background-color: var(--blue);
+
+  gap: 3rem;
+  padding: 3rem;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match #select-state-city-aside .select-state-city-container div {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match #select-state-city-aside .select-state-city-container label {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.match #select-state-city-aside .select-state-city-container select {
+  cursor: pointer;
+  width: 13rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+.match #select-state-city-aside .select-state-city-container .buttons-state-city {
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.match #select-state-city-aside .select-state-city-container #state-city-confirm {
+  cursor: pointer;
+  background-color: var(--green);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--darkGreen);
+  }
+}
+
+.match #select-state-city-aside .select-state-city-container #state-city-cancel {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+}
+
+.match #board {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
 }
 
-.card {
+.match #board .card {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -115,7 +212,7 @@ nav {
   transform: translateX(-50%) translateY(-50%);
 }
 
-.imagem {
+.match #board .card .imagem {
   background-color: #fff;
   background-size: cover;
   border-radius: 1rem 1rem 0rem 0rem;
@@ -123,22 +220,22 @@ nav {
   height: 60%;
 }
 
-.name-card {
+.match #board .card .name-card {
   margin: 1rem 1rem 0.5rem;
 }
 
-.services {
+.match #board .card .services {
   margin: 0 1rem;
 }
 
-.services > * {
+.match #board .card .services > * {
   margin-top: 0.5rem;
 }
-.services > div > span:first-child {
+.match #board .card .services > div > span:first-child {
   font-weight: 600;
 }
 
-.botoes {
+.match #board .card .botoes {
   gap: 4rem;
   padding: 0.5rem 0;
 
@@ -146,13 +243,13 @@ nav {
   justify-content: center;
 }
 
-.botoes img {
+.match #board .card .botoes img {
   cursor: pointer;
   width: 3rem;
   height: 3rem;
 }
 
-.services-container > span:nth-child(2) {
+.match #board .card .services-container > span:nth-child(2) {
   word-break: break-all;
   overflow-wrap: break-word;
 }
