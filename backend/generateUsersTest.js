@@ -1,5 +1,5 @@
 import { getUsers, updateUsers } from "./user.js";
-import { getCities } from "../frontend/scripts/location.js";
+import { getCities } from "./location.js";
 
 const imgs = [
   "j1.png",

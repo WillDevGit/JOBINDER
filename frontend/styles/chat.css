@@ -188,6 +188,8 @@
 
   position: absolute;
   inset: 0;
+
+  z-index: 2;
 }
 
 #delete-user-matched-aside .delete-user-matched-container {

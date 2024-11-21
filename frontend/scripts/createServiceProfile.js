@@ -1,6 +1,6 @@
 import { userLoggedId } from "../../backend/createUserSession.js";
 import { getUser, updateUser, validUserServices } from "../../backend/user.js";
-import { getStates, getCities } from "./location.js";
+import { getStates, getCities } from "../../backend/location.js";
 
 const createStatesOptions = async (selectState) => {
   const states = await getStates();

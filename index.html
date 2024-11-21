@@ -11,9 +11,9 @@
   </head>
   <body>
     <script>
-      if (!localStorage.getItem("hasClearedStorage")) {
+      if (!localStorage.getItem("clear")) {
         localStorage.clear();
-        localStorage.setItem("hasClearedStorage", "true");
+        localStorage.setItem("clear", "true");
       }
     </script>
     <script type="module" src="./frontend/scripts/cryptoJS.js"></script>

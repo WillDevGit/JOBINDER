@@ -1,6 +1,6 @@
 import { searchCategory } from "./fuseJS.js";
 import { createCards } from "../../backend/swapCards.js";
-import { getStates, getCities, distanceBetweenCities } from "./location.js";
+import { getStates, getCities } from "../../backend/location.js";
 
 const searchBox = document.getElementById("search-box");
 const searchDropDrown = document.getElementById("search-dropdown");
@@ -113,6 +113,7 @@ stateCityConfirm.addEventListener("click", async () => {
   createCards(specialtieSearched, citySearched);
 
   selectStateCityAside.style.display = "none";
+  toastr.success(`Busca realizada em ${citySearched}, ${selectState.value}`);
 });
 
 await createStatesOptions();

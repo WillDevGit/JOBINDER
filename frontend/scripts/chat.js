@@ -10,6 +10,7 @@ import { getUserData, getUsersMatchedId, deleteUserInUsersMatchedId } from "../.
 
 // Chat DOM Elements
 const chatContainer = document.getElementById("chat-container");
+const searchContactInput = document.getElementById("search-contact-input");
 const privateChat = document.getElementById("private-chat");
 const chatMessagesContainer = document.getElementById("chat-messages-container");
 const exitPrivateChat = document.getElementById("close-private-chat");
@@ -141,9 +142,16 @@ const createChatDOM = (userMatchedId, userMatchedData) => {
 const updateChatDOM = () => {
   usersMatchedId = getUsersMatchedId(userLoggedId);
   cleanChatBoxes();
+
+  const contactSearched = searchContactInput.value.toLowerCase();
+
   usersMatchedId.forEach((userMatchedId) => {
     const userMatchedData = getUserData(userMatchedId);
-    createChatDOM(userMatchedId, userMatchedData);
+    const contact = userMatchedData?.fullName?.toLowerCase() || "(usuário não cadastrado)";
+   
+    if (!contactSearched || contact.includes(contactSearched)) {
+      createChatDOM(userMatchedId, userMatchedData);
+    }
   });
 };
 
@@ -242,6 +250,10 @@ sendMessageForm.addEventListener("submit", (event) => {
   cleanChatMessages();
   createPrivateChat(chatUserMatchedId);
   scrollToLastMessageChat();
+});
+
+searchContactInput.addEventListener("input", () => {
+  updateChatDOM();
 });
 
 // Update the chat every second

@@ -7,7 +7,7 @@ import {
   updateLocation,
   updateServiceImg,
 } from "../../backend/user.js";
-import { getStates, getCities } from "./location.js";
+import { getStates, getCities } from "../../backend/location.js";
 
 const usuarioDados = getUserData(userLoggedId);
 
