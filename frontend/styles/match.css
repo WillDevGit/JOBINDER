@@ -221,6 +221,15 @@ body {
   height: 60%;
 }
 
+.match #board .card .state-city {
+  background-color: var(--blue);
+  color: #fff;
+  font-size: 1.3rem;
+  border-radius: 1rem 0;
+  padding: 0.7rem;
+  position: absolute;
+}
+
 .match #board .card .name-card {
   margin: 1rem 1rem 0.5rem;
 }

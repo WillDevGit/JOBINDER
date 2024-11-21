@@ -64,7 +64,7 @@ confirmCategory.addEventListener("click", () => {
   }
 
   // Save the service profile data in the user object
-  if (!user.serviceProfile) {
+  if (!user.serviceProfile || Object.keys(user.serviceProfile).length <= 1) {
     user.serviceProfile = {};
     onlyEditSpecialtie = false;
   } else {

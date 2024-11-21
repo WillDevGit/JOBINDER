@@ -28,10 +28,10 @@ exit.addEventListener("click", () => {
   enterProfilePro.style.display = "none";
 });
 
-const dadosUsuarios = getUserData(userLoggedId);
+const userData = getUserData(userLoggedId);
 
-if (dadosUsuarios && dadosUsuarios.serviceProfile) {
-  // If the user has a service profile, show the enter profile button
+// If the user has a service profile, show the enter profile button
+if (userData && Object.keys(userData.serviceProfile).length > 1) {
   createServiceProfile.style.display = "none";
   enterProfilePro.style.display = "block";
   enterProfilePro.href = "./editProfile.html";

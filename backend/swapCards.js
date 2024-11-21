@@ -44,10 +44,10 @@ const userContainsRequirements = (user, specialtie, city) => {
   if (!user.serviceProfile) return false;
   if (specialtie && user.serviceProfile.specialties !== specialtie) return false;
   if (city && user.serviceProfile.location.city !== city) return false;
-  
+
   const userAlreadyMatched = getUsersMatchedId(userLoggedId).includes(user.cellphone);
   if (userAlreadyMatched) return false;
-  
+
   return true;
 };
 
@@ -59,6 +59,7 @@ const createCards = (specialtie, city) => {
     if (!userData || user.cellphone !== userData.cellphone) {
       cardContent.push({
         img: user.serviceProfile.serviceImg,
+        stateCity: `<span>${user.serviceProfile.location.city}, ${user.serviceProfile.location.state}</span>`,
         nome: `<h3>${user.fullName}</h3>`,
         desc: `
         <div class="specialtie-container">
@@ -293,10 +294,15 @@ const createCards = (specialtie, city) => {
 
       card.classList.add("card");
 
-      // Create a new card and add it to the board
+      // Add the image to the card
       let imagem = document.createElement("div");
       imagem.style.backgroundImage = `url(${cardContent[index].img})`;
       imagem.classList.add("imagem");
+
+      // Add the state and city to the card
+      let stateCity = document.createElement("div");
+      stateCity.innerHTML = cardContent[index].stateCity;
+      stateCity.classList.add("state-city");
 
       //Add the name to the card
       let nameCard = document.createElement("div");
@@ -334,6 +340,7 @@ const createCards = (specialtie, city) => {
 
       // Add the event listener to the buttons
       card.appendChild(imagem);
+      card.appendChild(stateCity);
       card.appendChild(nameCard);
       card.appendChild(description);
       card.appendChild(botoes);
