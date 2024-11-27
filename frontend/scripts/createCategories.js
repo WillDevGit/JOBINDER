@@ -1,5 +1,6 @@
 import { userLoggedId } from "../../backend/createUserSession.js";
 import { getUser, updateUser } from "../../backend/user.js";
+import { categories } from "../../backend/categories.js";
 
 // Get the elements from the DOM
 const list = document.getElementById("list");
@@ -7,19 +8,6 @@ const categoriasElements = document.getElementsByClassName("categoria");
 const confirmCategory = document.getElementById("confirm-category");
 
 const user = getUser(userLoggedId);
-
-// Categories list
-const categories = [
-  "Advocacia",
-  "Cabelo",
-  "Construção",
-  "Educação",
-  "Eventos",
-  "Informática",
-  "Limpeza",
-  "Mecânica",
-  "Saúde",
-];
 
 // Select the category
 let categoriaSelecionada = null;

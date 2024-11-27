@@ -36,12 +36,12 @@ form.addEventListener("submit", async (event) => {
   const confirmPassword = inputConfirmPassword.value;
   const id = cellphone;
 
-  const newNameCaptalized = fullName
+  const newNameCapitalized = fullName
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  if (!newNameCaptalized) {
+  if (!newNameCapitalized) {
     toastr.error('O campo "Nome Completo" é obrigatório.');
     return;
   }
@@ -80,7 +80,7 @@ form.addEventListener("submit", async (event) => {
   // Create the user object
   const user = {
     [id]: {
-      fullName: newNameCaptalized,
+      fullName: newNameCapitalized,
       cellphone,
       password: hashedPassword,
     },

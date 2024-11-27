@@ -125,14 +125,14 @@ const updateUserName = (id, newName) => {
   const userExists = getUser(id);
 
   if (validNewUserName && userExists) {
-    const newNameCaptalized = newName
+    const newNameCapitalized = newName
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(" ");
 
-    userExists.fullName = newNameCaptalized;
+    userExists.fullName = newNameCapitalized;
     updateUser(id, userExists);
-    return newNameCaptalized;
+    return newNameCapitalized;
   }
 
   return null;

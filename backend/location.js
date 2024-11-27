@@ -1,4 +1,4 @@
-const captalize = (string) => {
+const capitalize = (string) => {
   return string
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
@@ -33,7 +33,7 @@ const getCities = async (state) => {
     const data = await response.json();
 
     data.forEach((city) => {
-      city.nome = captalize(city.nome);
+      city.nome = capitalize(city.nome);
     });
     return data;
   } catch (error) {
