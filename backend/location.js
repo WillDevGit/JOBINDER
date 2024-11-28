@@ -41,6 +41,25 @@ const getCities = async (state) => {
   }
 };
 
+async function getStateName(abbreviation) {
+  try {
+    const response = await fetch("https://brasilapi.com.br/api/ibge/uf/v1");
+    const estados = await response.json();
+
+    console.log(abbreviation);
+
+    const estado = estados.find((e) => e.sigla === abbreviation.toUpperCase());
+    if (estado) {
+      return estado.nome;
+    } else {
+      throw new Error("Estado não encontrado!");
+    }
+  } catch (error) {
+    console.error("Erro ao buscar o estado:", error.message);
+    return null;
+  }
+}
+
 const getCoordinates = async (city) => {
   try {
     const cityEncoded = encodeURI(city);
@@ -84,4 +103,4 @@ const distanceBetweenCities = async (city1, city2) => {
   return R * c; // Distância em km
 };
 
-export { getStates, getCities, getCoordinates, distanceBetweenCities };
+export { getStates, getCities, getStateName, getCoordinates, distanceBetweenCities };

@@ -31,7 +31,7 @@ exit.addEventListener("click", () => {
 const userData = getUserData(userLoggedId);
 
 // If the user has a service profile, show the enter profile button
-if (userData && Object.keys(userData.serviceProfile).length > 1) {
+if (userData && userData.serviceProfile && Object.keys(userData.serviceProfile).length > 1) {
   createServiceProfile.style.display = "none";
   enterProfilePro.style.display = "block";
   enterProfilePro.href = "./editProfile.html";

@@ -7,12 +7,14 @@ import {
   deleteNewMatchId,
 } from "../../backend/chat.js";
 import { getUserData, getUsersMatchedId, deleteUserInUsersMatchedId } from "../../backend/user.js";
+import { showUserMatchedDetails } from "./userMatchedDetails.js";
 
 // Chat DOM Elements
 const chatContainer = document.getElementById("chat-container");
 const searchContactInput = document.getElementById("search-contact-input");
 const privateChat = document.getElementById("private-chat");
 const chatMessagesContainer = document.getElementById("chat-messages-container");
+const userMatchedInfo = document.getElementById("user-matched-info");
 const exitPrivateChat = document.getElementById("close-private-chat");
 const userMatchedServiceImg = document.getElementById("user-matched-service-img");
 const userMatchedFullname = document.getElementById("user-matched-fullname");
@@ -148,7 +150,7 @@ const updateChatDOM = () => {
   usersMatchedId.forEach((userMatchedId) => {
     const userMatchedData = getUserData(userMatchedId);
     const contact = userMatchedData?.fullName?.toLowerCase() || "(usuário não cadastrado)";
-   
+
     if (!contactSearched || contact.includes(contactSearched)) {
       createChatDOM(userMatchedId, userMatchedData);
     }
@@ -216,6 +218,10 @@ exitPrivateChat.addEventListener("click", () => {
     chatMessagesContainer.removeChild(chatMessagesContainer.firstChild);
   }
   updateChatDOM();
+});
+
+userMatchedInfo.addEventListener("click", () => {
+  showUserMatchedDetails(chatUserMatchedId);
 });
 
 const maxLines = 6;

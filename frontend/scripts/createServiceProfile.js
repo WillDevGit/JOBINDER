@@ -1,6 +1,6 @@
 import { userLoggedId } from "../../backend/createUserSession.js";
 import { getUser, updateUser, validUserServices } from "../../backend/user.js";
-import { getStates, getCities } from "../../backend/location.js";
+import { getStates, getCities, getStateName } from "../../backend/location.js";
 
 const createStatesOptions = async (selectState) => {
   const states = await getStates();
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Add the submit event to the form
-  formServiceProfile.addEventListener("submit", (event) => {
+  formServiceProfile.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     // Get the form data
@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    const stateName = await getStateName(selectState.value);
+
     // Parse the image to Base64
     const reader = new FileReader();
     reader.onload = function (event) {
@@ -102,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       user.serviceProfile.services = services;
       user.serviceProfile.avaliability = avaliability;
       user.serviceProfile.location = {};
-      user.serviceProfile.location.state = selectState.value;
+      user.serviceProfile.location.state = stateName;
       user.serviceProfile.location.city = selectCity.value;
       user.serviceProfile.serviceImg = serviceImgBase64;
 
