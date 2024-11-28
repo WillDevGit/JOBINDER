@@ -318,7 +318,7 @@ const createCards = (specialtie, city) => {
       // Buttons
       let botoes = document.createElement("div");
       botoes.innerHTML =
-        "<img src='../images/cancel.png'> <img src='../images/voltar.png'> <img src='../images/confirme.png'>";
+        "<img src='../images/cancel.png' title='Recusar Profissional'> <img src='../images/voltar.png' title='Voltar para o anterior'> <img src='../images/confirme.png' title='Aceitar Profissional'>";
       botoes.classList.add("botoes");
 
       // Add event listeners to the buttons
@@ -338,6 +338,28 @@ const createCards = (specialtie, city) => {
       botoes.querySelectorAll("img")[1].id = "voltar";
       botoes.querySelectorAll("img")[2].id = "confirme";
 
+      botoes.querySelector("#cancel").addEventListener("click", () => {
+        this.board.removeChild(this.topCard);
+        this.push();
+        this.handle();
+      });
+
+      botoes.querySelector("#voltar").addEventListener("click", () => {
+        alert("Em desenvolvimento!");
+      });
+     
+      botoes.querySelector("#confirme").addEventListener("click", () => {
+        insertUserInUsersMatchedId(userLoggedId, card.id);
+        insertNewMatchId(userLoggedId, card.id);
+      
+        updateChatDOM();
+        updateNewMatchesCounter();
+
+        this.board.removeChild(this.topCard);
+        this.push();
+        this.handle();
+      });
+
       // Add the event listener to the buttons
       card.appendChild(imagem);
       card.appendChild(stateCity);
@@ -353,6 +375,7 @@ const createCards = (specialtie, city) => {
   let carousel = new Carousel(board);
 };
 // Create the cards content with the users data
+
 
 createCards(specialtieSearched, citySearched);
 
