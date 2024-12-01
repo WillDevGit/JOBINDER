@@ -56,6 +56,9 @@ const createUsersTest = async () => {
   const users = await getRandomUser();
   const cities = await getCities("SP");
 
+  // Garantir que apenas 10 cidades sejam usadas
+  const selectedCities = cities.slice(0, 3); // Pega as 3 primeiras cidades
+
   users.forEach(async (user, index) => {
     // Hash the password
     const hashedPassword = hash(user.login.password);
@@ -66,12 +69,12 @@ const createUsersTest = async () => {
 
     let specialties = null;
 
-    const randomCity = cities[Math.floor(Math.random() * cities.length)].nome;
+    const randomCity = selectedCities[Math.floor(Math.random() * selectedCities.length)].nome;
 
     if (index >= 0 && index <= 4) specialties = "Jardinagem";
     else if (index >= 5 && index <= 7) specialties = "Marcenaria";
     else if (index >= 8 && index <= 9) specialties = "Pintor";
-    else if (index >= 10 && index <= 12) specialties = "Poda de Árvores";
+    else if (index >= 10 && index <= 12) specialties = "Jardinagem";
     else if (index >= 13 && index <= 15) specialties = "Pedreiro";
     else if (index >= 13 && index <= 23) specialties = "Desenvolvedor de Software";
     else specialties = "Outros";
