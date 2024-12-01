@@ -318,7 +318,8 @@ const createCards = (specialtie, city) => {
       // Buttons
       let botoes = document.createElement("div");
       botoes.innerHTML =
-        "<img src='../images/cancel.png' title='Recusar Profissional'> <img src='../images/voltar.png' title='Voltar para o anterior'> <img src='../images/confirme.png' title='Aceitar Profissional'>";
+        "<img src='../images/cancel.png' title='Recusar Profissional'> <img src='../images/confirme.png' title='Aceitar Profissional'>";
+      //<img src='../images/voltar.png' title='Voltar para o anterior'>
       botoes.classList.add("botoes");
 
       // Add event listeners to the buttons
@@ -335,8 +336,9 @@ const createCards = (specialtie, city) => {
 
       // Add the id to the buttons
       botoes.querySelectorAll("img")[0].id = "cancel";
-      botoes.querySelectorAll("img")[1].id = "voltar";
-      botoes.querySelectorAll("img")[2].id = "confirme";
+      //botoes.querySelectorAll("img")[1].id = "voltar";
+      //botoes.querySelectorAll("img")[2].id = "confirme";
+      botoes.querySelectorAll("img")[1].id = "confirme";
 
       botoes.querySelector("#cancel").addEventListener("click", () => {
         this.board.removeChild(this.topCard);
@@ -344,9 +346,11 @@ const createCards = (specialtie, city) => {
         this.handle();
       });
 
+      /**
       botoes.querySelector("#voltar").addEventListener("click", () => {
         alert("Em desenvolvimento!");
       });
+      */
      
       botoes.querySelector("#confirme").addEventListener("click", () => {
         insertUserInUsersMatchedId(userLoggedId, card.id);
