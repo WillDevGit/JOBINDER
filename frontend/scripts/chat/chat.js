@@ -1,5 +1,5 @@
 import { userLoggedId } from "../../../backend/createUserSession.js";
-import { updateNewMatchesCounter } from "../../../backend/swapCards.js";
+import { updateNewMatchesCounter } from "../match/swapCards.js";
 import {
   getChatMessages,
   addChatMessage,
@@ -7,7 +7,7 @@ import {
   deleteNewMatchId,
 } from "../../../backend/chat.js";
 import { getUserData, getUsersMatchedId, deleteUserInUsersMatchedId } from "../../../backend/user.js";
-import { showUserMatchedDetails } from "./userMatchedDetails.js";
+import { showUserMatchedDetails } from "../match/userMatchedDetails.js";
 
 // Chat DOM Elements
 const chatContainer = document.getElementById("chat-container");

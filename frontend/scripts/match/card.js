@@ -1,4 +1,4 @@
-import { showUserMatchedDetails } from "../chat/userMatchedDetails.js";
+import { showUserMatchedDetails } from "./userMatchedDetails.js";
 
 const parentElement = document.querySelector("#board");
 

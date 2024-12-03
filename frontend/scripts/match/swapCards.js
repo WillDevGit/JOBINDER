@@ -1,12 +1,12 @@
-import { userLoggedId } from "./createUserSession.js";
-import { getNewMatchesIds, insertNewMatchId } from "./chat.js";
+import { userLoggedId } from "../../../backend/createUserSession.js";
+import { getNewMatchesIds, insertNewMatchId } from "../../../backend/chat.js";
 import {
   getUserData,
   getUsersData,
   getUsersMatchedId,
   insertUserInUsersMatchedId,
-} from "./user.js";
-import { updateChatDOM } from "../frontend/scripts/chat/chat.js";
+} from "../../../backend/user.js";
+import { updateChatDOM } from "../chat/chat.js";
 
 // DOM Elements
 const newMatchesCounter = document.getElementById("new-matches-counter");
@@ -89,7 +89,7 @@ const createCards = (specialtie, city) => {
       this.board = element;
 
       if (cardContent.length === 0) {
-        toastr.error("Não há trabalhadores disponíveis com essas características");
+        toastr.error("Não há trabalhadores disponíveis com essas características.");
         return;
       }
 

@@ -196,7 +196,7 @@ body {
   }
 }
 
-#location-selected-container {
+.match #location-selected-container {
   cursor: pointer;
   color: #fff;
   font-size: 1rem;
@@ -209,11 +209,11 @@ body {
   justify-content: center;
 }
 
-#location-selected-container span {
+.match #location-selected-container span {
   padding: 0rem 1rem;
 }
 
-#location-selected-container span:first-child {
+.match #location-selected-container span:first-child {
   background-color: var(--blue);
 
   height: 100%;
@@ -225,7 +225,7 @@ body {
   justify-content: center;
 }
 
-#location-selected-container #location-selected {
+.match #location-selected-container #location-selected {
   background-color: var(--green);
 
   height: 100%;
@@ -355,9 +355,35 @@ body {
   }
 }
 
+@media screen and (max-height: 700px) {
+  .match #board .card {
+    width: 27rem;
+    height: 27rem;
+  }
+
+  .match #location-selected-container {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .match #board .card {
+    width: 26rem;
+    height: 26rem;
+  }
+
+  .match #location-selected-container {
+    margin-top: 0.5rem;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .match {
     width: 100%;
+  }
+
+  .match #location-selected-container {
+    margin-top: 0.1rem;
   }
 }
 
@@ -395,6 +421,32 @@ body {
 }
 
 @media screen and (max-width: 400px) {
+  .match nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .match nav #search-box {
+    background-color: #fff;
+
+    width: 14rem;
+    height: 2.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .match nav #search-box #search-input {
+    font-size: 1rem;
+    width: 90%;
+    border: none;
+    outline: none;
+  }
+
   .match #select-state-city-aside .select-state-city-container {
     padding: 1rem;
   }

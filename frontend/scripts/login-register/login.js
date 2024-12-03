@@ -33,7 +33,7 @@ loginButton.addEventListener("submit", async (event) => {
 
   // Check if the user exists and the password is correct
   if (!userExists || userExists.password !== hashedPassword) {
-    toastr.error("Nome de usuário ou senha incorretos");
+    toastr.error("Nome de usuário ou senha incorretos.");
     return;
   }
 

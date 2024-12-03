@@ -1,7 +1,7 @@
 import { userLoggedId } from "../../../backend/createUserSession.js";
 import { getUser, updateUser, validUserServices } from "../../../backend/user.js";
 import { getStateName } from "../../../backend/location.js";
-import { createStateOptions, createCityOptions } from "../match/locationComponents.js";
+import { createStateOptions, createCityOptions } from "../locationComponents.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Get the form elements
@@ -69,12 +69,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const serviceImgBase64 = event.target.result;
 
       // Update the user object
-      user.serviceProfile.services = services;
+      user.serviceProfile.serviceImg = serviceImgBase64;
+      user.serviceProfile.servicesPerformed = 0;
       user.serviceProfile.avaliability = avaliability;
+      user.serviceProfile.services = services;
       user.serviceProfile.location = {};
       user.serviceProfile.location.state = stateName;
       user.serviceProfile.location.city = selectCity.value;
-      user.serviceProfile.serviceImg = serviceImgBase64;
 
       // Update the user in the localStorage
       updateUser(userLoggedId, user);

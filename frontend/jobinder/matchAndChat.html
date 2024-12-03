@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/match.css" />
-    <link rel="stylesheet" href="../styles/userMatchedDetails.css">
+    <link rel="stylesheet" href="../styles/userMatchedDetails.css" />
     <link rel="stylesheet" href="../styles/chat.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>JOBINDER</title>
@@ -91,39 +91,48 @@
 
     <aside id="user-matched-details">
       <div id="user-matched-details-container">
+        <div class="user-matched-rating">
+          <span class="star" id="star-1">&#9733;</span>
+          <span class="star" id="star-2">&#9733;</span>
+          <span class="star" id="star-3">&#9733;</span>
+          <span class="star" id="star-4">&#9733;</span>
+          <span class="star" id="star-5">&#9733;</span>
+        </div>
         <button id="close-user-matched-details">Fechar</button>
-        <div class="user-matched-details-body">
-          <div>
-            <img id="user-matched-details-service-img" />
-          </div>
-          <div>
-            <span>Nome:</span>
-            <span id="user-matched-details-fullname"></span>
-          </div>
-          <div>
-            <span>Especialidade:</span>
-            <span id="user-matched-details-specialties"></span>
-          </div>
-          <div>
-            <span>Disponibilidade:</span>
-            <span id="user-matched-details-avaliability"></span>
-          </div>
-          <div>
-            <span>Estado:</span>
-            <span id="user-matched-details-state"></span>
-          </div>
-          <div>
-            <span>Cidade:</span>
-            <span id="user-matched-details-city"></span>
-          </div>
-          <div>
-            <span>Celular:</span>
-            <span id="user-matched-details-cellphone"></span>
-          </div>
-          <div>
-            <span>Descrição:</span>
-            <span id="user-matched-details-services"></span>
-          </div>
+        <div>
+          <img id="user-matched-details-service-img" />
+        </div>
+        <div>
+          <span>Nome:</span>
+          <span id="user-matched-details-fullname"></span>
+        </div>
+        <div>
+          <span>Serviços realizados:</span>
+          <span id="user-matched-services-performed"></span>
+        </div>
+        <div>
+          <span>Especialidade:</span>
+          <span id="user-matched-details-specialties"></span>
+        </div>
+        <div>
+          <span>Disponibilidade:</span>
+          <span id="user-matched-details-avaliability"></span>
+        </div>
+        <div>
+          <span>Estado:</span>
+          <span id="user-matched-details-state"></span>
+        </div>
+        <div>
+          <span>Cidade:</span>
+          <span id="user-matched-details-city"></span>
+        </div>
+        <div>
+          <span>Celular:</span>
+          <span id="user-matched-details-cellphone"></span>
+        </div>
+        <div>
+          <span>Descrição:</span>
+          <span id="user-matched-details-services"></span>
         </div>
       </div>
     </aside>
@@ -145,7 +154,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../scripts/fuseJS.js"></script>
-    <script type="module" defer src="../../backend/swapCards.js"></script>
+    <script type="module" defer src="../scripts/match/swapCards.js"></script>
     <script type="module" defer src="../scripts/match/card.js"></script>
     <script type="module" defer src="../scripts/match/searchService.js"></script>
     <script type="module" defer src="../scripts/chat/chatResponsive.js"></script>

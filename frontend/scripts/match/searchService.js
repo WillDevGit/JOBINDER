@@ -1,6 +1,6 @@
 import { searchCategory } from "../fuseJS.js";
-import { createCards } from "../../../backend/swapCards.js";
-import { createStateOptions, createCityOptions } from "./locationComponents.js";
+import { createCards } from "../match/swapCards.js";
+import { createStateOptions, createCityOptions } from "../locationComponents.js";
 
 // Search box Elements
 const searchBox = document.getElementById("search-box");
@@ -91,12 +91,12 @@ stateCityClean.addEventListener("click", () => {
 
 stateCityConfirm.addEventListener("click", async () => {
   if (selectState.value === "") {
-    toastr.error("Selecione um estado");
+    toastr.error("Selecione um estado.");
     return;
   }
 
   if (selectCity.value === "") {
-    toastr.error("Selecione uma cidade");
+    toastr.error("Selecione uma cidade.");
     return;
   }
 
@@ -105,7 +105,7 @@ stateCityConfirm.addEventListener("click", async () => {
 
   locationSelected.textContent = `${citySearched} - ${selectState.value}`;
   selectStateCityAside.style.display = "none";
-  toastr.success(`Busca realizada em ${citySearched}, ${selectState.value}`);
+  toastr.success(`Busca realizada em ${citySearched}, ${selectState.value}.`);
 });
 
 locationSelectedContainer.addEventListener("click", () => {

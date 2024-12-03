@@ -7,7 +7,7 @@ import {
   updateLocation,
   updateServiceImg,
 } from "../../../backend/user.js";
-import { createStateOptions, createCityOptions } from "../match/locationComponents.js";
+import { createStateOptions, createCityOptions } from "../locationComponents.js";
 
 const usuarioDados = getUserData(userLoggedId);
 
@@ -177,7 +177,7 @@ submitStateCity.addEventListener("click", () => {
 
   updateLocation(userLoggedId, newState, newCity);
 
-  toastr.success("Cidade e estado atualizados com sucesso.");
+  toastr.success("Cidade e estado atualizados com sucesso!");
 });
 
 // Get the cities of the selected state

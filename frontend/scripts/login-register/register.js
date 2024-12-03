@@ -1,4 +1,5 @@
 import { hash } from "../cryptoJS.js";
+import { validUserName, validUserPassword } from "../../../backend/user.js";
 
 // Get the form and the inputs
 const form = document.getElementById("register");
@@ -66,10 +67,11 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  // Verify if the user exists
-  const cellphoneExists = getUserData(id);
+  if (!validUserName(newNameCapitalized)) return;
+  if (!validUserPassword(password)) return;
 
-  if (cellphoneExists) {
+  // Verify if the user exists
+  if (getUserData(id)) {
     toastr.error("Celular já cadastrado.");
     return;
   }
@@ -82,6 +84,7 @@ form.addEventListener("submit", async (event) => {
     [id]: {
       fullName: newNameCapitalized,
       cellphone,
+      rating: 0,
       password: hashedPassword,
     },
   };

@@ -8,7 +8,6 @@ const categoriasElements = document.getElementsByClassName("categoria");
 const confirmCategory = document.getElementById("confirm-category");
 
 const user = getUser(userLoggedId);
-console.log(user)
 
 // Select the category
 let categoriaSelecionada = null;
@@ -45,11 +44,10 @@ const removeSelected = () => {
   });
 };
 
-console.log(user);
 // Confirm the category
 confirmCategory.addEventListener("click", () => {
   if (categoriaSelecionada === null) {
-    toastr.warning("Selecione uma categoria.");
+    toastr.error("Selecione uma categoria.");
     return;
   }
 

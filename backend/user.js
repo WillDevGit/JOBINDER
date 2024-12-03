@@ -21,8 +21,8 @@ const getUsersData = () => {
   const users = getUsers();
   const usersData = [];
   for (const user in users) {
-    const { fullName, cellphone, serviceProfile } = users[user];
-    usersData.push({ fullName, cellphone, serviceProfile });
+    const { fullName, cellphone, rating, serviceProfile } = users[user];
+    usersData.push({ fullName, cellphone, rating, serviceProfile });
   }
   return usersData;
 };
@@ -89,8 +89,8 @@ const getUserData = (id) => {
   const users = getUsers();
   const user = users[id];
   if (user) {
-    const { fullName, cellphone, serviceProfile } = user;
-    return { fullName, cellphone, serviceProfile };
+    const { fullName, cellphone, rating, serviceProfile } = user;
+    return { fullName, cellphone, rating, serviceProfile };
   } else return null;
 };
 
@@ -106,20 +106,16 @@ const validUserName = (name) => {
   if (name === "") {
     toastr.error('O campo "Nome Completo" é obrigatório.');
     return false;
-  } 
-  else if(name.split(" ").length < 2) {
+  } else if (name.split(" ").length < 2) {
     toastr.error("Por favor, insira seu nome e sobrenome.");
     return false;
-  }
-  else if (name.length <= 3) {
+  } else if (name.length <= 3) {
     toastr.error("Nome muito curto. Por favor, insira seu nome completo.");
     return false;
-  } 
-  else if (name.length > 30) {
+  } else if (name.length > 30) {
     toastr.error("Nome muito longo.");
     return false;
-  } 
-  else if (!name.match(/^[a-zA-Z\s]*$/)) {
+  } else if (!name.match(/^[a-zA-Z\s]*$/)) {
     toastr.error("Nome inválido.");
     return false;
   }
@@ -151,10 +147,10 @@ const validUserAvaliability = (avaliability) => {
     toastr.error('O campo "Disponibilidade" é obrigatório.');
     return false;
   } else if (avaliability.length <= 10) {
-    toastr.error("Descrição da disponibilidade muito curta");
+    toastr.error("Descrição da disponibilidade muito curta.");
     return false;
   } else if (avaliability.length > 100) {
-    toastr.error("Descrição da disponibilidade muito longa");
+    toastr.error("Descrição da disponibilidade muito longa.");
     return false;
   }
   return true;
@@ -180,10 +176,10 @@ const validUserServices = (services) => {
     toastr.error('O campo "Serviços" é obrigatório.');
     return false;
   } else if (services.length <= 10) {
-    toastr.error("Descrição dos serviços muito curta");
+    toastr.error("Descrição dos serviços muito curta.");
     return false;
   } else if (services.length > 200) {
-    toastr.error("Descrição dos serviços muito longa");
+    toastr.error("Descrição dos serviços muito longa.");
     return false;
   }
   return true;
@@ -201,6 +197,20 @@ const updateUserServices = (id, newServices) => {
   }
 
   return null;
+};
+
+const validUserPassword = (password) => {
+  if (password === "") {
+    toastr.error('O campo "Senha" é obrigatório.');
+    return false;
+  } else if (password.length < 5) {
+    toastr.error("A senha deve ter no mínimo 5 caracteres.");
+    return false;
+  } else if (password.length > 15) {
+    toastr.error("A senha deve ter no máximo 15 caracteres.");
+    return false;
+  }
+  return true;
 };
 
 const updateLocation = (id, state, city) => {
@@ -269,6 +279,7 @@ export {
   updateUserAvaliability,
   validUserServices,
   updateUserServices,
+  validUserPassword,
   updateLocation,
   updateServiceImg,
   insertUserInUsersMatchedId,

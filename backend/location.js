@@ -46,8 +46,6 @@ async function getStateName(abbreviation) {
     const response = await fetch("https://brasilapi.com.br/api/ibge/uf/v1");
     const estados = await response.json();
 
-    console.log(abbreviation);
-
     const estado = estados.find((e) => e.sigla === abbreviation.toUpperCase());
     if (estado) {
       return estado.nome;

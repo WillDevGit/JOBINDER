@@ -79,12 +79,20 @@ const createUsersTest = async () => {
     else if (index >= 13 && index <= 23) specialties = "Desenvolvedor de Software";
     else specialties = "Outros";
 
+    // Generate a random rating
+    const rating = Math.floor(Math.random() * 5) + 1;
+
+    // Generate a random number of services performed
+    const servicesPerformed = Math.floor(Math.random() * 100) + 1;
+
     let userTest = {
       [id]: {
         cellphone,
         fullName: `${user.name.first} ${user.name.last}`,
+        rating,
         password: hashedPassword,
         serviceProfile: {
+          servicesPerformed,
           avaliability: "Segunda a Sexta",
           serviceImg: `../../backend/database/${imgs[index]}`,
           services:

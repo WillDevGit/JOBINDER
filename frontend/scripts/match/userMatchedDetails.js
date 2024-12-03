@@ -2,6 +2,7 @@ import { getUserData } from "../../../backend/user.js";
 
 const userMatchedDetails = document.getElementById("user-matched-details");
 const closeUserMatchedDetails = document.getElementById("close-user-matched-details");
+const userMatchedServicesPerformed = document.getElementById("user-matched-services-performed");
 const userMatchedDetailsServiceImg = document.getElementById("user-matched-details-service-img");
 const usermatchedDetailsFullName = document.getElementById("user-matched-details-fullname");
 const userMatchedDetailsSpecialties = document.getElementById("user-matched-details-specialties");
@@ -18,12 +19,19 @@ closeUserMatchedDetails.addEventListener("click", () => {
 export const showUserMatchedDetails = async (userMatchedId) => {
   const userMatchedData = getUserData(userMatchedId);
 
+  const userRating = userMatchedData.rating;
+  for (let i = 1; i <= userRating; i++) {
+    const star = document.getElementById(`star-${i}`);
+    star.style.color = "gold";
+  }
+
   if (!userMatchedData) return;
 
   userMatchedDetails.style.display = "flex";
 
   userMatchedDetailsServiceImg.src = userMatchedData.serviceProfile.serviceImg;
   usermatchedDetailsFullName.textContent = userMatchedData.fullName;
+  userMatchedServicesPerformed.textContent = userMatchedData.serviceProfile.servicesPerformed;
   userMatchedDetailsSpecialties.textContent = userMatchedData.serviceProfile.specialties;
   userMatchedDetailsAvaliability.textContent = userMatchedData.serviceProfile.avaliability;
   userMatchedDetailsServices.textContent = userMatchedData.serviceProfile.services;
