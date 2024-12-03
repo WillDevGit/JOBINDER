@@ -1,4 +1,4 @@
-import { userLoggedId } from "../../backend/createUserSession.js";
+import { userLoggedId } from "../../../backend/createUserSession.js";
 import {
   getUserData,
   updateUserName,
@@ -6,8 +6,8 @@ import {
   updateUserServices,
   updateLocation,
   updateServiceImg,
-} from "../../backend/user.js";
-import { getStates, getCities } from "../../backend/location.js";
+} from "../../../backend/user.js";
+import { createStateOptions, createCityOptions } from "../match/locationComponents.js";
 
 const usuarioDados = getUserData(userLoggedId);
 
@@ -182,23 +182,7 @@ submitStateCity.addEventListener("click", () => {
 
 // Get the cities of the selected state
 selectState.addEventListener("change", async () => {
-  const cities = await getCities(selectState.value);
-
-  selectCity.innerHTML = "";
-
-  const nullOption = document.createElement("option");
-  nullOption.value = "";
-  nullOption.textContent = "Selecione uma cidade";
-  nullOption.disabled = true;
-  nullOption.selected = true;
-  selectCity.appendChild(nullOption);
-
-  cities.forEach((city) => {
-    const option = document.createElement("option");
-    option.value = city.nome;
-    option.textContent = city.nome;
-    selectCity.appendChild(option);
-  });
+  await createCityOptions(selectState.value, selectCity);
 });
 
 // Submit the new service image
@@ -226,20 +210,7 @@ const displayEditProfile = () => {
   }
 };
 
-const createStatesOptions = async () => {
-  const states = await getStates();
-
-  states.sort((a, b) => (a.nome > b.nome ? 1 : -1));
-
-  states.forEach((state) => {
-    const option = document.createElement("option");
-    option.value = state.sigla;
-    option.textContent = state.nome;
-    selectState.appendChild(option);
-  });
-};
-
 window.addEventListener("resize", displayEditProfile);
 
-await createStatesOptions();
+await createStateOptions(selectState);
 displayEditProfile();

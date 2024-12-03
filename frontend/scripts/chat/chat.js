@@ -1,12 +1,12 @@
-import { userLoggedId } from "../../backend/createUserSession.js";
-import { updateNewMatchesCounter } from "../../backend/swapCards.js";
+import { userLoggedId } from "../../../backend/createUserSession.js";
+import { updateNewMatchesCounter } from "../../../backend/swapCards.js";
 import {
   getChatMessages,
   addChatMessage,
   getNewMatchesIds,
   deleteNewMatchId,
-} from "../../backend/chat.js";
-import { getUserData, getUsersMatchedId, deleteUserInUsersMatchedId } from "../../backend/user.js";
+} from "../../../backend/chat.js";
+import { getUserData, getUsersMatchedId, deleteUserInUsersMatchedId } from "../../../backend/user.js";
 import { showUserMatchedDetails } from "./userMatchedDetails.js";
 
 // Chat DOM Elements

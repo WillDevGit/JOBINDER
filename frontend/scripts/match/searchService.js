@@ -1,6 +1,6 @@
-import { searchCategory } from "./fuseJS.js";
-import { createCards } from "../../backend/swapCards.js";
-import { getStates, getCities } from "../../backend/location.js";
+import { searchCategory } from "../fuseJS.js";
+import { createCards } from "../../../backend/swapCards.js";
+import { createStateOptions, createCityOptions } from "./locationComponents.js";
 
 // Search box Elements
 const searchBox = document.getElementById("search-box");
@@ -44,19 +44,6 @@ const createResultsList = (results) => {
   return ul;
 };
 
-const createStatesOptions = async () => {
-  const states = await getStates();
-
-  states.sort((a, b) => (a.nome > b.nome ? 1 : -1));
-
-  states.forEach((state) => {
-    const option = document.createElement("option");
-    option.value = state.sigla;
-    option.textContent = state.nome;
-    selectState.appendChild(option);
-  });
-};
-
 searchInput.addEventListener("input", async () => {
   // Clear the dropdown
   searchDropDrown.innerHTML = "";
@@ -83,23 +70,7 @@ searchMap.addEventListener("click", () => {
 
 // Get the cities of the selected state
 selectState.addEventListener("change", async () => {
-  const cities = await getCities(selectState.value);
-
-  selectCity.innerHTML = "";
-
-  const nullOption = document.createElement("option");
-  nullOption.value = "";
-  nullOption.textContent = "Selecione uma cidade";
-  nullOption.disabled = true;
-  nullOption.selected = true;
-  selectCity.appendChild(nullOption);
-
-  cities.forEach((city) => {
-    const option = document.createElement("option");
-    option.value = city.nome;
-    option.textContent = city.nome;
-    selectCity.appendChild(option);
-  });
+  createCityOptions(selectState.value, selectCity);
 });
 
 stateCityCancel.addEventListener("click", () => {
@@ -145,4 +116,4 @@ window.onload = () => {
   locationSelected.textContent = "Todas Regiões";
 };
 
-await createStatesOptions();
+await createStateOptions(selectState);

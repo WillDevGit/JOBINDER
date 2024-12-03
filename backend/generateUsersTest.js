@@ -56,8 +56,8 @@ const createUsersTest = async () => {
   const users = await getRandomUser();
   const cities = await getCities("SP");
 
-  // Garantir que apenas 10 cidades sejam usadas
-  const selectedCities = cities.slice(0, 3); // Pega as 3 primeiras cidades
+  // Garantir que apenas 3 cidades sejam usadas para fins de teste
+  const selectedCities = cities.slice(0, 3);
 
   users.forEach(async (user, index) => {
     // Hash the password

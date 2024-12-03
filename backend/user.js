@@ -106,14 +106,21 @@ const validUserName = (name) => {
   if (name === "") {
     toastr.error('O campo "Nome Completo" é obrigatório.');
     return false;
-  } else if (name.length <= 3) {
+  } 
+  else if(name.split(" ").length < 2) {
+    toastr.error("Por favor, insira seu nome e sobrenome.");
+    return false;
+  }
+  else if (name.length <= 3) {
     toastr.error("Nome muito curto. Por favor, insira seu nome completo.");
     return false;
-  } else if (name.length > 30) {
-    toastr.error("Nome muito longo");
+  } 
+  else if (name.length > 30) {
+    toastr.error("Nome muito longo.");
     return false;
-  } else if (!name.match(/^[a-zA-Z\s]*$/)) {
-    toastr.error("Nome inválido");
+  } 
+  else if (!name.match(/^[a-zA-Z\s]*$/)) {
+    toastr.error("Nome inválido.");
     return false;
   }
   return true;

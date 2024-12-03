@@ -1,4 +1,4 @@
-import { getUserData } from "../../backend/user.js";
+import { getUserData } from "../../../backend/user.js";
 
 const userMatchedDetails = document.getElementById("user-matched-details");
 const closeUserMatchedDetails = document.getElementById("close-user-matched-details");

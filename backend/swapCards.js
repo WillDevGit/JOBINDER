@@ -6,7 +6,7 @@ import {
   getUsersMatchedId,
   insertUserInUsersMatchedId,
 } from "./user.js";
-import { updateChatDOM } from "../frontend/scripts/chat.js";
+import { updateChatDOM } from "../frontend/scripts/chat/chat.js";
 
 // DOM Elements
 const newMatchesCounter = document.getElementById("new-matches-counter");

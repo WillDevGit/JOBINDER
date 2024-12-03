@@ -1,6 +1,6 @@
-import { userLoggedId } from "../../backend/createUserSession.js";
-import { getUser, updateUser } from "../../backend/user.js";
-import { categories } from "../../backend/categories.js";
+import { userLoggedId } from "../../../backend/createUserSession.js";
+import { getUser, updateUser } from "../../../backend/user.js";
+import { categories } from "../../../backend/categories.js";
 
 // Get the elements from the DOM
 const list = document.getElementById("list");

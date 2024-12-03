@@ -1,6 +1,6 @@
-import { setUserLogged, keepUserLogged } from "../../backend/createUserSession.js";
-import { getUser } from "../../backend/user.js";
-import { hash } from "./cryptoJS.js";
+import { setUserLogged, keepUserLogged } from "../../../backend/createUserSession.js";
+import { getUser } from "../../../backend/user.js";
+import { hash } from "../cryptoJS.js";
 
 // Get the form elements
 const inputCellphone = document.getElementById("input-cellphone");

@@ -1,39 +1,7 @@
-import { userLoggedId } from "../../backend/createUserSession.js";
-import { getUser, updateUser, validUserServices } from "../../backend/user.js";
-import { getStates, getCities, getStateName } from "../../backend/location.js";
-
-const createStatesOptions = async (selectState) => {
-  const states = await getStates();
-  states.sort((a, b) => (a.nome > b.nome ? 1 : -1));
-  states.forEach((state) => {
-    const option = document.createElement("option");
-    option.value = state.sigla;
-    option.textContent = state.nome;
-    selectState.appendChild(option);
-  });
-};
-
-const createCitiesOptions = async (selectCity, state) => {
-  if (!state) return;
-
-  const cities = await getCities(state);
-
-  selectCity.innerHTML = "";
-
-  const nullOption = document.createElement("option");
-  nullOption.value = "";
-  nullOption.textContent = "Selecione uma cidade";
-  nullOption.disabled = true;
-  nullOption.selected = true;
-  selectCity.appendChild(nullOption);
-
-  cities.forEach((city) => {
-    const option = document.createElement("option");
-    option.value = city.nome;
-    option.textContent = city.nome;
-    selectCity.appendChild(option);
-  });
-};
+import { userLoggedId } from "../../../backend/createUserSession.js";
+import { getUser, updateUser, validUserServices } from "../../../backend/user.js";
+import { getStateName } from "../../../backend/location.js";
+import { createStateOptions, createCityOptions } from "../match/locationComponents.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Get the form elements
@@ -55,11 +23,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (user.serviceProfile.avaliability) inputAvaliability.value = user.serviceProfile.avaliability;
 
-  await createStatesOptions(selectState); // Create the states options
+  await createStateOptions(selectState); // Create the states options
 
   // Add the change event to the selectState
   selectState.addEventListener("change", async () => {
-    await createCitiesOptions(selectCity, selectState.value);
+    await createCityOptions(selectState.value, selectCity);
   });
 
   // Add the submit event to the form

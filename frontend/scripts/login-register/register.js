@@ -1,4 +1,4 @@
-import { hash } from "./cryptoJS.js";
+import { hash } from "../cryptoJS.js";
 
 // Get the form and the inputs
 const form = document.getElementById("register");
