@@ -1,0 +1,141 @@
+@import url(./configs/colors.css);
+
+#user-matched-details {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100vh;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 2;
+}
+
+#user-matched-details #user-matched-details-container {
+  background-color: var(--blue);
+  color: #fff;
+
+  width: 30rem;
+  max-height: 90vh;
+  border-radius: 1rem;
+  padding-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+}
+
+#user-matched-details #user-matched-details-container #close-user-matched-details {
+  cursor: pointer;
+  background-color: var(--red);
+  color: #fff;
+  font-size: 1rem;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  border: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--darkRed);
+  }
+}
+
+#user-matched-details #user-matched-details-container .user-matched-details-body {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#user-matched-details #user-matched-details-container .user-matched-details-body div {
+  font-size: 1rem;
+  width: 100%;
+
+  &:first-child {
+    width: 100%;
+    height: 15rem;
+  }
+
+  &:not(:first-child) {
+    padding: 0 1rem;
+  }
+}
+
+#user-matched-details #user-matched-details-container .user-matched-details-body div img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 1rem 1rem 0 0;
+}
+
+#user-matched-details
+  #user-matched-details-container
+  .user-matched-details-body
+  div
+  span:first-child {
+  font-weight: 700;
+  color: var(--green);
+}
+
+#user-matched-details
+  #user-matched-details-container
+  .user-matched-details-body
+  div
+  span:nth-child(2) {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 500px) {
+  #user-matched-details #user-matched-details-container {
+    width: 27rem;
+  }
+
+  #user-matched-details #user-matched-details-container .user-matched-details-body {
+    gap: 0.7rem;
+  }
+
+  #user-matched-details #user-matched-details-container .user-matched-details-body div {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #user-matched-details #user-matched-details-container {
+    width: 24.5rem;
+  }
+
+  #user-matched-details #user-matched-details-container .user-matched-details-body div {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #user-matched-details #user-matched-details-container {
+    width: 22rem;
+  }
+
+  #user-matched-details #user-matched-details-container .user-matched-details-body {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #user-matched-details #user-matched-details-container {
+    width: 19rem;
+  }
+}
