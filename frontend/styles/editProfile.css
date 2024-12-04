@@ -289,13 +289,15 @@ input {
 
   width: 35rem;
   height: 35rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 
   display: flex;
   flex-direction: column;
+
+  position: relative;
 }
 
-.profile-container .profile > *:not(:first-child) {
+.profile-container .profile > *:not(:first-child):not(:nth-child(2)) {
   margin: 0.5rem 1.5rem;
 }
 
@@ -305,7 +307,19 @@ input {
 
 .profile-container .profile #img {
   height: 55%;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 1rem 1rem 0 0;
+  background-size: covers;
+}
+
+.profile-container .profile #location {
+  background-color: var(--blue);
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: 1rem 0;
+  padding: 0.5rem;
+
+  position: absolute;
+  top: 0;
 }
 
 .profile-container .profile #fullname {
@@ -401,8 +415,12 @@ input {
     height: 27rem;
   }
 
-  .profile-container .profile > *:not(:first-child) {
+  .profile-container .profile > *:not(:first-child):not(:nth-child(2)) {
     margin: 0.3rem 1rem;
+  }
+
+  .profile-container .profile #location {
+    font-size: 1.4rem;
   }
 
   .profile-container .profile #fullname {
@@ -436,7 +454,7 @@ input {
     height: 22rem;
   }
 
-  .profile-container .profile > *:not(:first-child) {
+  .profile-container .profile > *:not(:first-child):not(:nth-child(2)) {
     margin: 0.2rem 1rem;
   }
 
@@ -471,8 +489,12 @@ input {
     height: 19rem;
   }
 
-  .profile-container .profile > *:not(:first-child) {
+  .profile-container .profile > *:not(:first-child):not(:nth-child(2)) {
     margin: 0.1rem 0.5rem;
+  }
+
+  .profile-container .profile #location {
+    font-size: 1rem;
   }
 
   .profile-container .profile #fullname {

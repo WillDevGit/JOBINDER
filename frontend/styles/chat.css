@@ -1,6 +1,7 @@
 @import url(./configs/colors.css);
 
 #chat {
+  user-select: none;
   background-image: linear-gradient(to right top, #365462, #3e5d6c, #456776, #4d7181, #557b8b);
 
   width: 45%;

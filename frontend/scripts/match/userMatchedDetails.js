@@ -12,13 +12,21 @@ const userMatchedDetailsCellphone = document.getElementById("user-matched-detail
 const userMatchedDetailsState = document.getElementById("user-matched-details-state");
 const userMatchedDetailsCity = document.getElementById("user-matched-details-city");
 
+let userMatchedData = null;
+
+// Close user matched details and reset stars color
 closeUserMatchedDetails.addEventListener("click", () => {
   userMatchedDetails.style.display = "none";
+  const userRating = userMatchedData.rating;
+
+  for (let i = 1; i <= userRating; i++) {
+    const star = document.getElementById(`star-${i}`);
+    star.style.color = "#fff";
+  }
 });
 
 export const showUserMatchedDetails = async (userMatchedId) => {
-  const userMatchedData = getUserData(userMatchedId);
-
+  userMatchedData = getUserData(userMatchedId);
   const userRating = userMatchedData.rating;
   for (let i = 1; i <= userRating; i++) {
     const star = document.getElementById(`star-${i}`);

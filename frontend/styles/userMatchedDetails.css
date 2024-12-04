@@ -3,7 +3,7 @@
 #user-matched-details {
   display: none;
   user-select: none;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   width: 100%;
   height: 100vh;
 
@@ -24,8 +24,10 @@
   width: 30rem;
   max-height: 100vh;
   gap: 1rem;
-  border-radius: 1rem;
   padding-bottom: 1rem;
+  border-radius: 1rem;
+
+  box-shadow: 0rem 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
 
   display: flex;
   flex-direction: column;
@@ -82,6 +84,7 @@
 
 #user-matched-details #user-matched-details-container div:not(:first-child) {
   font-size: 1rem;
+
   width: 100%;
 
   &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
@@ -91,14 +94,18 @@
 
 #user-matched-details #user-matched-details-container div img {
   width: 100%;
-  height: 100%;
-  object-fit: fill;
+  height: 17rem;
+  object-fit: cover;
   border-radius: 1rem 1rem 0 0;
 }
 
 #user-matched-details #user-matched-details-container div:not(:first-child) span:first-child {
   font-weight: 700;
   color: var(--green);
+}
+
+#user-matched-details #user-matched-details-container div:not(:first-child) span:nth-child(2) {
+  user-select: text;
 }
 
 #user-matched-details #user-matched-details-container div:not(:first-child) span:nth-child(4) {

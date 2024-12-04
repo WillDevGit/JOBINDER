@@ -14,6 +14,17 @@ body {
   font-weight: 900;
 }
 
+#greeting-user {
+  background-color: var(--lightBlue);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
 .match {
   user-select: none;
   width: 70%;

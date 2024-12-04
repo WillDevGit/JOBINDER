@@ -5,6 +5,7 @@
 body {
   min-height: 100vh;
   flex-direction: column;
+  position: relative;
 }
 
 body::after {
@@ -12,13 +13,12 @@ body::after {
   background: url("../images/fundo.png") no-repeat center center;
   background-size: cover;
 
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   z-index: -2;
 
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
 }
 
 body::before {
@@ -29,10 +29,12 @@ body::before {
   height: 100%;
   z-index: -1;
 
-  position: absolute;
+  position: fixed;
+  inset: 0;
 }
 
 header {
+  user-select: none;
   padding-top: 1rem;
   display: flex;
   justify-content: space-evenly;
@@ -72,7 +74,30 @@ header {
   }
 }
 
+.menu #user-logged-container {
+  background-color: var(--blue);
+
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  align-items: center;
+}
+.menu #user-logged-container #user-logged-img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.menu #user-logged-container #user-logged-name {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
 .contrate-page {
+  user-select: none;
   display: flex;
   flex-direction: column;
   padding: 0 6rem;
@@ -109,7 +134,6 @@ header {
   padding: 0.5rem;
   border-radius: 1rem;
   border: none;
-
 
   transition: background-color 0.3s;
 

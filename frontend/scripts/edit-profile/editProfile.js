@@ -47,6 +47,7 @@ const inputImage = document.getElementById("input-image");
 const submitImage = document.getElementById("submit-image");
 
 const imagem = document.getElementById("img");
+const location = document.getElementById("location");
 const fullname = document.getElementById("fullname");
 const specialtie = document.getElementById("specialtie");
 const avaliability = document.getElementById("avaliability");
@@ -54,6 +55,7 @@ const services = document.getElementById("services");
 
 // Add the user data to the profile
 imagem.src = usuarioDados.serviceProfile.serviceImg;
+location.textContent = `${usuarioDados.serviceProfile.location.city}, ${usuarioDados.serviceProfile.location.state}`;
 specialtie.textContent = usuarioDados.serviceProfile.specialties;
 fullname.textContent = usuarioDados.fullName;
 services.textContent = usuarioDados.serviceProfile.services;
@@ -175,6 +177,7 @@ submitStateCity.addEventListener("click", () => {
     return;
   }
 
+  location.textContent = `${newCity}, ${newState}`;
   updateLocation(userLoggedId, newState, newCity);
 
   toastr.success("Cidade e estado atualizados com sucesso!");

@@ -12,15 +12,16 @@
   <body>
     <div class="match">
       <nav>
-        <a id="logo" href="./home.html"> JOBINDER </a>
-        <div id="search-box">
+        <!-- <a id="logo" href="./home.html"> JOBINDER </a> -->
+        <a href="./home.html" id="greeting-user" title="Voltar para Home"></a>
+        <div id="search-box" title="Procure o serviço que quiser">
           <input type="text" id="search-input" placeholder="Procurar Serviço" />
           <button id="search-button">
             <img src="../images/lupa.png" />
           </button>
           <div id="search-dropdown"></div>
         </div>
-        <button id="search-map">
+        <button id="search-map" title="Filtre os profissionais por estado e cidade">
           <img src="../images/maps.png" />
         </button>
       </nav>
@@ -47,7 +48,7 @@
         </div>
       </aside>
 
-      <div id="location-selected-container">
+      <div id="location-selected-container" title="Filtre os profissionais por estado e cidade">
         <span>Buscando em:</span>
         <span id="location-selected"></span>
       </div>
@@ -62,7 +63,7 @@
     <section id="chat">
       <div id="headerChat">
         <h3>Mensagens</h3>
-        <div id="searchChatBox">
+        <div id="searchChatBox" title="Buscar pelo nome do contato">
           <input type="text" id="search-contact-input" placeholder="Localizar contato" />
           <a id="searchChatBtn" href="#">
             <img src="../images/lupa.png" />
@@ -154,6 +155,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../scripts/fuseJS.js"></script>
+    <script type="module" defer src="../scripts/match/greetingUser.js"></script>
     <script type="module" defer src="../scripts/match/swapCards.js"></script>
     <script type="module" defer src="../scripts/match/card.js"></script>
     <script type="module" defer src="../scripts/match/searchService.js"></script>
