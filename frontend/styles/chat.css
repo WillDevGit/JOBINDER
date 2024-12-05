@@ -182,7 +182,7 @@
 
 #delete-user-matched-aside {
   display: none;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
 
   width: 100%;
   height: 100%;
@@ -320,6 +320,23 @@
   color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+#private-chat #header-private-chat #end-chat {
+  cursor: pointer;
+  background-color: var(--green);
+  color: #fff;
+  font-size: 1rem;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--darkGreen);
+  }
 }
 
 #private-chat #chat-messages-container {

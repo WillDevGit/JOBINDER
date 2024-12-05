@@ -273,4 +273,4 @@ setInterval(() => {
 
 updateChatDOM();
 
-export { updateChatDOM };
+export { updateChatDOM, chatUserMatchedId };

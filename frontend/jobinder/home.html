@@ -47,5 +47,13 @@
     <script type="module" src="../../backend/generateUsersTest.js"></script>
     <script type="module" src="../../backend/user.js"></script>
     <script type="module" src="../scripts/userLogged.js"></script>
+
+    <script>
+      if (!localStorage.getItem("cause")) {
+        localStorage.clear();
+        localStorage.setItem("cause", "true");
+        sessionStorage.clear();
+      }
+    </script>
   </body>
 </html>

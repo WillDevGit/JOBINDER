@@ -26,6 +26,8 @@ closeUserMatchedDetails.addEventListener("click", () => {
 });
 
 export const showUserMatchedDetails = async (userMatchedId) => {
+  if (userMatchedId === -1) return;
+
   userMatchedData = getUserData(userMatchedId);
   const userRating = userMatchedData.rating;
   for (let i = 1; i <= userRating; i++) {

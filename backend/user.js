@@ -227,6 +227,49 @@ const updateLocation = (id, state, city) => {
   updateUser(id, userExists);
 };
 
+// Update the user rating
+const updateUserRating = (id, rating) => {
+  const userExists = getUser(id);
+
+  if (!userExists) {
+    toastr.error("Usuário não encontrado.");
+    return;
+  }
+
+  rating = parseInt(rating);
+
+  if (userExists.serviceProfile) {
+    const userRating = parseInt(userExists.rating);
+    const servicesPerformed = parseInt(userExists.serviceProfile.servicesPerformed);
+
+    const newRating = (userRating * servicesPerformed + rating) / (servicesPerformed + 1);
+    console.log(userRating, newRating);
+    console.log(servicesPerformed);
+    userExists.rating = Math.round(newRating);
+  } else {
+    userExists.rating = parseInt(rating);
+  }
+
+  updateUser(id, userExists);
+};
+
+const updateServicesPerformed = (id) => {
+  const userExists = getUser(id);
+
+  if (!userExists) {
+    toastr.error("Usuário não encontrado.");
+    return;
+  }
+
+  if (userExists.serviceProfile) {
+    userExists.serviceProfile.servicesPerformed += 1;
+  } else {
+    return;
+  }
+
+  updateUser(id, userExists);
+};
+
 // Update the service image
 const updateServiceImg = (id, file) => {
   const userExists = getUser(id);
@@ -281,6 +324,8 @@ export {
   updateUserServices,
   validUserPassword,
   updateLocation,
+  updateUserRating,
+  updateServicesPerformed,
   updateServiceImg,
   insertUserInUsersMatchedId,
   deleteUserInUsersMatchedId,

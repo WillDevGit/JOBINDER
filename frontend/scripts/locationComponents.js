@@ -1,4 +1,4 @@
-import { getStates, getCities } from "../../../backend/location.js";
+import { getStates, getCities } from "../../backend/location.js";
 
 const createStateOptions = async (selectState) => {
   const states = await getStates();

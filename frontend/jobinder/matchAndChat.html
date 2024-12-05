@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../styles/match.css" />
     <link rel="stylesheet" href="../styles/userMatchedDetails.css" />
     <link rel="stylesheet" href="../styles/chat.css" />
+    <link rel="stylesheet" href="../styles/endChat.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>JOBINDER</title>
   </head>
@@ -81,6 +82,7 @@
             <img id="user-matched-service-img" />
             <span id="user-matched-fullname"></span>
           </div>
+          <button id="end-chat">Finalizar</button>
         </div>
         <div id="chat-messages-container"></div>
         <form id="send-message-form">
@@ -89,6 +91,50 @@
         </form>
       </div>
     </section>
+
+    <aside id="end-chat-aside">
+      <div id="end-chat-container">
+        <div>
+          <span>Você deseja realmente finalizar o serviço com </span>
+          <span id="end-chat-matched-fullname"></span>
+          <span>(Só confirme caso o serviço tenha sido realizado)</span>
+        </div>
+        <div class="buttons">
+          <button id="cancel-end-chat">Cancelar</button>
+          <button id="confirm-end-chat">Finalizar</button>
+        </div>
+      </div>
+    </aside>
+
+    <aside id="rate-user-matched">
+      <div id="rate-user-matched-container">
+        <div>
+          <span>Qual a sua avaliação para </span>
+          <span id="rate-user-matched-fullname"><span>?</span></span>
+        </div>
+        <div class="rate-user-matched-stars">
+          <span class="rate-user-matched-star" id="rate-user-matched-star-1" title="Péssimo"
+            >&#9733;</span
+          >
+          <span class="rate-user-matched-star" id="rate-user-matched-star-2" title="Ruim"
+            >&#9733;</span
+          >
+          <span class="rate-user-matched-star" id="rate-user-matched-star-3" title="Médio"
+            >&#9733;</span
+          >
+          <span class="rate-user-matched-star" id="rate-user-matched-star-4" title="Bom"
+            >&#9733;</span
+          >
+          <span class="rate-user-matched-star" id="rate-user-matched-star-5" title="Perfeito"
+            >&#9733;</span
+          >
+        </div>
+        <div class="rate-user-matched-buttons">
+          <button id="cancel-rate-user-matched">Cancelar</button>
+          <button id="confirm-rate-user-matched">Confirmar</button>
+        </div>
+      </div>
+    </aside>
 
     <aside id="user-matched-details">
       <div id="user-matched-details-container">
@@ -161,5 +207,6 @@
     <script type="module" defer src="../scripts/match/searchService.js"></script>
     <script type="module" defer src="../scripts/chat/chatResponsive.js"></script>
     <script type="module" defer src="../scripts/chat/chat.js"></script>
+    <script type="module" defer src="../scripts/chat/endChat.js"></script>
   </body>
 </html>

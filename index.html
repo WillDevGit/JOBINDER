@@ -4,18 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecionamento</title>
-    <meta
-      http-equiv="refresh"
-      content="0; URL='./frontend/jobinder/home.html'"
-    />
+    <meta http-equiv="refresh" content="0; URL='./frontend/jobinder/home.html'" />
   </head>
   <body>
-    <script>
-      if (!localStorage.getItem("new")) {
-        localStorage.clear();
-        localStorage.setItem("new", "true");
-      }
-    </script>
     <script type="module" src="./frontend/scripts/cryptoJS.js"></script>
     <script src="./backend/createUserSession.js"></script>
     <script type="module" src="./backend/generateUsersTest.js"></script>
