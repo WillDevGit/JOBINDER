@@ -81,7 +81,6 @@ stateCityClean.addEventListener("click", () => {
   selectState.value = "";
   selectCity.value = "";
 
-  specialtieSearched = null;
   citySearched = null;
   createCards(specialtieSearched, citySearched);
 

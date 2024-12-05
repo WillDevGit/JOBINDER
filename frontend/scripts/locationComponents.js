@@ -28,9 +28,10 @@ const createCityOptions = async (state, selectCity) => {
 
   cities.forEach((city, index) => {
     const option = document.createElement("option");
-    option.value = city.nome;
-    option.textContent = city.nome;
-    if (index > 2) option.disabled = true; // Limit the number of cities to test to 3
+    const cityName = city.nome;
+    option.value = cityName;
+    option.textContent = cityName;
+    if (index > 2 && cityName !== "São Paulo") option.disabled = true; // Limit the number of cities to test to 4
     selectCity.appendChild(option);
   });
 };

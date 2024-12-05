@@ -42,10 +42,13 @@ header {
 }
 
 .logo {
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo img {
+  width: 10rem;
 }
 
 .menu {
@@ -84,6 +87,7 @@ header {
   display: flex;
   align-items: center;
 }
+
 .menu #user-logged-container #user-logged-img {
   width: 2rem;
   height: 2rem;
@@ -124,21 +128,37 @@ header {
   text-align: justify;
 }
 
-.contrate-page button {
-  cursor: pointer;
-  background-color: var(--blue);
-  color: #fff;
-  font-size: 1.5rem;
+.contrate-page .buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
 
-  width: 15rem;
-  padding: 0.5rem;
+.contrate-page .buttons button {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.3rem;
+
+  padding: 1rem;
   border-radius: 1rem;
   border: none;
 
   transition: background-color 0.3s;
+}
+
+.contrate-page .buttons .btn-categorias {
+  background-color: var(--blue);
 
   &:hover {
     background-color: var(--darkBlue);
+  }
+}
+
+.contrate-page .buttons .btn-contratar {
+  background-color: var(--green);
+
+  &:hover {
+    background-color: var(--darkGreen);
   }
 }
 

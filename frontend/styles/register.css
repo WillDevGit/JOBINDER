@@ -13,10 +13,6 @@ body {
 
 .logo a {
   cursor: pointer;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 700;
-  font-size: 2.5rem;
 }
 
 #register-container {

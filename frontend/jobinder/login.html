@@ -9,10 +9,12 @@
   </head>
   <body>
     <div class="logo">
-      <a href="./home.html">JOBINDER</a>
+      <a href="./home.html" title="Voltar para home">
+        <img src="../images/logo.png" />
+      </a>
     </div>
 
-    <div id="login-container">
+    <main id="login-container">
       <h1>Login</h1>
       <form id="login">
         <label for="input-cellphone">Digite seu número de celular:</label>
@@ -27,11 +29,30 @@
         <input type="checkbox" id="keep-logged-in" name="keep-logged-in" />
         <label for="keep-logged-in">Manter-me logado</label>
       </div>
+      <a id="go-to-forgot-password">Esqueci a senha</a>
       <a href="./register.html">Cadastre-se aqui</a>
-    </div>
+    </main>
+
+    <main id="forgot-password-container">
+      <h1>Esqueci a senha</h1>
+      <form id="forgot-password">
+        <label for="input-cellphone-forgot-password">Digite seu número de celular:</label>
+        <input id="input-cellphone-forgot-password" type="text" />
+
+        <label for="input-new-password">Digite sua nova senha:</label>
+        <input id="input-new-password" type="password" />
+
+        <label for="input-confirm-new-password">Confirme sua nova senha:</label>
+        <input id="input-confirm-new-password" type="password" />
+
+        <input type="submit" id="submit-forgot-password" value="Alterar senha" />
+      </form>
+      <a id="go-to-login">Fazer login</a>
+    </main>
 
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../scripts/cryptoJS.js"></script>
-    <script type="module" src="../scripts/login-register/login.js"></script>
+    <script type="module" defer src="../scripts/login-register/login/login.js"></script>
+    <script type="module" defer src="../scripts/login-register/login/forgotPassword.js"></script>
   </body>
 </html>

@@ -6,4 +6,4 @@ const greetingUser = document.getElementById("greeting-user");
 const user = getUserData(userLoggedId);
 const userFirstName = userLoggedId !== -1 ? user.fullName.split(" ")[0] : "Visitante";
 
-greetingUser.textContent = `< Olá, ${userFirstName}!`;
+greetingUser.textContent = `Olá, ${userFirstName}!`;

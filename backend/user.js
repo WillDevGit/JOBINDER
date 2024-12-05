@@ -101,6 +101,23 @@ const updateUser = (id, user) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
+// Update the user password
+const updateUserPassword = (id, newPassword) => {
+  // const validNewPassword = validUserPassword(newPassword);
+  const userExists = getUser(id);
+
+  //if (validNewPassword && userExists) {
+  if (userExists) {
+    userExists.password = newPassword;
+    updateUser(id, userExists);
+    toastr.success("Senha alterada com sucesso!");
+    return true;
+  } else {
+    toastr.error("Usuário não encontrado.");
+    return false;
+  }
+};
+
 // Check if the user name is valid
 const validUserName = (name) => {
   if (name === "") {
@@ -316,6 +333,7 @@ export {
   getUser,
   getUserData,
   updateUser,
+  updateUserPassword,
   validUserName,
   updateUserName,
   validUserAvaliability,

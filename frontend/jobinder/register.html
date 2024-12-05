@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/register.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
-    <title>Document</title>
+    <title>Registro</title>
   </head>
   <body>
     <div class="logo">
-      <a href="./home.html">JOBINDER</a>
+      <a href="./home.html" title="Voltar para home">
+        <img src="../images/logo.png" />
+      </a>
     </div>
 
-    <div id="register-container">
+    <main id="register-container">
       <h1>Cadastro</h1>
       <form id="register">
         <label for="input-fullname">Digite seu nome e sobrenome:</label>
@@ -27,10 +29,10 @@
         <label for="input-confirm-password">Repita a senha:</label>
         <input id="input-confirm-password" type="password" />
 
-        <input type="submit" id="submit-register" value="Cadastrar"/>
+        <input type="submit" id="submit-register" value="Cadastrar" />
       </form>
       <a href="./login.html">Faça login em sua conta aqui</a>
-    </div>
+    </main>
 
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../scripts/cryptoJS.js"></script>

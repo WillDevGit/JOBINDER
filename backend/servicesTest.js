@@ -127,7 +127,7 @@ const encanadorServices = [
   "Faço a troca e instalação de bombas d’água e aquecedores.",
 ];
 
-const desenvolvedorServices= [
+const desenvolvedorServices = [
   "Especialista em desenvolvimento front-end, com foco em interfaces responsivas e design moderno.",
   "Atuo com desenvolvimento back-end, criando APIs robustas e escaláveis.",
   "Experiência em desenvolvimento full stack, integrando front-end e back-end com eficiência.",
@@ -138,6 +138,19 @@ const desenvolvedorServices= [
   "Foco em soluções de inteligência artificial, machine learning e análise de dados.",
   "Planejo e desenvolvo soluções em nuvem, utilizando AWS, Azure ou Google Cloud.",
   "Ofereço consultoria em segurança cibernética, protegendo aplicações contra vulnerabilidades.",
+];
+
+const saudeServices = [
+  "Consultas médicas presenciais e por telemedicina, com foco em diagnósticos precisos.",
+  "Atendimento nutricional personalizado para perda de peso, ganho de massa muscular e reeducação alimentar.",
+  "Acompanhamento psicológico para ansiedade, depressão e outros transtornos emocionais.",
+  "Especialista em fisioterapia, com tratamentos para dores crônicas, reabilitação pós-cirúrgica e lesões esportivas.",
+  "Realizo atendimento odontológico, incluindo limpeza, restaurações e tratamentos estéticos.",
+  "Experiência em exames laboratoriais domiciliares, com coleta rápida e segura.",
+  "Orientação e suporte em saúde preventiva, como vacinas, check-ups e rastreamento de doenças.",
+  "Atendimento de emergência médica e primeiros socorros em domicílio.",
+  "Ofereço serviços de acupuntura e técnicas de medicina integrativa para alívio de dores e equilíbrio energético.",
+  "Aulas de pilates e treinamento funcional com foco na saúde e no bem-estar físico.",
 ];
 
 export {
@@ -151,5 +164,6 @@ export {
   cozinheiroServices,
   eletricistaServices,
   encanadorServices,
-  desenvolvedorServices
+  desenvolvedorServices,
+  saudeServices,
 };

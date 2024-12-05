@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Redirect to the Home page after 2 seconds
       setTimeout(() => {
-        window.location.href = "./home.html";
+        window.location.href = "./editProfile.html";
       }, 2000);
     };
 

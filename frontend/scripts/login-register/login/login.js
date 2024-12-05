@@ -1,12 +1,16 @@
-import { setUserLogged, keepUserLogged } from "../../../backend/createUserSession.js";
-import { getUser } from "../../../backend/user.js";
-import { hash } from "../cryptoJS.js";
+import { setUserLogged, keepUserLogged } from "../../../../backend/createUserSession.js";
+import { getUser } from "../../../../backend/user.js";
+import { hash } from "../../cryptoJS.js";
 
 // Get the form elements
+const loginContainer = document.getElementById("login-container");
 const inputCellphone = document.getElementById("input-cellphone");
 const inputPassword = document.getElementById("input-password");
 const keepLoggedInCheckbox = document.getElementById("keep-logged-in");
 const loginButton = document.getElementById("login");
+const goToForgotPassword = document.getElementById("go-to-forgot-password");
+
+const forgotPasswordContainer = document.getElementById("forgot-password-container");
 
 // Add the submit event to the form
 loginButton.addEventListener("submit", async (event) => {
@@ -47,4 +51,9 @@ loginButton.addEventListener("submit", async (event) => {
   setTimeout(() => {
     window.location.href = "./home.html";
   }, 2000);
+});
+
+goToForgotPassword.addEventListener("click", () => {
+  loginContainer.style.display = "none";
+  forgotPasswordContainer.style.display = "flex";
 });

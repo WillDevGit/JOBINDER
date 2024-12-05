@@ -10,7 +10,7 @@
   <body>
     <header>
       <div class="logo">
-        <h1>JOBINDER</h1>
+        <img src="../images/logo.png" />
       </div>
       <div class="menu">
         <a href="./categories.html" id="create-service-profile">CRIAR PERFIL DE SERVIÇOS</a>
@@ -38,9 +38,21 @@
           qualquer necessidade. Simples, rápido e eficiente.
         </p>
       </div>
-      <button class="btn-contratar" onclick="window.location.href='./matchAndChat.html'">
-        Contrate
-      </button>
+      <div class="buttons">
+        <button class="btn-categorias"
+          onclick="window.location.href='./allCategories.html'"
+          title="Veja todas as categorias de serviço que podem interessar-lhe!"
+        >
+          Categorias de Serviço
+        </button>
+        <button 
+          class="btn-contratar"
+          onclick="window.location.href='./matchAndChat.html'"
+          title="Procure e contrate o profissional que preferir!"
+        >
+          Contrate
+        </button>
+      </div>
     </main>
 
     <script type="module" src="../scripts/cryptoJS.js"></script>
@@ -49,9 +61,9 @@
     <script type="module" src="../scripts/userLogged.js"></script>
 
     <script>
-      if (!localStorage.getItem("cause")) {
+      if (!localStorage.getItem("causee")) {
         localStorage.clear();
-        localStorage.setItem("cause", "true");
+        localStorage.setItem("causee", "true");
         sessionStorage.clear();
       }
     </script>

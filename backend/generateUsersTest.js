@@ -12,6 +12,7 @@ import {
   eletricistaServices,
   encanadorServices,
   desenvolvedorServices,
+  saudeServices,
 } from "./servicesTest.js";
 
 const imgs = [
@@ -52,8 +53,12 @@ const imgs = [
   "s4.png",
   "s5.png",
   "s6.png",
+  "sau1.jpeg",
+  "sau2.jpeg",
+  "sau3.jpeg",
 ];
 
+const usersToGenerate = 40;
 let usersTest = {};
 
 // Hash the string
@@ -65,7 +70,7 @@ const hash = (string) => {
 // Get the users from the API
 const getRandomUsers = async () => {
   try {
-    const response = await fetch("https://randomuser.me/api/?results=37&nat=br");
+    const response = await fetch(`https://randomuser.me/api/?results=${usersToGenerate}&nat=br`);
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -100,7 +105,7 @@ const createUsersTest = async () => {
 
     if (index >= 0 && index <= 2) specialties = "Advocacia";
     else if (index >= 3 && index <= 5) specialties = "Cozinheiro";
-    else if (index >= 6 && index <= 8) specialties = "DJ";
+    else if (index >= 6 && index <= 8) specialties = "Musica";
     else if (index >= 9 && index <= 11) specialties = "Eletricista";
     else if (index >= 12 && index <= 14) specialties = "Encanador";
     else if (index >= 15 && index <= 19) specialties = "Jardinagem";
@@ -109,6 +114,7 @@ const createUsersTest = async () => {
     else if (index >= 26 && index <= 28) specialties = "Personal";
     else if (index >= 29 && index <= 30) specialties = "Pintor";
     else if (index >= 31 && index <= 36) specialties = "Desenvolvedor de Software";
+    else if (index >= 37 && index <= 39) specialties = "Saude";
     else specialties = "Outros";
 
     // Generate a random rating
@@ -128,7 +134,7 @@ const createUsersTest = async () => {
       case "Pintor":
         services = pintorServices[Math.floor(Math.random() * pintorServices.length)];
         break;
-      case "DJ":
+      case "Musica":
         services = DJServices[Math.floor(Math.random() * DJServices.length)];
         break;
       case "Advocacia":
@@ -151,6 +157,9 @@ const createUsersTest = async () => {
         break;
       case "Desenvolvedor de Software":
         services = desenvolvedorServices[Math.floor(Math.random() * desenvolvedorServices.length)];
+        break;
+      case "Saude":
+        services = saudeServices[Math.floor(Math.random() * saudeServices.length)];
         break;
     }
 

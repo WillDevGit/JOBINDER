@@ -13,10 +13,6 @@ body {
 
 .logo a {
   cursor: pointer;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 700;
-  font-size: 2.5rem;
 }
 
 #login-container {
@@ -119,8 +115,83 @@ body {
 }
 
 #login-container > a {
+  cursor: pointer;
   color: var(--red);
   margin-top: 1.5rem;
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--darkRed);
+  }
+}
+
+#forgot-password-container {
+  display: none;
+  background-color: #fff;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 0.5rem;
+  margin: auto 0;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+#forgot-password-container h1 {
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--blue);
+}
+
+#forgot-password-container #forgot-password {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#forgot-password-container #forgot-password label {
+  color: var(--blue);
+  font-size: 1.1rem;
+}
+
+#forgot-password-container #forgot-password input[type="text"],
+#forgot-password-container #forgot-password input[type="password"] {
+  background-color: var(--grey);
+  font-size: 1rem;
+
+  width: 20rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+#forgot-password-container #forgot-password input[type="submit"] {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: #fff;
+  font-size: 1.2rem;
+
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--darkBlue);
+  }
+}
+
+#forgot-password-container > a {
+  cursor: pointer;
+  color: var(--red);
+  margin-top: 1.5rem;
+  text-decoration: underline;
 
   &:hover {
     color: var(--darkRed);

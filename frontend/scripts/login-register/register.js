@@ -67,8 +67,8 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  if (!validUserName(newNameCapitalized)) return;
-  if (!validUserPassword(password)) return;
+  // if (!validUserName(newNameCapitalized)) return;
+  // if (!validUserPassword(password)) return;
 
   // Verify if the user exists
   if (getUserData(id)) {
