@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../styles/match/match.css" />
     <link rel="stylesheet" href="../styles/match/userMatchedDetails.css" />
     <link rel="stylesheet" href="../styles/chat/chat.css" />
+    <link rel="stylesheet" href="../styles/chat/hireChat.css" />
     <link rel="stylesheet" href="../styles/chat/endChat.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Jobinder</title>
@@ -82,6 +83,7 @@
             <img id="user-matched-service-img" />
             <span id="user-matched-fullname"></span>
           </div>
+          <button id="hire-chat">Contratar</button>
           <button id="end-chat">Finalizar</button>
         </div>
         <div id="chat-messages-container"></div>
@@ -92,16 +94,29 @@
       </div>
     </section>
 
+    <aside id="hire-chat-aside">
+      <div id="hire-chat-container">
+        <div>
+          <span>Você deseja contratar </span>
+          <span id="hire-chat-matched-fullname"></span>
+        </div>
+        <div class="buttons">
+          <button id="cancel-hire-chat">Cancelar</button>
+          <button id="confirm-hire-chat">Contratar</button>
+        </div>
+      </div>
+    </aside>
+
     <aside id="end-chat-aside">
       <div id="end-chat-container">
         <div>
-          <span>Você deseja realmente finalizar o serviço com </span>
+          <span>Você deseja realmente avaliar o serviço com </span>
           <span id="end-chat-matched-fullname"></span>
           <span>(Só confirme caso o serviço tenha sido realizado)</span>
         </div>
         <div class="buttons">
           <button id="cancel-end-chat">Cancelar</button>
-          <button id="confirm-end-chat">Finalizar</button>
+          <button id="confirm-end-chat">Avaliar</button>
         </div>
       </div>
     </aside>
@@ -201,12 +216,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../scripts/fuseJS.js"></script>
+
     <script type="module" defer src="../scripts/match/greetingUser.js"></script>
     <script type="module" defer src="../scripts/match/swapCards.js"></script>
     <script type="module" defer src="../scripts/match/card.js"></script>
     <script type="module" defer src="../scripts/match/searchService.js"></script>
+
     <script type="module" defer src="../scripts/chat/chatResponsive.js"></script>
     <script type="module" defer src="../scripts/chat/chat.js"></script>
+    <script type="module" defer src="../scripts/chat/hireChat.js"></script>
     <script type="module" defer src="../scripts/chat/endChat.js"></script>
   </body>
 </html>

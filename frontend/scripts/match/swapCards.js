@@ -241,6 +241,7 @@ const createCards = (specialtie, city) => {
 
         // Verify if the card was moved to the right or to the left
         if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
+          cardBack = null;
           insertUserInUsersMatchedId(userLoggedId, this.topCard.id);
           insertNewMatchId(userLoggedId, this.topCard.id);
 
@@ -252,6 +253,7 @@ const createCards = (specialtie, city) => {
           // get right border position
           posX = this.board.clientWidth;
         } else if (propX < -0.25 && e.direction == Hammer.DIRECTION_LEFT) {
+          cardBack = this.topCard; // Save the card to be able to return it
           this.topCard.style.border = "5px blue solid";
           successful = true;
           // get left border position
@@ -359,6 +361,7 @@ const createCards = (specialtie, city) => {
      
      
       botoes.querySelector("#confirme").addEventListener("click", () => {
+        cardBack = null;
         insertUserInUsersMatchedId(userLoggedId, card.id);
         insertNewMatchId(userLoggedId, card.id);
       

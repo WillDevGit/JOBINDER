@@ -88,8 +88,8 @@ const createUsersTest = async () => {
   const users = await getRandomUsers();
   const cities = await getCities("SP");
 
-  // Garantir que apenas 3 cidades sejam usadas para fins de teste
-  const selectedCities = cities.slice(0, 3);
+  // Garantir que apenas 4 cidades sejam usadas para fins de teste
+  const selectedCities = cities.slice(0, 3).concat({ nome: "São Paulo", codigo_ibge: "3550308" });
 
   users.forEach(async (user, index) => {
     // Hash the password

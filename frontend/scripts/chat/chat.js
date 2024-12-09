@@ -6,15 +6,25 @@ import {
   getNewMatchesIds,
   deleteNewMatchId,
 } from "../../../backend/chat.js";
-import { getUserData, getUsersMatchedId, deleteUserInUsersMatchedId } from "../../../backend/user.js";
+import {
+  getUserData,
+  getUsersMatchedId,
+  deleteUserInUsersMatchedId,
+} from "../../../backend/user.js";
 import { showUserMatchedDetails } from "../match/userMatchedDetails.js";
+import { userRated } from "../../../backend/rate.js";
+import { isUserHired } from "../../../backend/hire.js";
 
 // Chat DOM Elements
 const chatContainer = document.getElementById("chat-container");
 const searchContactInput = document.getElementById("search-contact-input");
 const privateChat = document.getElementById("private-chat");
+
+// Private Chat DOM Elements
 const chatMessagesContainer = document.getElementById("chat-messages-container");
 const userMatchedInfo = document.getElementById("user-matched-info");
+const hireChat = document.getElementById("hire-chat");
+const endChat = document.getElementById("end-chat");
 const exitPrivateChat = document.getElementById("close-private-chat");
 const userMatchedServiceImg = document.getElementById("user-matched-service-img");
 const userMatchedFullname = document.getElementById("user-matched-fullname");
@@ -49,9 +59,7 @@ const createChatBoxNameAndLastMessage = (userMatchedId, userMatchedData) => {
 
   const profileNameSpan = document.createElement("span");
   profileNameSpan.classList.add("profile-name");
-  profileNameSpan.textContent = !userMatchedData
-    ? "(Usuário não cadastrado)"
-    : userMatchedData.fullName;
+  profileNameSpan.textContent = !userMatchedData ? "Visitante" : userMatchedData.fullName;
 
   const lastMessageSpan = document.createElement("span");
   lastMessageSpan.classList.add("last-message");
@@ -77,9 +85,7 @@ const createChatBoxDeleteButton = (userMatchedId, userMatchedData) => {
     e.stopPropagation();
     deleteUserMatchedAside.style.display = "flex";
     deleteUserMatchedFullname.textContent =
-      userMatchedData === null
-        ? "(Usuário não cadastrado)?"
-        : userMatchedData && userMatchedData.fullName + "?";
+      userMatchedData === null ? "Visitante?" : userMatchedData && userMatchedData.fullName + "?";
     userMatchedToBeDeleted = userMatchedId;
   });
 
@@ -149,7 +155,7 @@ const updateChatDOM = () => {
 
   usersMatchedId.forEach((userMatchedId) => {
     const userMatchedData = getUserData(userMatchedId);
-    const contact = userMatchedData?.fullName?.toLowerCase() || "(usuário não cadastrado)";
+    const contact = userMatchedData?.fullName?.toLowerCase() || "Visitante";
 
     if (!contactSearched || contact.includes(contactSearched)) {
       createChatDOM(userMatchedId, userMatchedData);
@@ -174,13 +180,24 @@ const cleanChatMessages = () => {
 
 const createPrivateChat = (userMatchedId) => {
   chatUserMatchedId = userMatchedId;
+
+  if (isUserHired(chatUserMatchedId, userLoggedId)) {
+    const isUserRated = userRated(userLoggedId, chatUserMatchedId);
+    endChat.textContent = isUserRated ? "Reavaliar" : "Avaliar";
+    hireChat.style.display = "none";
+    endChat.style.display = "block";
+  } else {
+    hireChat.style.display = "block";
+    endChat.style.display = "none";
+  }
+
   deleteNewMatchId(userLoggedId, userMatchedId);
   updateNewMatchesCounter();
 
   const userMatchedData = getUserData(chatUserMatchedId);
 
   if (!userMatchedData) {
-    userMatchedFullname.textContent = "(Usuário não cadastrado)";
+    userMatchedFullname.textContent = "Visitante";
     userMatchedServiceImg.src = "../images/no-service.jpg.webp";
   } else {
     userMatchedFullname.textContent = userMatchedData.fullName || userMatchedFullname.textContent;
