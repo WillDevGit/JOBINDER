@@ -1,4 +1,4 @@
-@import url(./configs/colors.css);
+@import url(../configs/colors.css);
 
 #user-matched-details {
   display: none;

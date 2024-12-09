@@ -1,5 +1,5 @@
-@import url(./configs/colors.css);
-@import url(./configs/reset.css);
+@import url(../configs/colors.css);
+@import url(../configs/reset.css);
 
 body {
   background-color: var(--grey);
@@ -170,11 +170,11 @@ button {
   text-align: center;
 }
 
-#options li:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
+#options li:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)) {
   padding-left: 1.5rem;
 }
 
-#options li:nth-child(4) {
+#options li:nth-child(5) {
   margin-top: 3rem;
   border-top: 1px solid #203e5e;
 }

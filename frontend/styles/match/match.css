@@ -1,5 +1,5 @@
-@import url(./configs/colors.css);
-@import url(./configs/reset.css);
+@import url(../configs/colors.css);
+@import url(../configs/reset.css);
 
 body {
   background-color: var(--grey);

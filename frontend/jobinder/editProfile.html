@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="../styles/editProfile.css" />
+    <link rel="stylesheet" href="../styles/service-profile/editProfile.css" />
+    <link rel="stylesheet" href="../styles/service-profile/servicesPerformed.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Perfil Profissional</title>
   </head>
@@ -19,6 +19,7 @@
         <ul id="options-list">
           <li id="close-edit-profile">X</li>
           <li><a href="./home.html">Página Inicial</a></li>
+          <li id="open-services-performed"><a>Serviços Realizados</a></li>
           <li><a href="./matchAndChat.html">Chat</a></li>
           <li id="edit-name">Editar nome</li>
           <li id="edit-specialtie">Editar Especialidade</li>
@@ -92,8 +93,17 @@
       <button id="edit-profile">Menu</button>
     </section>
 
+    <section id="services-performed">
+      <h1>Serviços Realizados</h1>
+      <button id="close-services-performed">X</button>
+      <div>
+        <div id="services-performed-container"></div>
+      </div>
+    </section>
+
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../../backend/user.js"></script>
     <script type="module" defer src="../scripts/edit-profile/editProfile.js"></script>
+    <script type="module" defer src="../scripts/edit-profile/servicesPerformed.js"></script>
   </body>
 </html>

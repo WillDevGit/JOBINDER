@@ -1,5 +1,5 @@
-@import url(./configs/reset.css);
-@import url(./configs/colors.css);
+@import url(../configs/reset.css);
+@import url(../configs/colors.css);
 
 body {
   background-color: var(--blue);
@@ -17,13 +17,13 @@ body {
 }
 
 #list {
+  padding-bottom: 7rem;
   gap: 5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
 .categoria {
-  cursor: pointer;
   user-select: none;
   text-decoration: none;
 
@@ -44,10 +44,6 @@ body {
 
   &:hover span {
     opacity: 1;
-  }
-
-  &:active {
-    transform: translate(0, 0);
   }
 }
 
@@ -97,29 +93,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-button {
-  cursor: pointer;
-  background-color: var(--lightGreen);
-  color: var(--darkGreen);
-  font-weight: 700;
-  font-size: 1.3rem;
-
-  margin: 2rem 0;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-
-  transition: all 0.2s;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
 }
 
 @media screen and (max-width: 768px) {

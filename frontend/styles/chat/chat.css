@@ -1,4 +1,4 @@
-@import url(./configs/colors.css);
+@import url(../configs/colors.css);
 
 #chat {
   user-select: none;
@@ -341,7 +341,7 @@
 
 #private-chat #chat-messages-container {
   background-color: #fff;
-  background-image: url(../images/private-chat-background.avif);
+  background-image: url(../../images/private-chat-background.avif);
   background-size: cover;
   background-position: right;
 

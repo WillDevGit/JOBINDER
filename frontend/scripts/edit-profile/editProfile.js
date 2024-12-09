@@ -53,6 +53,8 @@ const specialtie = document.getElementById("specialtie");
 const avaliability = document.getElementById("avaliability");
 const services = document.getElementById("services");
 
+const servicesPerformed = document.getElementById("services-performed");
+
 // Add the user data to the profile
 imagem.src = usuarioDados.serviceProfile.serviceImg;
 location.textContent = `${usuarioDados.serviceProfile.location.city}, ${usuarioDados.serviceProfile.location.state}`;
@@ -203,10 +205,12 @@ const displayEditProfile = () => {
     editContainer.classList.remove("edit-container-animation-out");
   } else {
     openProfileButton.style.display = "block";
+    servicesPerformed.style.display = "none";
     closeEditProfileButton.style.display = "block";
     if (!editProfileClicked) {
       editContainer.classList.remove("edit-container-animation-in");
       editContainer.style.display = "none";
+      servicesPerformed.style.display = "none";
     } else {
       editContainer.style.display = "flex";
     }

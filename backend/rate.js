@@ -4,6 +4,12 @@ const getRates = () => {
   return rates ? JSON.parse(rates) : {};
 };
 
+// Get the rates of a user
+const getUserRates = (id) => {
+  const rates = getRates();
+  return rates[id] || [];
+};
+
 // Update the rate of a user
 const updateRate = (ratesId, ratedId, rate) => {
   const rates = getRates();
@@ -31,4 +37,4 @@ const userRated = (ratesId, ratedId) => {
   return rates[ratedId]?.some((r) => r.raterId === ratesId);
 };
 
-export { getRates, updateRate, userRated };
+export { getRates, getUserRates, updateRate, userRated };
