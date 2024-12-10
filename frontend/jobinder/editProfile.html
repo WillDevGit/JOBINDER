@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/service-profile/editProfile.css" />
     <link rel="stylesheet" href="../styles/service-profile/servicesPerformed.css" />
+    <link rel="stylesheet" href="../styles/service-profile/chat.css" />
+    <link rel="stylesheet" href="../styles/match/userMatchedDetails.css" />
     <link rel="shortcut icon" href="../images/favicon.png" type="image/png" />
     <title>Perfil Profissional</title>
   </head>
@@ -20,7 +22,7 @@
           <li id="close-edit-profile">X</li>
           <li><a href="./home.html">Página Inicial</a></li>
           <li id="open-services-performed"><a>Serviços Realizados</a></li>
-          <li><a href="./matchAndChat.html">Chat</a></li>
+          <li id="open-chat"><a>Chat</a></li>
           <li id="edit-name">Editar nome</li>
           <li id="edit-specialtie">Editar Especialidade</li>
           <li id="edit-avaliability">Editar Disponibilidade</li>
@@ -101,9 +103,102 @@
       </div>
     </section>
 
+    <section id="chat">
+      <div id="headerChat">
+        <h3>Mensagens</h3>
+        <div id="searchChatBox" title="Buscar pelo nome do contato">
+          <input type="text" id="search-contact-input" placeholder="Localizar contato" />
+          <a id="searchChatBtn" href="#">
+            <img src="../images/lupa.png" />
+          </a>
+        </div>
+        <button id="close-chat">Fechar</button>
+      </div>
+
+      <div id="chat-container"></div>
+
+      <div id="private-chat">
+        <div id="header-private-chat">
+          <button id="close-private-chat" title="Voltar para todas as conversas">Voltar</button>
+          <div id="user-matched-info">
+            <img id="user-matched-service-img" />
+            <span id="user-matched-fullname"></span>
+          </div>
+        </div>
+        <div id="chat-messages-container"></div>
+        <form id="send-message-form">
+          <textarea placeholder="Digite uma mensagem..." id="textarea-chat"></textarea>
+          <input type="submit" id="send-message" value="enviar" />
+        </form>
+      </div>
+    </section>
+
+    <aside id="user-matched-details">
+      <div id="user-matched-details-container">
+        <div class="user-matched-rating">
+          <span class="star" id="star-1">&#9733;</span>
+          <span class="star" id="star-2">&#9733;</span>
+          <span class="star" id="star-3">&#9733;</span>
+          <span class="star" id="star-4">&#9733;</span>
+          <span class="star" id="star-5">&#9733;</span>
+        </div>
+        <button id="close-user-matched-details">Fechar</button>
+        <div>
+          <img id="user-matched-details-service-img" />
+        </div>
+        <div>
+          <span>Nome:</span>
+          <span id="user-matched-details-fullname"></span>
+        </div>
+        <div>
+          <span>Serviços realizados:</span>
+          <span id="user-matched-services-performed"></span>
+        </div>
+        <div>
+          <span>Especialidade:</span>
+          <span id="user-matched-details-specialties"></span>
+        </div>
+        <div>
+          <span>Disponibilidade:</span>
+          <span id="user-matched-details-avaliability"></span>
+        </div>
+        <div>
+          <span>Estado:</span>
+          <span id="user-matched-details-state"></span>
+        </div>
+        <div>
+          <span>Cidade:</span>
+          <span id="user-matched-details-city"></span>
+        </div>
+        <div>
+          <span>Celular:</span>
+          <span id="user-matched-details-cellphone"></span>
+        </div>
+        <div>
+          <span>Descrição:</span>
+          <span id="user-matched-details-services"></span>
+        </div>
+      </div>
+    </aside>
+
+    <aside id="delete-user-matched-aside">
+      <div class="delete-user-matched-container">
+        <div>
+          <span>Você deseja realmente apagar a conversa com </span>
+          <span id="delete-user-matched-fullname"></span>
+          <span>(todos os dados da conversa serão apagados)</span>
+        </div>
+        <div class="buttons">
+          <button id="cancel-delete">Cancelar</button>
+          <button id="confirm-delete">Apagar</button>
+        </div>
+      </div>
+    </aside>
+
     <script type="module" src="../scripts/toaster.js"></script>
     <script type="module" src="../../backend/user.js"></script>
     <script type="module" defer src="../scripts/edit-profile/editProfile.js"></script>
     <script type="module" defer src="../scripts/edit-profile/servicesPerformed.js"></script>
+    <script type="module" defer src="../scripts/edit-profile/chat.js"></script>
   </body>
 </html>

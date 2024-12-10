@@ -1,6 +1,6 @@
 import { userLoggedId } from "../../../backend/createUserSession.js";
 import { chatUserMatchedId } from "./chat.js";
-import { getUserData, updateUserRating, updateServicesPerformed } from "../../../backend/user.js";
+import { getUserData, updateServicesPerformed } from "../../../backend/user.js";
 import { updateRate, userRated } from "../../../backend/rate.js";
 
 const endChat = document.getElementById("end-chat");
@@ -86,7 +86,6 @@ confirmRateUserMatched.addEventListener("click", () => {
   if (!userMatchedRated) updateServicesPerformed(chatUserMatchedId);
 
   updateRate(userLoggedId, chatUserMatchedId, rate);
-  updateUserRating(chatUserMatchedId, rate);
 
   confirmNewRate = false;
 });

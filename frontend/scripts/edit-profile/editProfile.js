@@ -11,6 +11,7 @@ import { createStateOptions, createCityOptions } from "../locationComponents.js"
 
 const usuarioDados = getUserData(userLoggedId);
 
+// Edit Profile DOM Elements
 const editContainer = document.getElementById("edit-container");
 const options = document.getElementById("options");
 const editFullNameButton = document.getElementById("edit-name");
@@ -53,7 +54,11 @@ const specialtie = document.getElementById("specialtie");
 const avaliability = document.getElementById("avaliability");
 const services = document.getElementById("services");
 
+// Services performed DOM Element
 const servicesPerformed = document.getElementById("services-performed");
+
+// Chat DOM Elements
+const chat = document.getElementById("chat");
 
 // Add the user data to the profile
 imagem.src = usuarioDados.serviceProfile.serviceImg;
@@ -69,6 +74,8 @@ let editProfileClicked = false;
 // Show the edit profile interface
 openProfileButton.addEventListener("click", () => {
   editProfileClicked = true;
+  servicesPerformed.style.display = "none";
+  chat.style.display = "none";
   closeEditProfileButton.style.display = "block";
   editContainer.style.display = "flex";
   editContainer.classList.remove("edit-container-animation-out");
@@ -206,11 +213,13 @@ const displayEditProfile = () => {
   } else {
     openProfileButton.style.display = "block";
     servicesPerformed.style.display = "none";
+    chat.style.display = "none";
     closeEditProfileButton.style.display = "block";
     if (!editProfileClicked) {
       editContainer.classList.remove("edit-container-animation-in");
       editContainer.style.display = "none";
       servicesPerformed.style.display = "none";
+      chat.style.display = "none";
     } else {
       editContainer.style.display = "flex";
     }

@@ -23,11 +23,14 @@
 }
 
 #services-performed #close-services-performed {
+  cursor: pointer;
   background-color: var(--darkRed);
+  color: #fff;
   font-size: 1.5rem;
 
   width: 100%;
   padding: 0.5rem;
+  border: none;
   border-radius: 0;
   border-bottom: 1px solid #203e5e;
 

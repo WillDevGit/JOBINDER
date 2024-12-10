@@ -2,17 +2,21 @@ import { userLoggedId } from "../../../backend/createUserSession.js";
 import { getUserRates } from "../../../backend/rate.js";
 import { getUserData } from "../../../backend/user.js";
 
+const editContainer = document.getElementById("edit-container");
+
+const chat = document.getElementById("chat");
+
 const openServicesPerformed = document.getElementById("open-services-performed");
 const servicesPerformed = document.getElementById("services-performed");
 const servicesPerformedContainer = document.getElementById("services-performed-container");
 const closeServicesPerformed = document.getElementById("close-services-performed");
 
-const editContainer = document.getElementById("edit-container");
 
 const userLoggedRates = getUserRates(userLoggedId);
 
 openServicesPerformed.addEventListener("click", () => {
   servicesPerformed.style.display = "flex";
+  chat.style.display = "none";
   if(window.innerWidth <= 700) {
     editContainer.style.display = "none";
   }
