@@ -1,3 +1,5 @@
+import { getUserRates } from "./rate.js";
+
 // Get the users
 const getUsers = () => {
   const users = JSON.parse(localStorage.getItem("users"));
@@ -245,27 +247,17 @@ const updateLocation = (id, state, city) => {
 };
 
 // Update the user rating
-const updateUserRating = (id, rating) => {
+const updateUserRating = (id, rate) => {
   const userExists = getUser(id);
 
   if (!userExists) {
     toastr.error("Usuário não encontrado.");
     return;
   }
+  // const rates = getUserRates(id);
+  // const userRate = rates[id].reduce((acc, r) => acc + r.rate, 0) / rates[id].length;
 
-  rating = parseInt(rating);
-
-  if (userExists.serviceProfile) {
-    const userRating = parseInt(userExists.rating);
-    const servicesPerformed = parseInt(userExists.serviceProfile.servicesPerformed);
-
-    const newRating = (userRating * servicesPerformed + rating) / (servicesPerformed + 1);
-    console.log(userRating, newRating);
-    console.log(servicesPerformed);
-    userExists.rating = Math.round(newRating);
-  } else {
-    userExists.rating = parseInt(rating);
-  }
+  userExists.rating = rate;
 
   updateUser(id, userExists);
 };

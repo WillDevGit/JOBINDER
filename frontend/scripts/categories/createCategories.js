@@ -16,15 +16,17 @@ let onlyEditSpecialtie = false;
 
 // Create the categories
 categories.forEach((categoria) => {
+  let categoriaDev = categoria === "Desenvolvedor de Software" ? "Desenvolvedor" : null;
+
   const a = document.createElement("a");
   a.classList.add("categoria");
 
   const title = document.createElement("h2");
-  title.textContent = categoria;
+  title.textContent = categoriaDev ? categoriaDev : categoria;
 
   const background = document.createElement("div");
   background.classList.add("background-categoria");
-  background.style.backgroundImage = `url(../images/categories/${categoria}.png)`;
+  background.style.backgroundImage = `url(../images/categories/${categoriaDev ? categoriaDev : categoria}.png)`;
 
   a.appendChild(title);
   a.appendChild(background);

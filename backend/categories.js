@@ -4,7 +4,7 @@ export const categories = [
   "Cabeleireiro",
   "Construção",
   "Cozinheiro",
-  "Desenvolvedor",
+  "Desenvolvedor de Software",
   "Eletricista",
   "Encanador",
   "Fisioterapia",

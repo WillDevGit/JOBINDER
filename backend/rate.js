@@ -1,3 +1,5 @@
+import { getUser, updateUserRating } from "./user.js";
+
 // Get the rates from the database
 const getRates = () => {
   const rates = localStorage.getItem("rates");
@@ -10,9 +12,13 @@ const getUserRates = (id) => {
   return rates[id] || [];
 };
 
-// Update the rate of a user
+// Update the rate of a user by another user in the database
 const updateRate = (ratesId, ratedId, rate) => {
+  rate = Number(rate);
+  const user = getUser(ratedId);
   const rates = getRates();
+
+  if (!user) return;
 
   if (!rates[ratedId]) {
     rates[ratedId] = [];
@@ -27,7 +33,14 @@ const updateRate = (ratesId, ratedId, rate) => {
     rates[ratedId].push({ raterId: ratesId, rate });
   }
 
-  // Atualiza o localStorage com os dados modificados
+  const sum = rates[ratedId].reduce((acc, r) => acc + r.rate, 0);
+  const length = rates[ratedId].length;
+  const newRating = Math.round(sum / length);
+  
+  console.log(sum, length, sum/length);
+
+  updateUserRating(ratedId, newRating);
+
   localStorage.setItem("rates", JSON.stringify(rates));
 };
 

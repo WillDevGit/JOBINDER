@@ -121,7 +121,7 @@ body {
 }
 */
 
-button {
+#edit-profile {
   cursor: pointer;
   background-color: var(--blue);
   color: #fff;
@@ -233,8 +233,9 @@ button {
   border: none;
   font-size: 1.2rem;
 }
-
-input {
+#edit-name-container input,
+#edit-avaliability-container input,
+#edit-state-city-container input {
   outline: none;
   border: none;
   font-size: 1rem;
@@ -357,6 +358,23 @@ input {
   display: none;
   padding: 1rem;
   width: 20rem;
+}
+
+.botao {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: #fff;
+  font-size: 1rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--darkBlue);
+  }
 }
 
 @media screen and (max-width: 800px) {
