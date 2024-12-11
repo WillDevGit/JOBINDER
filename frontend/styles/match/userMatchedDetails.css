@@ -109,7 +109,7 @@
   user-select: text;
 }
 
-#user-matched-details #user-matched-details-container div:not(:first-child) span:nth-child(4) {
+#user-matched-details #user-matched-details-container div:not(:first-child) {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
